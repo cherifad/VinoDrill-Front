@@ -1,0 +1,47 @@
+@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "PassengerDisplay";
+  src: url("../assets/fonts/PassengerDisplay-Semibold.ttf");
+}
+
+/* css reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+/* end css reset */
+
+#app {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  color: white;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+#passenger {
+  font-family: "PassengerDisplay";
+}
+
+/* end css reset */
+
+/* dark mode with media query */
+@media (prefers-color-scheme: dark) {
+  #app {
+    color: white;
+  }
+
+}
