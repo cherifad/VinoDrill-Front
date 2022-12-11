@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import { useStorage } from '@vueuse/core';
 
 export const useAuthStore = defineStore("auth", {
     state: () => ({
-        authUser: null,
+        authUser: useStorage('user', null),
         authErrors: [],
     }),
     getters: {

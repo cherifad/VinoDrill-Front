@@ -65,7 +65,7 @@
                     Ajouter une adresse
                 </div>
             </div>
-            <div class="w-full flex" v-if="authStore.user.adresses.length > 0">
+            <div class="w-full flex" v-if="authStore.user.adresses && authStore.user.adresses.length > 0">
                 <div class="min-w-1/3 flex-1 px-3 py-3" v-for="adresse in authStore.user.adresses" :key="adresse.idadresse">
                     <AddresseVue :id="adresse.idadresse" :libelleAdress="adresse.libelleadresse" :rueAdresse="adresse.rueadresse" :villeAdresse="adresse.villeadresse" :codePostalAdresse="adresse.cpadresse" :paysAdresse="adresse.pays" />
                 </div>
@@ -110,7 +110,7 @@
         <!-- Mes paiements -->
         <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'paiements'">
             <div v-if="authStore.user.paiements > 0">
-                <Paiement    />
+                <!-- <Paiement    /> -->
             </div>
             <div v-else class="text-2xl w-full font-bold text-center mt-10">
                 Vous n'avez aucun moyen de paiement enregistré.
@@ -127,10 +127,12 @@
                 Vous n'avez aucun avis.
             </div>
         </div>
-    </div>
-    
+    </div>    
 </div>
 
+<div v-else>
+    <LoadComponent />
+</div>
     
 </template>
 
