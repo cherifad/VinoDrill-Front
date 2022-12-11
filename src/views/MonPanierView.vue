@@ -1,7 +1,7 @@
 <template>
   <div v-if="mesSejours.length > 0" >
     <h1 class="flex flex-wrap justify-center text-2xl font-semibold text-white pb-10">Vos séjours : </h1>
-    <div class="" v-auto-animate>
+    <div class="flex flex-col gap-5" v-auto-animate>
       <div v-for="item in mesSejours" v-auto-animate :key="item.sejour.idsejour" class="">
         <div class="w-full">
           
@@ -26,7 +26,7 @@
                                 :price="item.sejour.prixsejour">
                               </PanierItem> 
 
-          <div v-if="getCurrentCartSejour(item.sejour.idsejour)" class="mt-40 pl-10">
+          <!-- <div v-if="getCurrentCartSejour(item.sejour.idsejour)" class="mt-40 pl-10">
               <p class="text-lg">Prix : {{ getCurrentCartSejour(item.sejour.idsejour).quantite * item.sejour.prixsejour }} €</p>
               <p class="text-lg">Quantité : {{ getCurrentCartSejour(item.sejour.idsejour).quantite }} </p>
               <br>
@@ -36,7 +36,7 @@
               <button @click="removeall(item.sejour.idsejour)" id="button" class="font-bold py-3 px-8 rounded">Mettre à zéro</button>
               <br>
               <button @click="removesejour(item.sejour.idsejour)" id="buttondelete" class="font-bold py-3 px-8 rounded">Supprimer le sejour</button>
-          </div>   
+          </div>    -->
         </div>
       </div>
 

@@ -120,7 +120,7 @@
 
         <!-- Mes avis -->
         <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'avis'">
-            <div v-if="avis.length > 0">
+            <div v-if="avis.length > 0 && avis" class="px-14 py-5">
                 <SingleComment v-for="avi in avis" :key="avi.idavis" :id="avi.idavis" :note="avi.note" :date="avi.dateavis" :title="avi.titreavis" :comment="avi.commentaire" />
             </div>
             <div v-else class="text-2xl w-full font-bold text-center mt-10">
@@ -156,8 +156,8 @@ const closeAddAdress: any = ref(true);
 
 const avis: any = ref(null);
 
-onMounted(() => {
-    authStore.getUser();
+onMounted(async () => {
+    await authStore.getUser();
     axios.get('/api/avis?client=' + authStore.user.idclient).then((response) => {
         avis.value = response.data['data'];
     });

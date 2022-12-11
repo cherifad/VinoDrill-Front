@@ -21,35 +21,41 @@
             <h1>{{price}}€</h1>
         </div> -->
 
-        <div class="h-full p-5 border-2 rounded-2xl border-rose flex">
-            <div class="mr-10">
+        <div class="h-full justify-between p-5 border-2 rounded-2xl border-rose flex">
+            <div class="">
                 <h1 class="font-bold text-xl w-fit ml-16 mb-1">Article</h1>
                 <div class=" barreArticle w-14 border ml-14 mb-2"></div>
                 <img :src="image" :alt="title + 'image'" class="imageSize rounded-xl">
             </div>
-            <div class="mr-10">
-                <h1 class="font-bold text-xl w-fit ml-16 mb-1">Description</h1>
-                <div class=" barreDescription w-20 border mb-2"></div>
+            <div class=" flex flex-col items-center">
+                <h1 class="font-bold text-xl w-fit mb-1">Description</h1>
+                <div class="w-20 border mb-2"></div>
                  <h1 class="text-xl  pt-5 ">{{ title}}</h1>
                 <p v-if="days" class="text-xl pt-2"><ion-icon name="time-outline" class="mr-2"></ion-icon>{{ days }} jour<span v-if="days > 1">s</span><span v-if="nights >= 1"> / {{ nights }} nuit<span v-if="nights > 1">s</span></span></p>
                 <p v-else class="text-2xl">{{ libelleTemps }}</p>
             </div>
-            <div class="mr-10">
-                <h1 class="font-bold text-xl w-fit ml-16 mb-1">Prix Unitaire</h1>
-                <div class=" barreDescription w-20 border mb-2"></div>
-                <h1 class="text-xl pt-9 ml-24">{{price}}€</h1>
+            <div class=" flex flex-col items-center">
+                <div class="flex flex-col items-center">                    
+                    <h1 class="font-bold text-xl mb-1">Prix Unitaire</h1>
+                    <div class="w-20 border mb-2"></div>
+                </div>
+                <h1 class="text-xl pt-9">{{price}}€</h1>
             </div>
-            <div class="mr-10">
-                <h1 class="font-bold text-xl w-fit ml-16 mb-1">Quantité</h1>
-                <div class=" barreQuantite w-16 border mb-2"></div>
+            <div class=" flex flex-col items-center">
+                <div>                        
+                    <h1 class="font-bold text-xl w-fit mb-1">Quantité</h1>
+                    <div class="  border mb-2"></div>
+                </div>
+                <h1 class="  text-2xl pt-8 ">1</h1>
             </div>
-            <div class="mr-10">
-                <h1 class="font-bold text-xl w-fit ml-16 mb-1">Total</h1>
-                <div class=" barreTotalUni w-10 border mb-2"></div>
-            </div>
-            <!-- <button @click="remove" class="ml-6">Supprimer</button> -->
-            <div>
-                
+            <div class="flex flex-col items-center">
+                <h1 class="font-bold text-xl w-fit mb-1">Total</h1>
+                <div class="w-10 border mb-2"></div>
+            </div >
+            <div class="flex flex-col items-center">
+                <h1 class="font-bold text-xl w-fit  mb-1">Supprimer</h1>
+                <div class="w-20 border mb-2"></div>
+                <ion-icon @click="remove" class=" text-4xl pt-8 " name="trash-bin-outline"></ion-icon>
             </div>
             
         </div>
@@ -81,6 +87,12 @@ const remove = ()=>{
     }
 }
 
+const getCurrentCartSejour = (id) => {
+    const cart = panierStore.sejours;
+    const sejour = cart.find((item) => item.idsejour ? item.idsejour === id : false);
+    return sejour;
+}
+
 </script>
 <style scoped>
 
@@ -107,5 +119,12 @@ width: auto;
 {
     margin-left: 72px;
 }
+
+.barreSupprimer
+{
+  margin-left: 80px;  
+}
+
+
 
 </style>
