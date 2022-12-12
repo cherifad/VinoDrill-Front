@@ -1,74 +1,122 @@
 <template>
-    <!-- <div class="flex relative h-full  gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ">
-        <div class="w-fit">
-             <h1 class="font-bold text-xl w-fit ml-6">Article</h1>
-             <div class=" w-14 border ml-8 mb-2 mt-1"></div>
-            <img :src="image" :alt="title + 'image'" class="w-1/4">
+  <div class="h-full justify-between p-5 border-2 rounded-2xl border-rose">
+    <div class="flex justify-between w-full">
+      <div class="flex flex-col items-center">
+        <h1 class="font-bold text-xl w-fit mb-1">Article</h1>
+        <div class="w-14 border mb-2"></div>
+        <img :src="image" :alt="title + 'image'" class="imageSize rounded-xl" />
+      </div>
+      <div class="flex flex-col items-center">
+        <h1 class="font-bold text-xl w-fit mb-1">Description</h1>
+        <div class="w-20 border mb-2"></div>
+        <h1 class="text-xl pt-5">{{ title }}</h1>
+        <p v-if="days" class="text-xl pt-2">
+          <ion-icon name="time-outline" class="mr-2"></ion-icon
+          >{{ days }} jour<span v-if="days > 1">s</span
+          ><span v-if="nights >= 1">
+            / {{ nights }} nuit<span v-if="nights > 1">s</span></span
+          >
+        </p>
+        <p v-else class="text-2xl">{{ libelleTemps }}</p>
+        
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center">
+          <h1 class="font-bold text-xl mb-1">Prix Unitaire</h1>
+          <div class="w-20 border mb-2"></div>
+        </div>
+        <h1 class="text-xl pt-9">{{ price }}€</h1>
+      </div>
+      <div class="flex flex-col items-center">
+        <div>
+          <h1 class="font-bold text-xl w-fit mb-1">Quantité</h1>
+          <div class="border mb-2"></div>
+        </div>
+        <h1 class="text-2xl pt-8">1</h1>
+      </div>
+      <div class="flex flex-col items-center">
+        <h1 class="font-bold text-xl w-fit mb-1">Total</h1>
+        <div class="w-10 border mb-2"></div>
+      </div>
+      <div class="flex flex-col items-center">
+        <h1 class="font-bold text-xl w-fit mb-1">Supprimer</h1>
+        <div class="w-20 border mb-2"></div>
+        <ion-icon
+          @click="remove"
+          class="text-4xl pt-8"
+          name="trash-bin-outline"
+        ></ion-icon>
+      </div>
+    </div>
+    <div class="flex gap-5 justify-evenly">
+    <div class="flex flex-1 flex-col items-center justify-center">
+      <div class="mt-6 flex flex-col items-center">
+        <h1 class="font-bold text-xl w-fit mb-1">Période du séjour</h1>
+        <div class="w-32 border mb-2"></div>
+      </div>
+      <div class="flex flex-col items-center">
+        <h1 class="mb-1">Début</h1>
+        <div class="w-12 border mb-2"></div>
+        <input type="date" class="rounded border-2 p-1 text-rouge border-rose focus:border-rouge outline-none" max="12-02-1992" placeholder="Date">
+        <!-- <span>Par exemple {{ exampleDate }}</span> -->
+      </div>
+    </div>
+    <div class="flex flex-1 flex-col items-center">
+        <div class="mt-6 flex flex-col items-center">
+          <h1 class="font-bold text-xl w-fit mb-1">Informations</h1>
+          <div class="w-24 border mb-2"></div>
+        </div>
+        <div class="flex items-center gap-2 w-full justify-evenly">
+          <div class="flex flex-col items-center">
+            <h1 class="mb-1">Adultes</h1>
+            <div class="w-12 border mb-2"></div>
+            <p>
+              <button @click="form.adults != 0 ? form.adults-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
+              {{ form.adults }}
+              <button @click="form.adults++" id="button" class="font-bold py-1 px-2 rounded">+</button>
+            </p>
+          </div>
+          <div class="flex flex-col items-center">
+            <h1 class=" mb-1">Enfants</h1>
+            <div class="w-12 border mb-2"></div>
+            <p>
+              <button @click="form.children != 0 ? form.children-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
+              {{ form.children }}
+              <button @click="form.children++" id="button" class="font-bold py-1 px-2 rounded">+</button>
+            </p>
+          </div>
+          <div class="flex flex-col items-center">
+            <h1 class=" mb-1">Chambres</h1>
+            <div class="w-12 border mb-2"></div>
+            <p>
+              <button @click="form.rooms != 0 ? form.rooms-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
+              {{ form.rooms }}
+              <button @click="form.rooms++" id="button" class="font-bold py-1 px-2 rounded">+</button>
+            </p>
+          </div>
         </div>
     </div>
+  </div>
+  </div>
 
-    <div class="w-fit">
-             <h1 class="font-bold text-xl w-fit ml-6">Article</h1>
-             <div class=" w-14 border ml-9"></div>
-            <img :src="image" :alt="title + 'image'" class="w-1/4">
-        </div>
-        <div class=" flex-1">
-            <h1 class="text-xl font-bold pt-10 ">{{ title}}</h1>
-            <p v-if="days" class="text-xl pt-2"><ion-icon name="time-outline" class="mr-2"></ion-icon>{{ days }} jour<span v-if="days > 1">s</span><span v-if="nights >= 1"> / {{ nights }} nuit<span v-if="nights > 1">s</span></span></p>
-            <p v-else class="text-2xl">{{ libelleTemps }}</p>
-        </div>
-        <div class="pt-12 ml-10">
-            <h1>{{price}}€</h1>
-        </div> -->
 
-        <div class="h-full justify-between p-5 border-2 rounded-2xl border-rose flex">
-            <div class="">
-                <h1 class="font-bold text-xl w-fit ml-16 mb-1">Article</h1>
-                <div class=" barreArticle w-14 border ml-14 mb-2"></div>
-                <img :src="image" :alt="title + 'image'" class="imageSize rounded-xl">
-            </div>
-            <div class=" flex flex-col items-center">
-                <h1 class="font-bold text-xl w-fit mb-1">Description</h1>
-                <div class="w-20 border mb-2"></div>
-                 <h1 class="text-xl  pt-5 ">{{ title}}</h1>
-                <p v-if="days" class="text-xl pt-2"><ion-icon name="time-outline" class="mr-2"></ion-icon>{{ days }} jour<span v-if="days > 1">s</span><span v-if="nights >= 1"> / {{ nights }} nuit<span v-if="nights > 1">s</span></span></p>
-                <p v-else class="text-2xl">{{ libelleTemps }}</p>
-            </div>
-            <div class=" flex flex-col items-center">
-                <div class="flex flex-col items-center">                    
-                    <h1 class="font-bold text-xl mb-1">Prix Unitaire</h1>
-                    <div class="w-20 border mb-2"></div>
-                </div>
-                <h1 class="text-xl pt-9">{{price}}€</h1>
-            </div>
-            <div class=" flex flex-col items-center">
-                <div>                        
-                    <h1 class="font-bold text-xl w-fit mb-1">Quantité</h1>
-                    <div class="  border mb-2"></div>
-                </div>
-                <h1 class="  text-2xl pt-8 ">1</h1>
-            </div>
-            <div class="flex flex-col items-center">
-                <h1 class="font-bold text-xl w-fit mb-1">Total</h1>
-                <div class="w-10 border mb-2"></div>
-            </div >
-            <div class="flex flex-col items-center">
-                <h1 class="font-bold text-xl w-fit  mb-1">Supprimer</h1>
-                <div class="w-20 border mb-2"></div>
-                <ion-icon @click="remove" class=" text-4xl pt-8 " name="trash-bin-outline"></ion-icon>
-            </div>
-            
-        </div>
-        
 </template>
 
 <script setup lang="ts">
-import { usePanierStore } from '../stores/panier';
+import { ref } from "vue";
+import { usePanierStore } from "../stores/panier";
 
 const panierStore = usePanierStore();
+const exampleDate = new Date();
 
+const form = ref({
+  adults: 0,
+  children: 0,
+  rooms: 0,
+})
 
-const props = defineProps<{
+const props =
+  defineProps<{
     title: string;
     description: string;
     nights: any;
@@ -78,53 +126,35 @@ const props = defineProps<{
     id: number;
     libelleTemps: any;
     notemoyenne: number;
-    }>();
+  }>();
 
-const remove = ()=>{
-    if (confirm("Voulez-vous vraiment supprimer ce séjour ?")){
-        panierStore.removeSejour(props.id)
-        window.location.reload()
-    }
-}
+const remove = () => {
+  if (confirm("Voulez-vous vraiment supprimer ce séjour ?")) {
+    panierStore.removeSejour(props.id);
+    window.location.reload();
+  }
+};
 
 const getCurrentCartSejour = (id) => {
-    const cart = panierStore.sejours;
-    const sejour = cart.find((item) => item.idsejour ? item.idsejour === id : false);
-    return sejour;
-}
-
+  const cart = panierStore.sejours;
+  const sejour = cart.find((item) =>
+    item.idsejour ? item.idsejour === id : false
+  );
+  return sejour;
+};
 </script>
 <style scoped>
-
-.imageSize
-{
-height: 8rem;
-width: auto;
-
+.imageSize {
+  height: 8rem;
+  width: auto;
+}
+#button {
+  background-color: #cb7169;
+  justify-content: center;
+  margin: 2px;
 }
 
-.barreDescription
-{
-    margin-left: 85px;
+.top {
+  margin-top: 65px;
 }
-.barreArticle
-{
-    margin-left:70px;
-}
-.barreQuantite
-{
-    margin-left: 80px;
-}
-.barreTotalUni
-{
-    margin-left: 72px;
-}
-
-.barreSupprimer
-{
-  margin-left: 80px;  
-}
-
-
-
 </style>

@@ -14,7 +14,7 @@
                             <select v-model="form.object" class="object text-gray-400 font-weight:500 w-80" name="object" id="object" required>
                                 <option value="" disabled selected>Selectionnez un destinataire</option>
                                 <option value="webmaster">Contacter le webmaster</option>
-                                <option value="dpo">Contacterle DPO</option>
+                                <option value="dpo">Contacter le DPO</option>
                                 <option value="devis">Demander un devis</option>
                             </select >
                         </div>

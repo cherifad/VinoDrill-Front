@@ -28,8 +28,8 @@
                 
                 <div class="flex gap-20 ">
                     <p id="passenger" class="text-2xl font-semibold">Adulte(s) : {{ nbadulte }}</p>
-                    <p id="passenger" class="text-2xl font-semibold" >Enfant(s) : {{ nbenfant }}</p>
-                    <p id="passenger" class="text-2xl font-semibold" >Chambre(s) : {{ nbchambre }}</p>
+                    <p id="passenger" class="text-2xl font-semibold">Enfant(s) : {{ nbenfant }}</p>
+                    <p id="passenger" class="text-2xl font-semibold">Chambre(s) : {{ nbchambre }}</p>
                 </div>
                 
 
