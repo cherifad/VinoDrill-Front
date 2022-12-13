@@ -15,11 +15,11 @@
                         </ul>
                         <div class="flex gap-1 flex-wrap items-center justify-center">                            
                             <a href="#etape" class="p-2 bg-white text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">Voir les étapes</a>
-                            <a @click="panierStore.addSejour(sejour.idsejour, 1)" class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
+                            <a @click="!getCurrentCartSejour() ? panierStore.addSejour(sejour.idsejour) : addedToCart = true" class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
                                 Ajouter au panier <br>
                                 <div v-if="getCurrentCartSejour()" class="flex justify-evenly">
-                                    <span class="text-sm">Prix : {{ lisibilite_nombre(getCurrentCartSejour().quantite * sejour.prixsejour) }} €</span>
-                                    <span class="text-sm">Quantité : {{ getCurrentCartSejour().quantite }} </span>
+                                    <span v-if="!addedToCart" class="text-sm">Déjà dans le panier</span>
+                                    <span v-else class="text-sm">Dans le panier !</span>
                                 </div>
                             </a>
                         </div>
@@ -160,7 +160,7 @@ import { Pagination } from "swiper";
 const route = useRoute();
 const panierStore = usePanierStore();
 const viewedStore = useViewedStore();
-
+const addedToCart = ref(false);
 
 const getCurrentCartSejour = () => {
     const cart = panierStore.sejours;

@@ -31,6 +31,7 @@
             </div>
             <span v-if="!edit" class="text-xl font-bold">{{ email }}</span>
             <input v-if="edit" type="text" class="border font-normal border-rose outline-none bg-transparent p-2 rounded-md" v-model="form.email" />
+            <h1 class="font-bold text-red-500" v-if="error.emailclient && edit" v-for="item in error.emailclient">{{item}}</h1>     
         </div>
         <div class="flex gap-5 items-center" v-auto-animate>
             <div class="flex gap-3 items-center">
@@ -40,7 +41,8 @@
             <span v-if="!edit" class="text-xl font-bold">{{ toReadableDate(dateDeNaissance) }}</span>
             <input v-if="edit" v-model="form.dateDeNaissance" type="date" id="birthdate"
                                 class="rounded-full border-2 p-4 text-rouge border-rose focus:border-rouge outline-none"
-                                max="12-02-1992">        
+                                max="12-02-1992">  
+            <h1 class="font-bold text-red-500" v-if="error.datenaissance && edit" v-for="item in error.datenaissance">{{item}}</h1>     
         </div>
         <div class="flex gap-5 items-center" v-auto-animate>
             <div class="flex gap-3 items-center">
@@ -62,7 +64,7 @@
                 <ion-icon name="save"></ion-icon>
                 Enregistrer les modifications
             </div>
-        </div>       
+        </div>     
     </div>  
 </template>
 
@@ -71,6 +73,7 @@ import { ref } from 'vue';
 import axios from 'axios';
 
 const edit = ref(false);
+const error: any = ref([]);
 
 function toReadableDate(date: string) {
     const dateObj = new Date(date);
@@ -100,16 +103,23 @@ const form = ref({
 });
 
 async function saveUpdateInfo() {
-    await axios.put(`/api/user`, {
+    if(confirm("Voulez-vous vraiment modifier vos informations ?") == false) return;
+    await axios.put(`/api/user/${props.id}`, {
+        idclient: props.id,
         nomclient: form.value.nom,
         prenomclient: form.value.prenom,
         datenaissance: form.value.dateDeNaissance,
         sexe: form.value.sexe,
         emailclient: form.value.email,
     })
-
-    edit.value = false;
-    window.location.reload();
+    .then((res) => {
+        window.location.reload();
+    })
+    .catch((err) => {
+        if (err.response.status === 422) {
+            error.value = err.response.data.errors;
+        }
+    });
 };
 </script>
 

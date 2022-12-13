@@ -66,9 +66,7 @@ onMounted(async () => {
     <ion-icon class="hover:-translate-y-1" name="arrow-up"></ion-icon>
   </a>
   <RouterView :style="{'padding-top': + height +'px'}" class="px-10" v-slot="{ Component }">    
-    <transition name="fade" mode="out-in">      
       <Component :is="Component" />    
-    </transition>  
   </RouterView>
   <Cookies />
   <footer class="pt-2rem">    

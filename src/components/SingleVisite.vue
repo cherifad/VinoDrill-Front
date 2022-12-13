@@ -7,8 +7,8 @@
                 <p class=" text-lg">{{ descriptionvisite }}</p>
             </div>
             <div class=" items-center justify-center">
-                <p>Horaire : {{ horairevisite }}</p>
-                <p v-if="typevisite" class=" text-lg">Type : {{ typevisite.libelletypevisite }}</p>
+                <p>Horaire : {{ horairevisite.substring(0,5) }}h</p>
+                <p v-if="typevisite" class=" text-lg">Visite : {{ typevisite.libelletypevisite }}</p>
             </div>
         </div>
         <a href="https://google.fr" target="_blank" class="bg-slate-400 text-white p-2 block mt-2 w-fit rounded-md shadow-md hover:bg-slate-600">En savoir plus</a>

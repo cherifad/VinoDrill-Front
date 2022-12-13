@@ -5,30 +5,59 @@ export const usePanierStore = defineStore("panier", {
     state: () => ({
         sejours : useStorage( 'sejours' , [{
             idsejour: null,
-            quantite: null,
+            nbEnfants: 0,
+            nbAdultes: 0,
+            nbChambres: 0,
         }])
     }),
     getters: {
         idsejour: (state) => state.sejours.idsejour,
-        quantite: (state) => state.sejours.quantite,
+        nbEnfants: (state) => state.sejours.nbEnfants,
+        nbAdultes: (state) => state.sejours.nbAdultes,
+        nbChambres: (state) => state.sejours.nbChambres,
     },
     actions: {
-        async addSejour(idsejour, quantite) {
+        addSejour(idsejour) {
             for(let i = this.sejours.length - 1 ; i >= 0 ; i--){
                 if (this.sejours[i].idsejour === idsejour){
-                    this.sejours[i].quantite++;
                     break;
                 }
                 else if (this.sejours[i].idsejour === null) {
                     this.sejours.push({
                         idsejour: idsejour,
-                        quantite: quantite,
+                        nbEnfants: 0,
+                        nbAdultes: 1,
+                        nbChambres: 1,
                     });
                 }
             }
-        },
-        async removeSejour(idsejour) {
+        },        
+        removeSejour(idsejour) {
             this.sejours = this.sejours.filter(item => item.idsejour !== idsejour);
+        },
+        addRemEnfants(idsejour, nbEnfants) {
+            for(let i = this.sejours.length - 1 ; i >= 0 ; i--){
+                if (this.sejours[i].idsejour === idsejour){
+                    this.sejours[i].nbEnfants = nbEnfants;
+                    break;
+                }
+            }
+        },
+        addRemAdultes(idsejour, nbAdultes) {
+            for(let i = this.sejours.length - 1 ; i >= 0 ; i--){
+                if (this.sejours[i].idsejour === idsejour){
+                    this.sejours[i].nbAdultes = nbAdultes;
+                    break;
+                }
+            }
+        },
+        addRemChambres(idsejour, nbChambres) {
+            for(let i = this.sejours.length - 1 ; i >= 0 ; i--){
+                if (this.sejours[i].idsejour === idsejour){
+                    this.sejours[i].nbChambres = nbChambres;
+                    break;
+                }
+            }
         },
     },
 });

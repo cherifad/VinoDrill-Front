@@ -1,57 +1,32 @@
 <template>
   <div v-if="mesSejours.length > 0" >
     <h1 class="flex flex-wrap justify-center text-2xl font-semibold text-white pb-10">Vos séjours : </h1>
-    <div class="flex flex-col gap-5" v-auto-animate>
-      <div v-for="item in mesSejours" v-auto-animate :key="item.sejour.idsejour" class="">
-        <div class="w-full">
-          
-            <!-- <SingleCardSejour class="p-4" 
-                              :key="item.sejour.idsejour"
-                              :title="item.sejour.titresejour"
-                              :description="item.sejour.descriptionsejour"
-                              :nights="item.sejour.nbnuit"
-                              :days="item.sejour.nbjour"
-                              :image="item.sejour.photosejour"
-                              :price="item.sejour.prixsejour"
-                              :id="item.sejour.idsejour"
-                              :libelleTemps="item.sejour.libelletemps"
-                              :notemoyenne="item.sejour.notemoyenne"></SingleCardSejour> -->
-
-                              <PanierItem
-                                :id="item.sejour.idsejour"
-                                :title="item.sejour.titresejour"
-                                :image="item.sejour.photosejour"
-                                :nights="item.sejour.nbnuit"
-                                :days="item.sejour.nbjour"
-                                :price="item.sejour.prixsejour">
-                              </PanierItem> 
-
-          <!-- <div v-if="getCurrentCartSejour(item.sejour.idsejour)" class="mt-40 pl-10">
-              <p class="text-lg">Prix : {{ getCurrentCartSejour(item.sejour.idsejour).quantite * item.sejour.prixsejour }} €</p>
-              <p class="text-lg">Quantité : {{ getCurrentCartSejour(item.sejour.idsejour).quantite }} </p>
-              <br>
-              <button @click="add(item.sejour.idsejour)" id="button" class="font-bold py-3 px-8 rounded">+</button>
-              <button @click="remove(item.sejour.idsejour)" id="button" class="font-bold py-3 px-8 rounded">-</button>
-              <br>
-              <button @click="removeall(item.sejour.idsejour)" id="button" class="font-bold py-3 px-8 rounded">Mettre à zéro</button>
-              <br>
-              <button @click="removesejour(item.sejour.idsejour)" id="buttondelete" class="font-bold py-3 px-8 rounded">Supprimer le sejour</button>
-          </div>    -->
+    <div class="flex gap-3">
+      <div class="w-3/4">
+        <div class="flex flex-col gap-5" v-auto-animate>
+          <div v-for="item in mesSejours" v-auto-animate :key="item.sejour.idsejour" class="">
+            <div class="w-full">
+              <PanierItem
+                :id="item.sejour.idsejour"
+                :title="item.sejour.titresejour"
+                :image="item.sejour.photosejour"
+                :nights="item.sejour.nbnuit"
+                :days="item.sejour.nbjour"
+                :price="item.sejour.prixsejour">
+              </PanierItem> 
+            </div>
+          </div> 
         </div>
       </div>
-
-    
-
-
-    </div>
-
-      <div class="p-12 mt-10 ">
+      <div class="w-1/4">
+        <div class="p-12 mt-10 ">
           <h1 class="text-2xl font-semibold">Prix total : {{ getTotal() }} €</h1>
           <br>
           <button id="button" class="font-bold py-3 px-8 rounded mt-4">Payer</button>
+      </div>    
       </div>
-
-      
+    </div>
+        
   </div>
 
   <div v-else>

@@ -7,8 +7,7 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue({
       compilerOptions: {
-        iscustomElement: (tag) => tag === "ion-icon",
-        isCustomElement: (tag) => tag === "lord-icon",
+        isCustomElement: tag => tag.startsWith('ion-')
       }
     }
     )],
@@ -17,8 +16,7 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
     compilerOptions: {
-      iscustomElement: (tag) => tag === "ion-icon",
-      isCustomElement: (tag) => tag === "lord-icon",
+      isCustomElement: tag => tag.startsWith('ion-')
     },
   },
 });

@@ -21,7 +21,10 @@ export const useAuthStore = defineStore("auth", {
                 .then((response) => {
                     this.authUser = response.data;
                 })
-                .catch((error) => {                                                                                                             
+                .catch((error) => {
+                    if(error.response.status === 401) {
+                        this.authUser = null;
+                    };                                                                                                             
                 });
         },
         async login(email, password) {

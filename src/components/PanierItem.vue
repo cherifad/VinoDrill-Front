@@ -40,10 +40,10 @@
       </div>
       <div class="flex flex-col items-center">
         <h1 class="font-bold text-xl w-fit mb-1">Supprimer</h1>
-        <div class="w-20 border mb-2"></div>
+        <div class="w-20 border mb-2 "></div>
         <ion-icon
           @click="remove"
-          class="text-4xl pt-8"
+          class="text-4xl pt-8 cursor-pointer"
           name="trash-bin-outline"
         ></ion-icon>
       </div>
@@ -104,16 +104,18 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { onBeforeRouteLeave } from "vue-router";
 import { usePanierStore } from "../stores/panier";
+import config from "../utils/config";
 
 const panierStore = usePanierStore();
 const exampleDate = new Date();
+const prixTotal = ref(0);
 
-const form = ref({
-  adults: 0,
-  children: 0,
-  rooms: 0,
-})
+// majoration (en %)
+const majEnfant = 12;
+const majChambre = 15;
+const majAdulte = 20;
 
 const props =
   defineProps<{
@@ -128,6 +130,20 @@ const props =
     notemoyenne: number;
   }>();
 
+const getCurrentCartSejour = () => {
+  const cart = panierStore.sejours;
+  const sejour = cart.find((item) =>
+    item.idsejour ? item.idsejour === props.id : false
+  );
+  return sejour;
+};
+
+const form = ref({
+  adults: getCurrentCartSejour()?.nbAdultes || 0,
+  children: getCurrentCartSejour()?.nbEnfants || 0,
+  rooms: getCurrentCartSejour()?.nbChambres || 0,
+})
+
 const remove = () => {
   if (confirm("Voulez-vous vraiment supprimer ce séjour ?")) {
     panierStore.removeSejour(props.id);
@@ -135,13 +151,11 @@ const remove = () => {
   }
 };
 
-const getCurrentCartSejour = (id) => {
-  const cart = panierStore.sejours;
-  const sejour = cart.find((item) =>
-    item.idsejour ? item.idsejour === id : false
-  );
-  return sejour;
-};
+onBeforeRouteLeave(async (to, from) => {
+  panierStore.addRemAdultes(props.id, form.value.adults);    
+  panierStore.addRemEnfants(props.id, form.value.children);
+  panierStore.addRemChambres(props.id, form.value.rooms);
+});
 </script>
 <style scoped>
 .imageSize {
@@ -156,5 +170,5 @@ const getCurrentCartSejour = (id) => {
 
 .top {
   margin-top: 65px;
-}
+} 
 </style>

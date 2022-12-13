@@ -1,0 +1,6 @@
+{
+    "api": "http://localhost:3000/api",
+    "majEnfant": 12,
+    "majAdulte": 20,
+    "majChambre": 15
+}
