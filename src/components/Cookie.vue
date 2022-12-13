@@ -7,7 +7,7 @@
           Bienvenu chez VinoDrill !
           </p>
           <p>
-            Notre site utilise des cookies indispensables à son bon fonctionnement, optimiser ses performances techniques et personnaliser l'affichage de nos pages. Pour obtenir davantage d'information, cliquez sur le bouton <a href="#">Détails</a>. 
+            Notre site utilise des cookies indispensables à son bon fonctionnement, optimiser ses performances techniques et personnaliser l'affichage de nos pages. Pour obtenir davantage d'information, cliquez sur le bouton  <a href="#">Détails</a>. 
           </p>
           <button class="btn " type="button" @click="allowCookie.allowCookie(true)" id="cookie-btn">Ok</button>
           <button class="btn" type="button" id="blurBtn" @click="details = true">Détail</button>

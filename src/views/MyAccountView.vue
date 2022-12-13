@@ -110,7 +110,7 @@
         <!-- Mes paiements -->
         <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'paiements'">
             <div v-if="authStore.user.paiements > 0">
-                <!-- <Paiement    /> -->
+                <Paiement    />
             </div>
             <div v-else class="text-2xl w-full font-bold text-center mt-10">
                 Vous n'avez aucun moyen de paiement enregistré.

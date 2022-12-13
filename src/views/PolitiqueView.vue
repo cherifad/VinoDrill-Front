@@ -10,13 +10,13 @@
             <div>
                 <h2>Qui est le responsable du traitement de mes données personnelles ?</h2>
                 <p>Responsable des traitements : </p>
-                <ul class="list-disc list-inside">
+                <ul class=" list list-disc list-inside">
                     <li>    Nom : Ahmed OMEROVIC</li>
                     <li>    Courriel de contact : omerovic@vinotrip.fr</li>
                 </ul >
                 <br>
                 <p>Délégué de la protection des données (DPO) : </p>
-                <ul class="list-disc list-inside">
+                <ul class="list list-disc list-inside">
                     <li>    Nom : Ahmet ALTINEL</li>
                     <li>    Courriel de contact : altinel@vinotrip.fr</li>
                 </ul>
@@ -35,7 +35,7 @@
                 <h2>Base légale du traitement de données</h2>
                 <p>Nous collectons les données personnelles sous une base de consentement de nos visiteurs et clients.<br>Le recueil de données est à caractère obligatoire uniquement pour nos clients ayant procéder à des achats sur notre plateforme.</p>
                 <p class="pt-3">Parmi les bases légales applicables :</p>
-                <ul class="list-disc list-outside">
+                <ul class="list list-disc list-outside">
                     <li>Le contrat : le traitement des données personnelles est nécessaire à l'exécution du contrat auquel vous avez consentit.</li>
                     <li>Le consentement : vous acceptez le traitement de vos données personnelles par le biais d'un consentement exprès. Vous pouvez retirer ce consentement à tout moment.</li>
                     <li>La loi : le traitement de vos données personnelles est rendu obligatoire par le RGPD.</li>
@@ -46,7 +46,7 @@
                 <h2>Collecte des données</h2>
                 <p class="font-semibold">Nous collectons uniquement les données des personnes majeures. </p>
                 <h4>Nous collectons des données lorsque vous :</h4>
-                <ul class="list-disc list-outside">
+                <ul class=" listlist-disc list-outside">
                     <li>Naviguez sur notre site</li>
                     <li>Créez un compte</li>
                     <li>Effectuer une commande de l’un de nos produits</li>
@@ -55,7 +55,7 @@
                     <li>Contactez notre Service Client.</li>
                 </ul>
                 <h4>Nous collectons les données ci-dessous :</h4>
-                <ul class="list-disc list-outside">
+                <ul class=" list list-disc list-outside">
                     <li>Coordonnées : civilité, nom, prénom, date de naissance, email, adresse postale de livraison et de facturation, mot de passe crypté (voir le paragraphe « Mot de passe »)</li>
                     <li>Données de navigations : horaires de connexions, matériel et navigateur utilisés</li>
                     <li>Ouvertures de courriels et clics sur les liens</li>
@@ -66,7 +66,7 @@
             </div>
             <div>
                 <h2>Traitement et utilisation des données</h2>
-                <ul class="list-disc list-outside">
+                <ul class="list list-disc list-outside">
                     <li>Nous utilisons vos coordonnées postales pour effectuer les démarches de facturation.</li>
                     <li>Nous utilisons vos données de navigation pour améliorer et personnaliser votre expérience. Nous recueillons les informations permettant d’identifier de quelle façon vous accédez au site, quelles sont les pages consultées et pendant combien de temps.</li>
                     <li>Nous utilisons les adresses mails notamment pour vous informer des informations qui peuvent être importantes si vous avez procéder à une réservation.</li>
@@ -76,7 +76,7 @@
                 <h2>Partage des données et durée de conservation</h2>
                 <p>Nous sommes les seuls propriétaires des informations recueillies sur notre site. Vos informations personnelles ne seront pas vendues, échangées, transférées, ou données à une autre société pour n’importe quelle raison, sans votre consentement. <br> Nous ne partageons ces informations qu’avec les partenaires indispensables pour la prestation de services, notamment les partenaires de restauration, d’hébergements ainsi que les partenaires d’activités ou de visite figurant sur notre site.</p>
                 <h4>Les catégories de destinataires qui peuvent recevoir vos données personnelles : </h4>
-                <ul class="list-disc list-outside">
+                <ul class=" list list-disc list-outside">
                     <li>Partenaires d’hébergement</li>
                     <li>Partenaires de restauration</li>
                     <li>Partenaires organisant différentes activités sportives ou de visites</li>
@@ -89,16 +89,16 @@
                 <h4>Quelles sont les mesures de sécurité concernant mon mot de passe ?</h4>
                 <p class="pt-3">Nous conservons uniquement votre mot de passe crypté par notre système et en aucun cas nous stockons votre mot de passe en clair. <br>Votre mot de passe est transformé au moyen d’une fonction cryptographique non réversible et sûre.</p>
                 <p class="pt-3">Elle doit contenir :</p>
-                <ul class="list-disc list-outside">
+                <ul class=" list list-disc list-outside">
                     <li>Au moins 8 caractères</li>
                     <li>Des majuscules et minuscules</li>
                     <li>Des chiffres</li>
                     <li>Des caractères spéciaux</li>
                 </ul>
                 <p class="pt-3">Pour une meilleure sécurité nous avons configuré :</p>
-                <ul class="list-disc list-outside">
+                <ul class="list list-disc list-outside">
                     <li>Temporisation d’accès au compte après plusieurs échecs dont la durée augmente exponentiellement en fonction du nombre de tentatives dans un laps de temps déterminé.</li>
-                        <ul class="list-disc list-inside">
+                        <ul class=" list list-disc list-inside">
                             <li>5 tentatives échouées, blocage d’accès au compte pendant 5 minutes</li>
                             <li>Maximum 10 tentatives par heures</li>
                             <li>Maximum de 25 tentatives par 24 heures</li>
@@ -108,7 +108,7 @@
                 <p class="text-sm pt-2 italic">Cette sécurité se base sur les <a class="text-sky-500 underline " href="https://www.cnil.fr/sites/default/files/atoms/files/deliberation-2022-100-du-21-juillet-2022_recommandation-aux-mots-de-passe.pdf" target="_blank">recommandations</a> de la CNIL datant du 21 juillet 2022.</p>
                 <h4>Quelles sont les recommandations pour avoir un bon mot de passe ?</h4>
                 <p class="pt-3">Tous d’abord, nous vous recommandons de modifier votre mot de passe tous les 12 mois. Il est fortement recommandé d’utiliser une phrase comprenant au moins :</p>
-                <ul class="list-disc list-outside">
+                <ul class="list list-disc list-outside">
                     <li>Un nombre</li>
                     <li>Une majuscule</li>
                     <li>Un signe de ponctuation ou un caractère spécial (dollar, dièse, ...)</li>
@@ -146,7 +146,7 @@
                 <h4>Droit d’introduire une réclamation auprès de la CNIL</h4>
                 <p class="list-disc list-outside">
                     Sur le site web de la CNIL :
-                        <ul class="list-disc list-inside">
+                        <ul class="list list-disc list-inside">
                             <li>Dans certains cas déterminés, par le téléservice de plainte en ligne</li>
                             <li>Dans les "autres cas" non prévus par le téléservice, par le service "Besoin d'aide", qui vous permettra d'accéder au formulaire de plainte au bas d'une réponse à une question.</li>
                         </ul>
@@ -160,9 +160,7 @@
 <script>
 </script>
 <style>
-h1 {
-    color : #CB7169;
-}
+
 
 h2 {
     color : #df8564;
@@ -175,7 +173,7 @@ h4 {
     padding: 2rem;
 }
 
-li {
+.list {
     margin-left:2rem;
 }
 

@@ -53,16 +53,16 @@
                 </div>
             </div>
         </div>
-                <h1 class="mt-5 text-3xl font-bold">Chateaux et domaines</h1>
-                <div class="mt-11">
-                    <SingleVisite class="mt-6" v-for="visite in visites"
-                        :key="visite.idvisite"
-                        :idtypevisite="visite.idtypevisite"
-                        :idpartenaire="visite.idpartenaire"
-                        :libellevisite="visite.libellevisite"
-                        :descriptionvisite="visite.descriptionvisite"
-                        :horairevisite="visite.horairevisite"/>             
-                </div>
+            <h1 class="mt-5 text-3xl font-bold">Chateaux et domaines</h1>
+            <div v-if="visites" class="mt-11">
+                <SingleVisite v-for="visite in visites"
+                    :key="visite.idvisite"
+                    :idtypevisite="visite.idtypevisite"
+                    :idpartenaire="visite.idpartenaire"
+                    :libellevisite="visite.libellevisite"
+                    :descriptionvisite="visite.descriptionvisite"
+                    :horairevisite="visite.horairevisite"/>             
+            </div>
         <div v-if="reviews.length > 0" id="avis" class="flex flex-col gap-3 mb-8">
             <h1 class="mt-5 text-3xl font-bold">Voir les {{ reviews.length }} avis</h1>
             <SingleComment v-for="review in reviews" :key="review.idavis" :id="review.idavis" :note="review.note" :comment="review.commentaire" :date="review.dateavis" :title="review.titreavis"/>
@@ -78,7 +78,6 @@
                 :pagination="{
                 clickable: true,
                 }"
-                :modules="modules"
                 class="mySwiper"
             >
                 <swiper-slide v-for="sejour in relatedSejours" :key="sejour.idsejour">
@@ -110,7 +109,6 @@
                 :pagination="{
                 clickable: true,
                 }"
-                :modules="modules"
                 class="mySwiper"
             >
                 <swiper-slide v-for="sejour in alreadyViewed" :key="sejour.idsejour">
@@ -174,7 +172,7 @@ const nompartenaire: any = ref(null);
 const visites: any = ref(null);
 
 onMounted(async () => {
-    axios.get('http://51.83.36.122:5005/api/visite')
+    axios.get('/api/visite')
     .then((response) => {
         visites.value = response.data['data'];
     })

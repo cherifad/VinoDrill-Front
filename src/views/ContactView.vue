@@ -62,7 +62,7 @@
                     <div class="mt-2">
                         <label class="inline-flex items-center ">
                         <input id="accept" type="checkbox" class="mt-4 w-6 h-6 rounded"  />
-                        <span class="ml-2 mt-4">J’ai pris connaissance de la politique de confidentialité et j'autorise VinoDrill à m'envoyer des informations.</span>
+                        <span class="ml-2 mt-4">J’ai pris connaissance de la <span class="text-sky-500 underline "><RouterLink to="/politique-de-confidentialite">Politique de confidentialité</RouterLink></span> et j'autorise VinoDrill à m'envoyer des informations.</span>
                         </label>
                     </div>
                 </div> 

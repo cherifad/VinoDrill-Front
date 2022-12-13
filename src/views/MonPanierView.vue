@@ -1,6 +1,6 @@
 <template>
   <div v-if="mesSejours.length > 0" >
-    <h1 class="flex flex-wrap justify-center text-2xl font-semibold text-white pb-10">Vos séjours : </h1>
+    <h1 class="flex flex-wrap justify-center text-2xl font-semibold text-white pb-10">Vos séjours</h1>
     <div class="flex gap-3">
       <div class="w-3/4">
         <div class="flex flex-col gap-5" v-auto-animate>
@@ -12,18 +12,19 @@
                 :image="item.sejour.photosejour"
                 :nights="item.sejour.nbnuit"
                 :days="item.sejour.nbjour"
-                :price="item.sejour.prixsejour">
-              </PanierItem> 
+                :price="item.sejour.prixsejour"
+                v-on:total="(i) => getTotal(i)"
+                >
+              </PanierItem>
             </div>
           </div> 
         </div>
       </div>
-      <div class="w-1/4">
-        <div class="p-12 mt-10 ">
-          <h1 class="text-2xl font-semibold">Prix total : {{ getTotal() }} €</h1>
-          <br>
-          <button id="button" class="font-bold py-3 px-8 rounded mt-4">Payer</button>
-      </div>    
+      <div class="w-1/4 sticky top-5 border-2 border-rose rounded-2xl flex flex-col gap-5 items-center h-fit">
+        <div class="p-12 text-center">
+          <h1 class="text-2xl text-white font-semibold">Total : {{ numberWithSpaces(total.toFixed(2)) }} €</h1>
+          <button id="button" class="font-bold py-3 px-8 rounded">Payer</button>
+        </div>    
       </div>
     </div>
         
@@ -51,9 +52,15 @@ import SingleCardSejour from '../components/SingleCardSejour.vue';
 import PanierItem from '../components/PanierItem.vue';
 const route = useRoute();
 const mesSejours = ref([]);
-var total = 0;
+var total = ref(0);
 const sejour = ref([]);
 const panierStore = usePanierStore();
+
+function numberWithSpaces(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    return parts.join(".");
+}
 
 onMounted(() => {
   const panierStore = usePanierStore();
@@ -72,7 +79,6 @@ onMounted(() => {
             };
   });
 });
-
 
 const add = (id) => {
   panierStore.sejours.forEach(element => {
@@ -116,40 +122,13 @@ const removesejour = (id) => {
 }
 
 
-const getTotal = () => {
-    mesSejours.value.forEach(element => {
-      if(element.sejour.idsejour !== null) {
-        total = total + (element.sejour.prixsejour * element.qte);
-        console.log(mesSejours.value);
-      }
-    });
-    return total;
+const getTotal = (totalParams) => {
+  total.value += totalParams;
 }
-
-/*
-const getSejourFromId = (id) > {
-    const cart = mesSejours.value;
-    const sejour = cart.find((item) => item.idsejour ? item.idsejour === id : false);
-    console.log(sejour);
-    return sejour;
-}
-
-const getTotal = () => {
-    panierStore.sejours.forEach(element => {
-      sejour = getSejourFromId(element.idsejour);
-      total = sejour.prixsejour * element*quantite + total
-    });
-    return total;
-}*/
-
 </script>
 <style scoped>
 * {
   transition: all 0.3s ease;
-}
-
-h1 {
-    color : #CB7169;
 }
 
 #button {

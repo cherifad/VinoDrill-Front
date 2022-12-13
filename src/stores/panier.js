@@ -8,6 +8,7 @@ export const usePanierStore = defineStore("panier", {
             nbEnfants: 0,
             nbAdultes: 0,
             nbChambres: 0,
+            date: null,
         }])
     }),
     getters: {
@@ -15,6 +16,7 @@ export const usePanierStore = defineStore("panier", {
         nbEnfants: (state) => state.sejours.nbEnfants,
         nbAdultes: (state) => state.sejours.nbAdultes,
         nbChambres: (state) => state.sejours.nbChambres,
+        date: (state) => state.sejours.date,
     },
     actions: {
         addSejour(idsejour) {
@@ -28,6 +30,7 @@ export const usePanierStore = defineStore("panier", {
                         nbEnfants: 0,
                         nbAdultes: 1,
                         nbChambres: 1,
+                        date: null,
                     });
                 }
             }
@@ -55,6 +58,14 @@ export const usePanierStore = defineStore("panier", {
             for(let i = this.sejours.length - 1 ; i >= 0 ; i--){
                 if (this.sejours[i].idsejour === idsejour){
                     this.sejours[i].nbChambres = nbChambres;
+                    break;
+                }
+            }
+        },
+        addRemDate(idsejour, date) {
+            for(let i = this.sejours.length - 1 ; i >= 0 ; i--){
+                if (this.sejours[i].idsejour === idsejour){
+                    this.sejours[i].date = date;
                     break;
                 }
             }
