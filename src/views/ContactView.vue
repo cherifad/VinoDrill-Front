@@ -13,8 +13,9 @@
                             <p class="text-left font-semibold text-2xl pt-5">Objet</p>
                             <select v-model="form.object" class="object text-gray-400 font-weight:500 w-80" name="object" id="object" required>
                                 <option value="" disabled selected>Selectionnez un destinataire</option>
-                                <option value="webmaster">Contacter le webmaster</option>
+                                <option value="service">Contacter le Service Client</option>
                                 <option value="dpo">Contacter le DPO</option>
+                                <option value="webmaster">Contacter le webmaster</option>
                                 <option value="devis">Demander un devis</option>
                             </select >
                         </div>
@@ -25,7 +26,7 @@
                         </div>
 
                         <div>
-                            <p class="text-left font-medium text-2xl pt-5">Prenom</p>
+                            <p class="text-left font-medium text-2xl pt-5">Prénom</p>
                             <input v-model="form.firstname" class="object" placeholder="Entrez votre prénom" type="text" id="firstname" name="firstname" required >
                         </div>
 
@@ -54,7 +55,7 @@
                 </div>
 
                 <div>
-                    <p class="text-gray-400">En soumettant ce formulaire, vous acceptez que VinoDrill mémorise et utilise vos données personnelles dans les conditions décrites dans la Protection des données personnelles.</p>
+                    <p class="text-gray-400">En soumettant ce formulaire, vous acceptez que VinoDrill mémorise et utilise vos données personnelles dans les conditions décrites dans la <span class="text-sky-500 underline "><RouterLink to="/politique-de-confidentialite">Politique de confidentialité</RouterLink></span>.</p>
                 </div>            
 
 

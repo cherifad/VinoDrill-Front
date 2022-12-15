@@ -28,14 +28,11 @@
         <p class=" mt-3">Les routes des vins sillonnent tous les vignobles français. Créées à partir des années 1950, ces itinéraires vous offrent l’opportunité unique de plonger, tête la première, au cœur d’une région viticole : découvertes œnologiques, culturelles et gastronomiques sont au programme.<br>
         Aujourd’hui près de 7,5 millions d’oenotouristes* parcourent les vignobles chaque année : Français et étrangers, débutants et experts, tous les publics se retrouvent pour une balade de caves en caves, de dégustations de vins. De la plus connue comme la <a id="links" target="blank" href="">route des vins d'Alsace</a> à la plus confidentielle, la plus longue à la plus brève, la plus ensoleillée à la plus fraîche, nous vous proposons un petit tour d’horizon des routes des vins de France, à visiter ou à (re)visiter. Les itinéraires des routes des vins de France seront vous charmer, que cela soit en voiture, à pied ou à vélo !
         </p>
-       
-        
-        <img src="..\assets\img\vineyard-ga92acf920_1920.jpg" alt="" width="500" class="pt-3">
-         <p class=" text-sm pt-1 italic">
-          Source : <a id="links" target="blank" href="https://www.atout-france.fr/">Atout France</a>, Tourisme et Vin - données 2010
+        <p class=" text-sm pt-1 italic">
+          * Source : <a id="links" target="blank" href="https://www.atout-france.fr/">Atout France</a>, Tourisme et Vin - données 2010
         </p>
 
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2 mt-5">
           
           <div class="flex flex-col gap-1 mb-5 mr-5">
             <h4 class="flex text-2xl justify-center">Route des vins d'Alsace</h4>
@@ -46,7 +43,7 @@
               </p>
               <div class=" flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <RouterLink to="/sejour">Découvrir la route des vins d'Alsace</RouterLink>
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-alsace">Découvrir la route des vins d'Alsace</a>
                 </button>
               </div>
             </div>
@@ -62,7 +59,187 @@
               </p>
               <div class=" flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <RouterLink to="/sejour">Découvrir la route des vins de Bourgogne</RouterLink>
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-bourgogne">Découvrir la route des vins de Bourgogne</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins de Bordeaux</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-bordeaux-france.jpg"  alt="route-bordeaux"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-bordeaux">Découvrir la route des vins de Bordeaux</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins de Provence</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-provence-france.jpg"  alt="route-provence"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-provence">Découvrir la route des vins de Provence</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route du Champagne</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-champagne-france.jpg"  alt="route-champagne"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-champagne">Découvrir la route des vins Champagne</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins du Val de Loire</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-des-vins-chateau.jpg"  alt="route-val-de-loire"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-val-de-loire">Découvrir la route des vins du Val de Loire</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins du Languedoc-Roussillon</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-languedoc-roussillon-france.jpg"  alt="route-languedoc-roussillon"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-languedoc-roussillon">Découvrir la route des vins du Languedoc-Roussillon</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins du Rhône</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-rhone-france.jpg"  alt="route-rhône"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-vallee-du-rhone">Découvrir la route des vins du Rhône</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins du Beaujolais</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-beaujolais-france.jpg"  alt="route-beaujolais"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-beaujolais">Découvrir la route des vins du Beaujolais</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins de Corse</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-des-vins-littoral.jpg"  alt="route-corse"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-corse">Découvrir la route des vins de Corse</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins du Sud-Ouest</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-sud-ouest-france.jpg"  alt="route-sud-ouest"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-sud-ouest">Découvrir la route des vins du Sud-Ouest</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins du Jura</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-jura-france.jpg"  alt="route-jura"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-jura">Découvrir la route des vins du Jura</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins de la Savoie</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-savoie-france.jpg"  alt="route-savoie"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-savoie">Découvrir la route des vins de la Savoie</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 mb-5 mr-5">
+            <h4 class="flex text-2xl justify-center">Route des vins d'Ile-de-France</h4>
+            <div class="flex flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out shadow-2xl shadow-black rounded-lg pb-4">
+              <img src="https://www.vinotrip.com/img/cms/route-vins-paris-france.jpg"  alt="route-paris"   class="rounded-lg">
+              <p class="pl-4 pr-4">
+                Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
+              </p>
+              <div class=" flex justify-end mr-2">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                  <a href="https://www.vinotrip.com/fr/route-des-vins-ile-de-france">Découvrir la route des vins d'Ile-de-France</a>
                 </button>
               </div>
             </div>
@@ -94,24 +271,24 @@
 </script>
 <style scoped>
   .padCorp{
-    padding-top: 7em;
-  }
+      padding-top: 7em;
+    }
   #title {
-  color: #CB7169;
-}
-#links {
-color: rgb(228, 21, 114);
-}
-.row {
-  display: flex;
-  justify-content: center;
-}
+    color: #CB7169;
+  }
+  #links {
+  color: rgb(228, 21, 114);
+  }
+  .row {
+    display: flex;
+    justify-content: center;
+  }
 
-.column {
-  padding: 2px;
-}
+  .column {
+    padding: 2px;
+  }
 
-img {
-  border-radius: 10px;
-}
+  img {
+    border-radius: 10px;
+  }
 </style>

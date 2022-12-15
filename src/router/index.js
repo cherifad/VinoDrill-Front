@@ -106,7 +106,12 @@ const router = createRouter({
       path: '/admin',
       name: 'Admin',
       component: () => import('../views/admin/DashboardView.vue'),
-    }
+    },
+    {
+      path: '/paiement',
+      name: 'Paiement',	
+      component: () => import('../views/Checkout/CheckoutView.vue'),
+    },
       
   ],
 });

@@ -52,7 +52,8 @@
                     <li>Effectuer une commande de l’un de nos produits</li>
                     <li>Rédigez un commentaire</li>
                     <li>Déposez un avis sur nos produits </li>
-                    <li>Contactez notre Service Client.</li>
+                    <li>Demander un devis </li>
+                    <li>Contactez notre Service Client, notre DPO, le webmaster.</li>
                 </ul>
                 <h4>Nous collectons les données ci-dessous :</h4>
                 <ul class=" list list-disc list-outside">
@@ -81,7 +82,7 @@
                     <li>Partenaires de restauration</li>
                     <li>Partenaires organisant différentes activités sportives ou de visites</li>
                 </ul>
-                <p class="font-semibold pt-3">Nous supprimons toutes les données à caractère personnelle à compter de la dernière activité au bout de 2 ans. Un client est actif par exemple lorsqu'il procède à un achat ou se connecte à son compte.</p>
+                <p class="font-semibold pt-3">Nous supprimons toutes les données à caractère personnelle à compter de la dernière activité au bout de 2 ans. Un client est actif par exemple lorsqu'il procède à un achat.</p>
                 <p class="pt-3">Pendant toute la période de conservation de vos données, nous mettons en place tous les moyens organisationnels, logiciels et techniques, aptes à assurer la confidentialité et la sécurité de vos données personnelles, de manière à empêcher leur effacement, endommagement ou accès par des tiers non autorisés. </p>
             </div>
             <div>
@@ -124,7 +125,7 @@
                 <h2>Cookies</h2>
                 <p>Nous utilisons :</p>
                 <h4>Cookies techniques</h4>
-                <p>Ce sont des cookies indispensables pour le bon fonctionnement de notre plateforme et des services que nous proposons. Ces cookies ne relèvent pas d’un choix et ne peuvent pas être refusés. <br> Pour obtenir plus d’informations sur les cookies veuillez accéder à la page <span class="text-sky-500 underline "><RouterLink to="/gestion-des-cookies">Gestion des cookies</RouterLink></span>. </p>
+                <p>Ce sont des cookies indispensables pour le bon fonctionnement de notre plateforme et des services que nous proposons. Ces cookies ne relèvent pas d’un choix et ne peuvent pas être refusés, nous les utilisons notamment pour le panier, les favoris, pour pouvoir se connecter à son compte... <br> Pour obtenir plus d’informations sur les cookies veuillez accéder à la page <span class="text-sky-500 underline "><RouterLink to="/gestion-des-cookies">Gestion des cookies</RouterLink></span>. </p>
             </div>
             <div>
                 <h2>Les droits sur vos données</h2>

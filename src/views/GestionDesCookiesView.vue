@@ -7,7 +7,7 @@
       <div>
           <h2>Qu’est-ce qu’un cookie ?</h2>
           <p>Selon la CNIL, « un cookie est un petit fichier stocké par un serveur dans le terminal (ordinateur, téléphone, etc.) d'un utilisateur et associé à un domaine web (c'est à dire dans la majorité des cas à l'ensemble des pages d'un même site web) ». 
-        <br>Nous utilisons les cookies pour vous fournir une expérience optimale et pratique sur notre plateforme. En effet, nous enregistrons vos données de connexion, vos favoris…).</p>
+        <br>Nous utilisons les cookies pour vous fournir une expérience optimale et pratique sur notre plateforme. Nous les utilisons notamment pour le panier, les favoris, pour pouvoir se connecter à son compte....</p>
         <h2>Cookies nécessaires</h2>
         <p>
     Il s'agit des cookies nécessaires au fonctionnement de notre site et aux services essentiels qui en font partie intégrante. <br>Ils vous permettent d'utiliser les  principales fonctionnalités de notre site par exemple commander, accéder à votre compte… <br><br>Ces cookies <span class=" underline underline-offset-2"> ne relèvent pas d’un choix et ne peuvent pas être refusés.</span>

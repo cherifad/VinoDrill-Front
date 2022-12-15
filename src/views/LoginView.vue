@@ -76,7 +76,7 @@
 
                     <div v-if="error" class=" bg-red-600 flex items-center text-white text-xl text-center p-3 rounded-xl">
                         <ion-icon class="text-5xl font-bold" name="alert-circle-outline"></ion-icon>
-                        Vous devez d'abord créer un compte avant de vous connecter avec google !
+                        Vous devez d'abord créer un compte avant de vous connecter avec {{ socialProvider }} !
                     </div>
 
                     <div class="flex gap-3">
@@ -198,7 +198,10 @@ const registerText = ref(null);
 const loginText = ref(null);
 const logRegBack = ref(null);
 const show = ref(false);
+
+// social login errors
 const error = ref(false);
+const socialProvider = ref(null);
 
 const loginForm = ref({
     email: '',
@@ -226,8 +229,11 @@ onMounted(async () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const errorParam = urlParams.get('error')
+    const providerParam = urlParams.get('provider')
+    if (providerParam) {
+        socialProvider.value = providerParam[0].toUpperCase() + providerParam.slice(1)
+    }
     if (errorParam) {
-        console.log(error)
         toggleLogin(true)
         error.value = true
     }
@@ -235,7 +241,6 @@ onMounted(async () => {
 
 const toggleLogin = (registration) => {
     registration ? login.value = false : login.value = true
-    console.log(login.value)
     if (login.value) {
         registerText.value.classList.remove('active')
         loginText.value.classList.add('active')

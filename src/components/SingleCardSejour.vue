@@ -21,7 +21,7 @@ defineProps<{
     price: number;
     id: number;
     libelleTemps: any;
-    notemoyenne: number;
+    notemoyenne: any;
     }>(); 
 </script>
 
