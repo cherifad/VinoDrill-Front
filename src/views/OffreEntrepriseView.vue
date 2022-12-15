@@ -72,10 +72,10 @@
         </h2>
        <ul class="list list-disc list-inside">
          <li>Nos valeurs et notre <span  class="font-bold">expertise œnologique</span>  au service de vos évènements d’entreprise</li>
-         <li>Un concept unique et original</li>
-         <li>Le leader français de l’œnotourisme et des évènements œnologiques</li>
-         <li>Des partenariats exclusifs avec les domaines les plus renommés</li>
-         <li>Des spécialistes du tourisme et du vin pour une organisation sans faille</li>
+         <li>Un concept <span  class="font-bold">unique</span> et <span  class="font-bold">original</span></li>
+         <li>Le <span  class="font-bold">leader français</span> de l’œnotourisme et des évènements œnologiques</li>
+         <li>Des <span  class="font-bold">partenariats exclusifs</span> avec les domaines les plus renommés</li>
+         <li>Des spécialistes du tourisme et du vin pour une <span  class="font-bold">organisation sans faille</span></li>
        </ul>
      </div>
 

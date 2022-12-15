@@ -192,7 +192,7 @@
               <p class="pl-4 pr-4">
                 Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
               </p>
-              <div class=" flex justify-end mr-2">
+              <div class="flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
                   <a href="https://www.vinotrip.com/fr/route-des-vins-sud-ouest">Découvrir la route des vins du Sud-Ouest</a>
                 </button>
