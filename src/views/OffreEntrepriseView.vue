@@ -71,7 +71,7 @@
          pour vos séminaires et évènements d’entreprise ?
         </h2>
        <ul class="list list-disc list-inside">
-         <li>Nos valeurs et notre expertise œnologique au service de vos évènements d’entreprise</li>
+         <li>Nos valeurs et notre <span  class="font-bold">expertise œnologique</span>  au service de vos évènements d’entreprise</li>
          <li>Un concept unique et original</li>
          <li>Le leader français de l’œnotourisme et des évènements œnologiques</li>
          <li>Des partenariats exclusifs avec les domaines les plus renommés</li>
