@@ -46,7 +46,7 @@
                 <h2>Collecte des données</h2>
                 <p class="font-semibold">Nous collectons uniquement les données des personnes majeures. </p>
                 <h4>Nous collectons des données lorsque vous :</h4>
-                <ul class=" listlist-disc list-outside">
+                <ul class=" list list-disc list-outside">
                     <li>Naviguez sur notre site</li>
                     <li>Créez un compte</li>
                     <li>Effectuer une commande de l’un de nos produits</li>

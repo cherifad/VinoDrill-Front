@@ -22,6 +22,9 @@
                                     <span v-else class="text-sm">Dans le panier !</span>
                                 </div>
                             </a>
+                            <a class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
+                                Ajouter aux favoris <br>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -148,6 +151,7 @@ import SingleEtape from '../components/SingleEtape.vue';
 import SingleHebergement from '../components/SingleHebergement.vue';
 import { usePanierStore } from '../stores/panier';
 import { useViewedStore } from '../stores/viewed';
+import { useLikesStore } from '../stores/likes';
 import SingleCardSejour from '../components/SingleCardSejour.vue';
 import SingleVisite from '../components/SingleVisite.vue';
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -158,6 +162,7 @@ import { Pagination } from "swiper";
 const route = useRoute();
 const panierStore = usePanierStore();
 const viewedStore = useViewedStore();
+const likesStore = useLikesStore();
 const addedToCart = ref(false);
 
 const getCurrentCartSejour = () => {

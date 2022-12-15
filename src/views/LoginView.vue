@@ -53,11 +53,31 @@
                             <p class="text-red-500">{{ authStore.errors.password[0] }}</p>
                         </div>
                     </div>
+                    <div class="flex flex-col gap-2">
+                        <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" href="http://www.iutannecy-deptinfo.fr:5005/login/google">
+                            <ion-icon class="text-xl" name="logo-google"></ion-icon>
+                            Se connecter avec Google
+                        </a>
+                        <!-- <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" href="http://www.iutannecy-deptinfo.fr:5005/login/facebook">
+                            <ion-icon class="text-xl" name="logo-facebook"></ion-icon>
+                            Se connecter avec Facebook
+                        </a> -->
+                        <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" href="http://www.iutannecy-deptinfo.fr:5005/login/twitter">
+                            <ion-icon class="text-xl" name="logo-twitter"></ion-icon>
+                            Se connecter avec Twitter
+                        </a>
+                    </div>
+                    
                 </div>
 
                 <!-- Registration -->
 
                 <div v-else class="flex flex-col gap-4">
+
+                    <div v-if="error" class=" bg-red-600 flex items-center text-white text-xl text-center p-3 rounded-xl">
+                        <ion-icon class="text-5xl font-bold" name="alert-circle-outline"></ion-icon>
+                        Vous devez d'abord créer un compte avant de vous connecter avec google !
+                    </div>
 
                     <div class="flex gap-3">
                         <div @click="registerForm.gender = 'M'" :class="registerForm.gender == 'M' ? 'opacity-100' : 'opacity-60'"
@@ -178,6 +198,7 @@ const registerText = ref(null);
 const loginText = ref(null);
 const logRegBack = ref(null);
 const show = ref(false);
+const error = ref(false);
 
 const loginForm = ref({
     email: '',
@@ -201,6 +222,15 @@ onMounted(async () => {
     logRegBack.value = document.getElementById('logRegBack')
 
     dateMinus18.setFullYear(dateMinus18.getFullYear() - 18);
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const errorParam = urlParams.get('error')
+    if (errorParam) {
+        console.log(error)
+        toggleLogin(true)
+        error.value = true
+    }
 });
 
 const toggleLogin = (registration) => {
