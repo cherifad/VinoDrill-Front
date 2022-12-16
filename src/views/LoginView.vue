@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" href="http://www.iutannecy-deptinfo.fr:5005/login/google">
+                        <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" :href="config.backend_url + '/login/google'">
                             <ion-icon class="text-xl" name="logo-google"></ion-icon>
                             Se connecter avec Google
                         </a>
@@ -62,7 +62,7 @@
                             <ion-icon class="text-xl" name="logo-facebook"></ion-icon>
                             Se connecter avec Facebook
                         </a> -->
-                        <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" href="http://www.iutannecy-deptinfo.fr:5005/login/twitter">
+                        <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" :href="config.backend_url + '/login/twitter'">
                             <ion-icon class="text-xl" name="logo-twitter"></ion-icon>
                             Se connecter avec Twitter
                         </a>
@@ -189,6 +189,7 @@
 <script setup>
 import { ref, watchEffect, onMounted } from 'vue';
 import { useAuthStore } from '../stores/auth';
+import config from '../utils/config';
 
 const authStore = useAuthStore();
 const dateMinus18 = new Date();

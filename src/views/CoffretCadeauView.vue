@@ -4,7 +4,7 @@
    <div class=" flex justify-center mt-3">
       <div class=" w-20 border"></div>
    </div>
-  <p class="text-center mt-10">Vous êtes à la recherche d’un cadeau original et convivial autour du vin et de l'oenologie, faites plaisir à vos proches le temps d’une escapade viticole. <br>  Offrez-leur des moments d’exception dans les vignobles français !
+  <p class="text-center mt-10">Vous êtes à la recherche d’un <span  class="font-bold">cadeau original et convivial autour du vin et de l'oenologie</span>, faites plaisir à vos proches le temps d’une escapade viticole. <br>  Offrez-leur des moments d’exception dans les vignobles français !
   <br></p>
   <p class="text-center mt-5">Ils pourront sélectionner la destination et les dates de leur séjour, soit directement sur le site soit en prenant contact avec notre équipe par téléphone ou mail. <br> Nos coffrets et chèques cadeaux oenologiques sont valables sur tous les séjours (avec possibilité de personnaliser son séjour) et toutes les destinations, durant une période de 18 mois.</p>
 

@@ -3,9 +3,8 @@ import { useStorage } from '@vueuse/core';
 
 export const useLikesStore = defineStore("likes", {
     state: () => ({
-        sejours : useStorage( 'sejours' , [{
+        sejours : useStorage( 'likes' , [{
             idsejour: null,
-
         }])
     }),
     getters: {
@@ -19,15 +18,13 @@ export const useLikesStore = defineStore("likes", {
                 }
                 else if (this.sejours[i].idsejour === null) {
                     this.sejours.push({
-                        idsejour: idsejour,
-                        nbEnfants: 0,
-                        nbAdultes: 1,
-                        nbChambres: 1,
-                        date: null,
+                        idsejour: idsejour
                     });
                 }
             }
-        },        
-
+        },
+        removeSejour(idsejour) {
+            this.sejours = this.sejours.filter(item => item.idsejour !== idsejour);
+        },    
     },
 });

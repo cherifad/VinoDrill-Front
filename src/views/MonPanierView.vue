@@ -62,7 +62,14 @@ function numberWithSpaces(x) {
     return parts.join(".");
 }
 
-onMounted(() => {
+//before leaving the page
+
+
+onMounted(() => {  
+  window.addEventListener('beforeunload', function (e) {
+    alert('Are you sure you want to leave?')
+  });
+  onbeforeunload = (event) => { confirm('Are you sure you want to leave?') };
   const panierStore = usePanierStore();
   panierStore.sejours.forEach(element => {
             if (element.idsejour){

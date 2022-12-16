@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="flex mt-5 w-full justify-center flex-wrap">
+    <div class="flex mt-5 w-full justify-left flex-wrap">
         <ProfileItem 
             class="w-1/3"
             image="/src/assets/img/pin-outline.svg"
@@ -25,7 +25,7 @@
         />
         <ProfileItem
             class="w-1/3"
-            image="/src/assets/img/list-outline.svg"
+            image="/src/assets/img/people-outline.svg"
             title="Mes commandes"
             @click="choice = 'commandes'"
             :selected="choice == 'commandes' ? true : false"
@@ -39,17 +39,24 @@
         /> 
         <ProfileItem
             class="w-1/3"
-            image="/src/assets/img/people-outline.svg"
+            image="/src/assets/img/list-outline.svg"
             title="Mes moyens de paiements"
             @click="choice = 'paiements'"
             :selected="choice == 'paiements' ? true : false"
         />
         <ProfileItem
             class="w-1/3"
-            image="/src/assets/img/people-outline.svg"
+            image="/src/assets/img/list-outline.svg"
             title="Mes avis"
             @click="choice = 'avis'"
             :selected="choice == 'avis' ? true : false"
+        />
+        <ProfileItem
+            class="w-1/3"
+            image="/src/assets/img/list-outline.svg"
+            title="Mes favoris"
+            @click="choice = 'favoris'"
+            :selected="choice == 'favoris' ? true : false"
         />
     </div>
 
@@ -127,6 +134,23 @@
                 Vous n'avez aucun avis.
             </div>
         </div>
+
+        <!-- Mes favoris -->
+        <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'favoris'">
+            <div v-if="mesFavories" class="px-14 py-5">
+                <div class="flex flex-wrap">
+                    <RouterLink class="px-2 w-1/3" v-for="sejour in mesFavories" :key="sejour.idsejour"  :to="{ name: 'SingleSejour', params: { id: sejour.idsejour, slug: slugify(sejour.titresejour) }}">
+                        <SingleCardSejour :title="sejour.titresejour"
+                                    :description="sejour.descriptionsejour" :nights="sejour.nbnuit" :days="sejour.nbjour"
+                                    :image="sejour.photosejour" :price="sejour.prixsejour" :id="sejour.idsejour"
+                                    :libelleTemps="sejour.libelletemps" :notemoyenne="sejour.notemoyenne" />
+                    </RouterLink>
+                </div>
+            </div>
+            <div v-else class="text-2xl w-full font-bold text-center mt-10">
+                Vous n'avez aucun séjour en favoris.
+            </div>
+        </div>
     </div>    
 </div>
 
@@ -149,20 +173,56 @@ import Paiement from '../components/Account/Paiement.vue';
 import Avis from '../components/Account/Avis.vue';
 import AddAdressForm from '../components/Account/AddAdressForm.vue';
 import SingleComment from '../components/SingleComment.vue';
+import SingleCardSejour from '../components/SingleCardSejour.vue';
 import axios from 'axios';
 
+import { useLikesStore } from '../stores/likes';
+const likesStore = useLikesStore();
+
 const authStore: any = useAuthStore();
-const choice: any = ref("address");
+const choice: any = ref("me");
 const addAdressForm: any = ref(false);
 const closeAddAdress: any = ref(true);
-
+const mesFavories: any = ref([]);
 const avis: any = ref(null);
+
+function slugify(string) {
+    return string
+        .toString()
+        .normalize('NFD') // split an accented letter in the base letter and the acent
+        .replace(/[\u0300-\u036f]/g, '') // remove all previously split accents
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, '-and-') // replace & with 'and'
+        .replace(/[\s\W-]+/g, '-'); // replace spaces, non-word characters and dashes with a single dash (-)
+}
 
 onMounted(async () => {
     await authStore.getUser();
     axios.get('/api/avis?client=' + authStore.user.idclient).then((response) => {
         avis.value = response.data['data'];
     });
+
+    const likesStore = useLikesStore();
+
+    likesStore.sejours.forEach(element => {
+        if (element.idsejour) {
+            console.log("element", element.idsejour)
+            axios.get('/api/sejour/' + element.idsejour)
+            .then((response) => {
+                console.log(response.data['data'])
+                mesFavories.value.push(response.data['data'])
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        };
+    });
+
+    console.log("mes av", mesFavories.value)
+    console.log("mes fav", typeof mesFavories.value)
+
+
 });
 
 const setCloseAddAdress = (i) => {
@@ -173,7 +233,5 @@ const setCloseAddAdress = (i) => {
 </script>
 
 <style scoped>
-    * {
-        font-family: 'Nunito', sans-serif;
-    }
+
 </style>

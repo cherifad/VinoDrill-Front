@@ -1,6 +1,6 @@
 <template>
   <div class="h-full justify-between p-5 border-2 rounded-2xl border-rose">
-    <div class="flex justify-between w-full">
+    <div class="flex justify-between w-full shadow-md shadow-rose rounded-xl p-5 mb-5">
       <div class="flex flex-col items-center">
         <h1 class="font-bold text-xl w-fit mb-1">Article</h1>
         <div class="w-14 border mb-2"></div>
@@ -50,56 +50,56 @@
       </div>
     </div>
     <div class="flex gap-5 justify-evenly">
-    <div class="flex flex-1 flex-col items-center justify-center">
-      <div class="mt-6 flex flex-col items-center">
-        <h1 class="font-bold text-xl w-fit mb-1">Période du séjour</h1>
-        <div class="w-32 border mb-2"></div>
+      <div class="flex flex-1 shadow-sm shadow-rose rounded-xl p-5 flex-col items-center justify-center">
+        <div class="flex flex-col items-center">
+          <h1 class="font-bold text-xl w-fit mb-1">Période du séjour</h1>
+          <div class="w-32 border mb-2"></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <h1 class="mb-1">Début</h1>
+          <div class="w-12 border mb-2"></div>
+          <input v-model="form.date" id="dateDebut" type="date" class="rounded border-2 p-1 text-rouge border-rose focus:border-rouge outline-none" max="12-02-1992" placeholder="Date">
+        </div>
       </div>
-      <div class="flex flex-col items-center">
-        <h1 class="mb-1">Début</h1>
-        <div class="w-12 border mb-2"></div>
-        <input v-model="form.date" id="dateDebut" type="date" class="rounded border-2 p-1 text-rouge border-rose focus:border-rouge outline-none" max="12-02-1992" placeholder="Date">
+      <div class="flex flex-1 shadow-sm shadow-rose rounded-xl p-5 flex-col items-center">
+          <div class="flex flex-col items-center">
+            <h1 class="font-bold text-xl w-fit mb-1">Informations</h1>
+            <div class="w-24 border mb-2"></div>
+          </div>
+          <div class="flex items-center gap-2 w-full justify-evenly">
+            <div class="flex flex-col items-center">
+              <h1 class="mb-1">Adultes</h1>
+              <div class="w-12 border mb-2"></div>
+              <p>
+                <button @click="form.adults != 1 ? form.adults-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
+                {{ form.adults }}
+                <button @click="form.adults++" id="button" class="font-bold py-1 px-2 rounded">+</button>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <h1 class=" mb-1">Enfants</h1>
+              <div class="w-12 border mb-2"></div>
+              <p>
+                <button @click="form.children != 0 ? form.children-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
+                {{ form.children }}
+                <button @click="form.children++" id="button" class="font-bold py-1 px-2 rounded">+</button>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <h1 class=" mb-1">Chambres</h1>
+              <div class="w-12 border mb-2"></div>
+              <p>
+                <button @click="form.rooms != 1 ? form.rooms-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
+                {{ form.rooms }}
+                <button @click="form.rooms++" id="button" class="font-bold py-1 px-2 rounded">+</button>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <h1 class="mb-1 cursor-pointer" @click="reset()">Mettre à zéro</h1>
+            </div>
+          </div>
       </div>
     </div>
-    <div class="flex flex-1 flex-col items-center">
-        <div class="mt-6 flex flex-col items-center">
-          <h1 class="font-bold text-xl w-fit mb-1">Informations</h1>
-          <div class="w-24 border mb-2"></div>
-        </div>
-        <div class="flex items-center gap-2 w-full justify-evenly">
-          <div class="flex flex-col items-center">
-            <h1 class="mb-1">Adultes</h1>
-            <div class="w-12 border mb-2"></div>
-            <p>
-              <button @click="form.adults != 1 ? form.adults-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
-              {{ form.adults }}
-              <button @click="form.adults++" id="button" class="font-bold py-1 px-2 rounded">+</button>
-            </p>
-          </div>
-          <div class="flex flex-col items-center">
-            <h1 class=" mb-1">Enfants</h1>
-            <div class="w-12 border mb-2"></div>
-            <p>
-              <button @click="form.children != 0 ? form.children-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
-              {{ form.children }}
-              <button @click="form.children++" id="button" class="font-bold py-1 px-2 rounded">+</button>
-            </p>
-          </div>
-          <div class="flex flex-col items-center">
-            <h1 class=" mb-1">Chambres</h1>
-            <div class="w-12 border mb-2"></div>
-            <p>
-              <button @click="form.rooms != 1 ? form.rooms-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
-              {{ form.rooms }}
-              <button @click="form.rooms++" id="button" class="font-bold py-1 px-2 rounded">+</button>
-            </p>
-          </div>
-          <div class="flex flex-col items-center">
-            <h1 class="mb-1 cursor-pointer" @click="reset()">Mettre à zéro</h1>
-          </div>
-        </div>
-    </div>
-  </div>
   </div>
 
 

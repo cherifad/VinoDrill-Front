@@ -4,12 +4,16 @@
     <div id="addForm" class="padCorp">
 
         <div class="m-10">
+            <form>
+
             <h1 class="text-left text-4xl font-bold pt-15"> Contactez-nous </h1>
             <p class=" text-left text-1xl pt-5 text-gray-400 "> Une question ? Besoin d’un renseignement ? Notre Service Client est à votre écoute ! </p>
-       
+                
                 <div class="grid grid-cols-3 m-12">
                     <div>
+
                         <div>
+                            
                             <p class="text-left font-semibold text-2xl pt-5">Objet</p>
                             <select v-model="form.object" class="object text-gray-400 font-weight:500 w-80" name="object" id="object" required>
                                 <option value="" disabled selected>Selectionnez un destinataire</option>
@@ -70,8 +74,9 @@
 
                
                 <div>
-                    <input @click="envoyer()" id="send" type="button" class="mr-12 mt-8 bg-white py-2 px-4 rounded shadow" value="Envoyez">
+                    <input @click="envoyer()" id="send" type="submit" class="mr-12 mt-8 bg-white py-2 px-4 rounded shadow" value="Envoyez"/>
                 </div>
+            </form>
         </div>
 
     </div>
@@ -111,7 +116,7 @@ const form = ref({
 })
 
 const envoyer = () => {
-    if(document.getElementById("message").value.length == 0 || document.getElementById("lastname").value.length == 0|| document.getElementById("firstname").value.length == 0||document.getElementById("mail").value.length == 0 || document.getElementById("object").value.length == 0 || document.getElementById("accept").checked == false) {
+    if(document.getElementById("message").value.length == 0 || document.getElementById("lastname").value.length == 0|| document.getElementById("firstname").value.length == 0||document.getElementById("mail").value.length == 0 || document.getElementById("object").value.length == 0 || document.getElementById("accept").checked  == false) {
         
     if(document.getElementById("object").value.length == 0){
     document.getElementById("object").classList.add("borderError")
@@ -119,7 +124,8 @@ const envoyer = () => {
     document.querySelector('#msgerror').classList.remove("hide")
     }
         else if(document.getElementById("object").value.length !== 0){
-            document.getElementById("object").classList.remove("borderError")
+            document.getElementById("object").classList.remove("borderError");
+            console.log('vail');
     }
     if(document.getElementById("lastname").value.length == 0){
     document.getElementById("lastname").classList.add("borderError")
@@ -127,7 +133,8 @@ const envoyer = () => {
     document.querySelector('#msgerror').classList.remove("hide")
     }
         else if(document.getElementById("lastname").value.length !== 0){
-            document.getElementById("lastname").classList.remove("borderError")
+            document.getElementById("lastname").classList.remove("borderError");
+            console.log(2);
     }
     if(document.getElementById("firstname").value.length == 0){
     document.getElementById("firstname").classList.add("borderError")
@@ -135,7 +142,8 @@ const envoyer = () => {
     document.querySelector('#msgerror').classList.remove("hide")
     }
         else if(document.getElementById("firstname").value.length !== 0){
-            document.getElementById("firstname").classList.remove("borderError")
+            document.getElementById("firstname").classList.remove("borderError");
+            console.log(3);
     }
     if(document.getElementById("mail").value.length == 0){
     document.getElementById("mail").classList.add("borderError")
@@ -143,7 +151,8 @@ const envoyer = () => {
     document.querySelector('#msgerror').classList.remove("hide")
     }
         else if(document.getElementById("mail").value.length !== 0){
-            document.getElementById("mail").classList.remove("borderError")
+            document.getElementById("mail").classList.remove("borderError");
+            console.log(4);
     }
     if(document.getElementById("message").value.length == ""){
     document.getElementById("message").classList.add("borderError")
@@ -151,15 +160,16 @@ const envoyer = () => {
     document.querySelector('#msgerror').classList.remove("hide")
     }
         else if(document.getElementById("message").value.length !== ""){
-            document.getElementById("message").classList.remove("borderError")
+            document.getElementById("message").classList.remove("borderError");
+            console.log(5);
     }
     if(document.getElementById("accept").checked == false){
-    document.getElementById("accept").classList.add("borderError")
     document.querySelector('#msgerror').classList.add("show")
     document.querySelector('#msgerror').classList.remove("hide")
     }
         else if(document.getElementById("accept").checked == true){
-            document.getElementById("accept").classList.remove("borderError")
+            document.getElementById("accept").classList.remove("borderError");
+            console.log(6);
     }
 }
     console.log(form)
@@ -194,7 +204,7 @@ const displayData = (data: any) => {
         let error=document.getElementById("msgerror");
         
         buttonsend?.addEventListener("click", () => {
-             if(document.getElementById("message").value.length !== 0 && document.getElementById("lastname").value.length !== 0 && document.getElementById("firstname").value.length !== 0 && document.getElementById("mail").value.length !== 0 && document.getElementById("object").value.length !== 0 && document.getElementById("accept").checked == false){
+             if(document.getElementById("message").value.length !== 0 && document.getElementById("lastname").value.length !== 0 && document.getElementById("firstname").value.length !== 0 && document.getElementById("mail").value.length !== 0 && document.getElementById("object").value.length !== 0 && document.getElementById("accept").checked == true){
                 detailUp?.classList.remove("hide");
                 detailUp?.classList.add("show");
              }
@@ -217,7 +227,7 @@ const displayData = (data: any) => {
 
   </script>
 
-  <style scoped>
+<style scoped>
         .padCorp{
     padding-top: 7em;
   }
@@ -333,6 +343,10 @@ input[type=file]::file-selector-button:hover {
     border: solid;
     border-color: red;
 
+
+}
+#accept{
+    accent-color: red;
 }
 
 </style>

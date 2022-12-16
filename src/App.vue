@@ -5,14 +5,15 @@ import { useAuthStore } from './stores/auth';
 import Cookies from './components/Cookie.vue';
 
 const authStore = useAuthStore();
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const reload = urlParams.get('reload');
 
 const height = ref(0);
 
 onMounted(async () => {
   const header = document.querySelector("header");
+
+  // prevent bug when calculating header height
+  const menu = document.querySelector("#menu");
+  menu.style.display = "flex";
 
   // get header height
   const headerHeight = header?.clientHeight;
@@ -43,8 +44,8 @@ onMounted(async () => {
           >Vino<span style="color: #cb7169">Drill</span></span
         >
       </RouterLink>
-      <ul
-        class="flex gap-4 text-2xl text-white border-l-2 border-zinc-800 pl-8"
+      <ul id="menu"
+        class="gap-4 text-2xl text-white border-l-2 border-zinc-800 pl-8"
       >
         <li>
           <RouterLink to="/sejour">Séjour</RouterLink>
@@ -65,7 +66,7 @@ onMounted(async () => {
   <a href="#top" class="fixed text-black text-3xl bottom-4 right-4 p-3 cursor-pointer bg-white rounded-xl shadow-xl z-50">
     <ion-icon class="hover:-translate-y-1" name="arrow-up"></ion-icon>
   </a>
-  <RouterView :style="{'padding-top': + height +'px'}" class="px-10" v-slot="{ Component }">    
+  <RouterView v-if="height" :style="{'padding-top': + height +'px'}" class="px-10" v-slot="{ Component }">    
       <Component :is="Component" />    
   </RouterView>
   <Cookies />

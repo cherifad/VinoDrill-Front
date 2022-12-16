@@ -7,9 +7,9 @@
      
      <div id="intro">
        <h2 class=" flex text-2xl justify-center  mt-10 mb-10" id="title">Séjour et évènement d’entreprise autour du vin</h2>
-       <p class=" mt-3">Créateur de séjours oenotouristiques et spécialiste de l’évènementiel autour du vin, nous organisons pour vous des séjours d’affaire sur-mesure et des évènements d’entreprise au haut potentiel fédérateur, qui tout en vous immergeant dans les vignobles de France, vous offrent la possibilité de développer vos relations commerciales. En s’adaptant à vos envies, nous vous proposons des solutions clé en main afin d’organiser vos séminaires, teambuilding, évènements ou <RouterLink id="links" to="/sejour">week-ends oenologiques</RouterLink> entre collègues.
+       <p class=" mt-3">Créateur de <span  class="font-bold">séjours oenotouristiques</span> et spécialiste de <span  class="font-bold">l’évènementiel autour du vin</span>, nous organisons pour vous des <span  class="font-bold">séjours d’affaire sur-mesure</span> et des <span  class="font-bold">évènements d’entreprise</span> au haut potentiel fédérateur, qui tout en vous immergeant dans les vignobles de France, vous offrent la possibilité de développer vos relations commerciales. En s’adaptant à vos envies, nous vous proposons des <span  class="font-bold">solutions clé en main</span> afin d’organiser vos séminaires, teambuilding, évènements ou <RouterLink id="links" to="/sejour">week-ends oenologiques</RouterLink> entre collègues.
        </p>
-       <p class=" mt-3">Au programme : visites et dégustations à la propriété, hébergement en Château, repas gastronomique, atelier œnologique, cours de dégustation, balade dans les vignes, … De quoi vous assurer une expérience inoubliable dans des hauts-lieux du vin français. Vos séjours se révèleront être de véritables escapades sensorielles en pleine nature, mêlant vins, gastronomie, culture, sport et bien-être ; vos évènements et soirées œnologiques des moments d’exception.
+       <p class=" mt-3">Au programme : visites et dégustations à la propriété, hébergement en Château, repas gastronomique, atelier œnologique, cours de dégustation, balade dans les vignes, … De quoi vous assurer une expérience inoubliable dans des <span  class="font-bold">hauts-lieux du vin français</span>. Vos séjours se révèleront être de véritables escapades sensorielles en pleine nature, mêlant vins, gastronomie, culture, sport et bien-être ; vos évènements et soirées œnologiques des moments d’exception.
        </p>
      </div>
 
@@ -48,9 +48,9 @@
         <div class="grid grid-row mb-5 mt-5">
           <div class="flex flex-col gap-1  mr-5">
             <img src="https://www.vinotrip.com/img/cms/soiree-vin-entreprise.jpg" alt="evenementiel" class="ml-10 rounded-lg">
-            <h4 class="flex text-2xl justify-center mb-2 mt-5">Evenementiel</h4>
+            <h4 class="flex text-2xl justify-center mb-2 mt-5">Évènementiel</h4>
             <p class="justify-center mb-2">
-              Le vignoble vient à vous : participez à des soirées d’exception avec notre sommelier partenaire. Pour optimiser vos relations clients, développer et entretenir vos réseaux d’affaires, nous organisons vos déjeuners et diners en collaboration avec nos partenaires gastronomiques et œnologiques. Retrouvez les photos et le  déroulé de la <a id="links" href="https://www.vinotrip.com/fr/blog/soiree-dexception-meilleur-sommelier-monde/">soirée de juin à Paris, au restaurant Pages</a>.
+              Le vignoble vient à vous : participez à des soirées d’exception avec notre sommelier partenaire. Pour optimiser vos relations clients, développer et entretenir vos réseaux d’affaires, nous organisons vos déjeuners et diners en collaboration avec nos partenaires gastronomiques et œnologiques. Retrouvez les photos et le  déroulé de la <a id="links" target="blank" href="https://www.vinotrip.com/fr/blog/soiree-dexception-meilleur-sommelier-monde/">soirée de juin à Paris, au restaurant Pages</a>.
             </p> 
           </div>
         </div>
@@ -63,11 +63,11 @@
       </div>
 
       <div>
-       <h2 class=" flex text-2xl font-bold  mt-10 mb-5">
-         Pourquoi choisir VinoDrill
-         <!-- <span class="brandName text-2xl font-semibold">
+       <h2 class=" text-2xl font-bold  mt-10 mb-5">
+         Pourquoi choisir
+         <span class="brandName text-2xl font-semibold">
            Vino<span style="color: #cb7169">Drill</span>
-         </span> -->
+         </span>
          pour vos séminaires et évènements d’entreprise ?
         </h2>
        <ul class="list list-disc list-inside">
@@ -111,6 +111,7 @@
 
 h4 {
   color: #943f0d;
+  font-weight: bold;
 }
 .list {
     margin-left:2rem;

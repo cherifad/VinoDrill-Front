@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from './utils/config';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://www.iutannecy-deptinfo.fr:5005";
+axios.defaults.baseURL = config.backend_url;

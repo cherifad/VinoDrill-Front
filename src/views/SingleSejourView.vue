@@ -13,7 +13,7 @@
                             <li class="text-lg">Lieu : {{ sejour.destination.libelledestination }}</li>
                             <li class="text-lg">Thème : {{ sejour.theme.libelletheme }}</li>
                         </ul>
-                        <div class="flex gap-1 flex-wrap items-center justify-center">                            
+                        <div class="flex gap-1 flex-wrap items-center">                            
                             <a href="#etape" class="p-2 bg-white text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">Voir les étapes</a>
                             <a @click="!getCurrentCartSejour() ? panierStore.addSejour(sejour.idsejour) : addedToCart = true" class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
                                 Ajouter au panier <br>
@@ -22,8 +22,10 @@
                                     <span v-else class="text-sm">Dans le panier !</span>
                                 </div>
                             </a>
-                            <a class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
-                                Ajouter aux favoris <br>
+                            <a @click="likesStore.addSejour(sejour.idsejour), addedToLikes = true" class="w-full mt-5">
+                                
+                                <ButtonLikeSejour class=""/>
+                                
                             </a>
                         </div>
                     </div>
@@ -60,6 +62,7 @@
             <div v-if="visites" class="mt-11">
                 <SingleVisite v-for="visite in visites"
                     :key="visite.idvisite"
+                    :idvisite="visite.idvisite"
                     :idtypevisite="visite.idtypevisite"
                     :idpartenaire="visite.idpartenaire"
                     :libellevisite="visite.libellevisite"
@@ -158,12 +161,14 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import ButtonLikeSejour from '../components/ButtonLikeSejour.vue';
 
 const route = useRoute();
 const panierStore = usePanierStore();
 const viewedStore = useViewedStore();
 const likesStore = useLikesStore();
 const addedToCart = ref(false);
+const addedToLikes = ref(false);
 
 const getCurrentCartSejour = () => {
     const cart = panierStore.sejours;
