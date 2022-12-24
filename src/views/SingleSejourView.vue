@@ -13,7 +13,7 @@
                             <li class="text-lg">Lieu : {{ sejour.destination.libelledestination }}</li>
                             <li class="text-lg">Thème : {{ sejour.theme.libelletheme }}</li>
                         </ul>
-                        <div class="flex gap-1 flex-wrap items-center">                            
+                        <div class="flex gap-1 flex-wrap items-center" v-auto-animate>                            
                             <a href="#etape" class="p-2 bg-white text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">Voir les étapes</a>
                             <a @click="!getCurrentCartSejour() ? panierStore.addSejour(sejour.idsejour) : addedToCart = true" class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
                                 Ajouter au panier <br>
@@ -22,11 +22,7 @@
                                     <span v-else class="text-sm">Dans le panier !</span>
                                 </div>
                             </a>
-                            <a @click="likesStore.addSejour(sejour.idsejour), addedToLikes = true" class="w-full mt-5">
-                                
-                                <ButtonLikeSejour class=""/>
-                                
-                            </a>
+                            <ButtonLikeSejour class="mt-5" :idsejour="sejour.idsejour"/>                                
                         </div>
                     </div>
                 </div>

@@ -34,8 +34,11 @@
                         <input v-model="loginForm.email" type="email" id="email"
                             class="rounded-full border-2 p-4 text-rouge border-rose focus:border-rouge outline-none"
                             placeholder="Email">
-                        <div v-if="authStore.errors.email && login" v-auto-animate>
-                            <p class="text-red-500">{{ authStore.errors.email[0] }}</p>
+                        <div v-if="authStore.errors.email && login" v-auto-animate class="relative px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+                            <span class="absolute inset-y-0 left-0 flex items-center ml-4">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                            </span>
+                            <p class="ml-6">{{ authStore.errors.email[0] }}</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">
@@ -49,25 +52,13 @@
                                 class="rounded-full w-full border-2 p-4 text-rouge border-rose focus:border-rouge outline-none"
                                 placeholder="Mot de passe">
                         </div>
-                        <div v-if="authStore.errors.password && login" v-auto-animate>
-                            <p class="text-red-500">{{ authStore.errors.password[0] }}</p>
+                        <div v-if="authStore.errors.password && login" v-auto-animate class="relative px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+                            <span class="absolute inset-y-0 left-0 flex items-center ml-4">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                            </span>
+                            <p class="ml-6">{{ authStore.errors.password[0] }}</p>
                         </div>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" :href="config.backend_url + '/login/google'">
-                            <ion-icon class="text-xl" name="logo-google"></ion-icon>
-                            Se connecter avec Google
-                        </a>
-                        <!-- <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" href="http://www.iutannecy-deptinfo.fr:5005/login/facebook">
-                            <ion-icon class="text-xl" name="logo-facebook"></ion-icon>
-                            Se connecter avec Facebook
-                        </a> -->
-                        <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" :href="config.backend_url + '/login/twitter'">
-                            <ion-icon class="text-xl" name="logo-twitter"></ion-icon>
-                            Se connecter avec Twitter
-                        </a>
-                    </div>
-                    
+                    </div>                    
                 </div>
 
                 <!-- Registration -->
@@ -180,6 +171,24 @@
                     <button @click="login ? authStore.login(loginForm.email, loginForm.password)
                      : authStore.register(registerForm.lastname, registerForm.firstname, registerForm.email, registerForm.birthdate, registerForm.gender, registerForm.password, registerForm.passwordConfirm)"
                         class="bg-rose w-fit px-12 rounded-full hover:-translate-y-1 text-white p-2">{{ login ? "Se connecter" : "S'inscrire" }}</button>
+                </div>
+
+                <div v-if="login" class="flex items-center flex-col gap-2">
+                    <div class=" w-10/12 border my-3 rounded-full ">
+
+                    </div>
+                    <a class="flex w-full items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" :href="config.backend_url + '/login/google'">
+                        <ion-icon class="text-xl" name="logo-google"></ion-icon>
+                        Se connecter avec Google
+                    </a>
+                    <!-- <a class="flex items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" href="http://www.iutannecy-deptinfo.fr:5005/login/facebook">
+                        <ion-icon class="text-xl" name="logo-facebook"></ion-icon>
+                        Se connecter avec Facebook
+                    </a> -->
+                    <a class="flex w-full items-center gap-3 bg-white text-black justify-center hover:-translate-y-1 p-4 rounded-xl" :href="config.backend_url + '/login/twitter'">
+                        <ion-icon class="text-xl" name="logo-twitter"></ion-icon>
+                        Se connecter avec Twitter
+                    </a>
                 </div>
             </div>
         </div>

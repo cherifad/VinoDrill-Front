@@ -17,7 +17,6 @@
             / {{ nights }} nuit<span v-if="nights > 1">s</span></span
           >
         </p>
-        <p v-else class="text-2xl">{{ libelleTemps }}</p>
         
       </div>
       <div class="flex flex-col items-center">
@@ -131,14 +130,11 @@ onMounted(() => {
 const props =
   defineProps<{
     title: string;
-    description: string;
     nights: any;
     days: any;
     image: string;
     price: number;
     id: number;
-    libelleTemps: any;
-    notemoyenne: number;
   }>();
 
 const getCurrentCartSejour = () => {

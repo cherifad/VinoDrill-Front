@@ -9,7 +9,8 @@ export const usePanierStore = defineStore("panier", {
             nbAdultes: 0,
             nbChambres: 0,
             date: null,
-        }])
+        }]),
+        total : useStorage( 'total' , 0),
     }),
     getters: {
         idsejour: (state) => state.sejours.idsejour,
@@ -17,6 +18,7 @@ export const usePanierStore = defineStore("panier", {
         nbAdultes: (state) => state.sejours.nbAdultes,
         nbChambres: (state) => state.sejours.nbChambres,
         date: (state) => state.sejours.date,
+        total: (state) => state.sejours.length - 1,
     },
     actions: {
         addSejour(idsejour) {

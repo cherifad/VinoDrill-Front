@@ -1,39 +1,49 @@
 <template>
-  <div class="heart-btn">
-    <div class="content">
-      <span class="heart"></span>
-      <span class="text select-none">Ajouter aux favoris</span>
-      <span class="numb"></span>
+  <div class="heart-btn" @click="ToggleLike()">
+    <div class="content" :class="liked ? 'heart-active' : ''">
+      <span class="heart" :class="liked ? 'heart-active' : ''"></span>
+      <span class="text select-none" :class="liked ? 'heart-active' : ''">{{ liked ? '+1' : 'Ajouter aux favoris' }}</span>
+      <span class="numb" :class="liked ? 'heart-active' : ''"></span>
     </div>
   </div>
 </template>
 
-<script setup>
-// Nope
-// ...except to show the animation on load
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { useLikesStore } from '../stores/likes';
 
-import { onMounted } from 'vue';
+const likesStore = useLikesStore();
 
-onMounted(() => {
-  document.querySelector('.content').addEventListener('click', function(){
-    document.querySelector('.content').classList.toggle("heart-active")
-    document.querySelector('.text').classList.toggle("heart-active")
-    document.querySelector('.numb').classList.toggle("heart-active")
-    document.querySelector('.heart').classList.toggle("heart-active")
-  });
+const props = defineProps<{
+  idsejour: any;
+}>();
+
+// parcourir l'objet sejour pour voir si l'id du sejour est dans le tableau
+// si oui, alors on affiche le coeur plein
+// si non, alors on affiche le coeur vide
+const liked = ref(false);
+likesStore.sejours.forEach(element => {
+  if (element.idsejour == props.idsejour) {
+    liked.value = true;
+  }
 });
+
+const ToggleLike = () => {
+  if(liked.value) {
+    likesStore.removeSejour(props.idsejour);
+    liked.value = false;
+  } else {
+    likesStore.addSejour(props.idsejour);
+    liked.value = true;
+  }
+}
 
 </script>
 
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
-.heart-btn{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
+
 .content{
   padding: 13px 16px;
   display: flex;
@@ -60,7 +70,7 @@ onMounted(() => {
 .text{
   font-size: 21px;
   margin-left: 30px;
-  color: grey;
+  color: white;
   font-family: 'Montserrat',sans-serif;
 }
 .numb:before{

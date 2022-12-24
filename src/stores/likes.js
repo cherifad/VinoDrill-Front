@@ -5,10 +5,12 @@ export const useLikesStore = defineStore("likes", {
     state: () => ({
         sejours : useStorage( 'likes' , [{
             idsejour: null,
-        }])
+        }]),
+        total : useStorage( 'likes' , 0),
     }),
     getters: {
         idsejour: (state) => state.sejours.idsejour,
+        total: (state) => state.sejours.length - 1,
     },
     actions: {
         addSejour(idsejour) {

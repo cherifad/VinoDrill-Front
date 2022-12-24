@@ -4,7 +4,6 @@ import { useAuthStore } from "../stores/auth";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
-    // always scroll to top
     return { top: 0 }
   },
   routes: [
@@ -108,11 +107,25 @@ const router = createRouter({
       component: () => import('../views/admin/DashboardView.vue'),
     },
     {
+      path: '/admin/sejour',
+      name: 'AdminSejour',
+      component: () => import('../views/admin/AllSejourView.vue'),
+    },
+    {
+      path: '/admin/sejour/modif-:id',
+      name: 'AdminSejourModif',
+      component: () => import('../views/admin/SejourModifView.vue'),
+    },
+    {
       path: '/paiement',
       name: 'Paiement',	
       component: () => import('../views/Checkout/CheckoutView.vue'),
     },
-      
+    {
+      path: '/favoris',
+      name: 'Favoris',
+      component: () => import('../views/FavView.vue'),
+    },      
   ],
 });
 
