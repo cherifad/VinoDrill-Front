@@ -22,11 +22,13 @@ const props = defineProps<{
 // si oui, alors on affiche le coeur plein
 // si non, alors on affiche le coeur vide
 const liked = ref(false);
-likesStore.sejours.forEach(element => {
-  if (element.idsejour == props.idsejour) {
-    liked.value = true;
-  }
-});
+if(likesStore.sejours) {
+  likesStore.sejours.forEach(element => {
+    if (element.idsejour == props.idsejour) {
+      liked.value = true;
+    }
+  });
+}
 
 const ToggleLike = () => {
   if(liked.value) {

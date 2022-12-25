@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "../stores/auth";
 
+const isAuthenticated = () => {
+  const authStore = useAuthStore();
+  return authStore.isAuthenticated;
+};
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
@@ -85,6 +90,7 @@ const router = createRouter({
       path: "/mon-compte",
       name: "MonCompte",
       component: () => import("../views/MyAccountView.vue"),
+      meta: { requiresAuth: true },
     },
     {
       path: "/mon-panier",
@@ -107,14 +113,19 @@ const router = createRouter({
       component: () => import('../views/admin/DashboardView.vue'),
     },
     {
-      path: '/admin/sejour',
+      path: '/admin/sejours',
       name: 'AdminSejour',
-      component: () => import('../views/admin/AllSejourView.vue'),
+      component: () => import('../views/admin/Sejour/AllSejourView.vue'),
     },
     {
-      path: '/admin/sejour/modif-:id',
+      path: '/admin/sejours/modif-:id',
       name: 'AdminSejourModif',
-      component: () => import('../views/admin/SejourModifView.vue'),
+      component: () => import('../views/admin/Sejour/SejourModifView.vue'),
+    },
+    {
+      path: '/admin/domaines/modif-:id',
+      name: 'AdminDomaine',
+      component: () => import('../views/admin/Domaine/DomaineModifView.vue'),
     },
     {
       path: '/paiement',
@@ -129,18 +140,16 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach(async (to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  // var auth = useAuthStore();
-
-  // if ((to.name == "Connexion") && auth) {
-  //     auth.returnUrl = to.fullPath;
-  //     return '/mon-compte';
-  // } else {
-  //   next();
-  // }
-  next();
-
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !isAuthenticated()) {
+    // redirect to login page if the route requires authentication and the user is not authenticated
+    next({ path: '/connexion' });
+  } else if ((to.name == "Connexion") && isAuthenticated()) {
+    next({ path: '/mon-compte' });
+  } else {
+    next();
+  }
 });
+
 
 export default router;

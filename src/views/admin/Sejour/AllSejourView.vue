@@ -24,18 +24,39 @@
                             <button @click="fakeDelete()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                 Supprimer
                             </button>
+                            <!-- <router-link :to="{ name: 'AdminSejourAvis', params: { id: sejour.idsejour } }"> -->
+                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                    Voir les avis
+                                </button>
+                            <!-- </router-link> -->
                         </div>
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <router-link to="/admin/sejour/ajout">
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                Ajouter un séjour
+                            </button>
+                        </router-link>
+                    </td>
+                </tr>
+            </tfoot>
+            
         </table>
+        <div v-else>
+            <LoadComponent />
+        </div>       
     </div>
 </template>
 
 <script setup lang="ts">
-import apis from '../../api';
+import apis from '../../../api';
 import { onMounted, ref } from 'vue';
-import { slugify } from '../../utils/functions';
+import { slugify } from '../../../utils/functions';
+import LoadComponent from '../../../components/LoadComponent.vue';
 
 const sejours: any = ref([]);
 

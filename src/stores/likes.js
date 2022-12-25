@@ -6,11 +6,10 @@ export const useLikesStore = defineStore("likes", {
         sejours : useStorage( 'likes' , [{
             idsejour: null,
         }]),
-        total : useStorage( 'likes' , 0),
     }),
     getters: {
         idsejour: (state) => state.sejours.idsejour,
-        total: (state) => state.sejours.length - 1,
+        total: (state) => state.sejours.length ? state.sejours.length - 1 : 0,
     },
     actions: {
         addSejour(idsejour) {
