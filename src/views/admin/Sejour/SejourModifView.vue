@@ -1,8 +1,11 @@
 <template>
     <div v-if="ready">
         <div class="flex mb-6 justify-between">
+            <RouterLink to="/admin/sejours" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                Retour à la liste des séjours
+            </RouterLink>
             <h1 class="text-2xl text-center font-bold text-gray-900 dark:text-white">Modification du séjour n°{{ sejour.idsejour }}</h1>
-            <p @click="popitup(`/sejour/${sejour.idsejour}-view`, sejour.titresejour)" class=" bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <p @click="popitup(`/sejour/${sejour.idsejour}-view`, sejour.titresejour)" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Aperçu
             </p>
         </div>
@@ -103,20 +106,40 @@
         </form>
 
         <!-- Ajouter un hébergement, relié au bouton en haut -->
-        <Popup title="Ajouter/Supprimer un hébergement" :show="showHebergementPopup" @update:show="showHebergementPopup = $event" @submit="submitHandler">
-          <div class="flex flex-wrap gap-3 justify-center">
-            <div v-for="hebergement in hebergements" class="flex w-96 justify-between items-center gap-6 p-2 rounded-lg border border-white">
-                <div>
-                    <div class="flex justify-between gap-6">                    
-                        <span>{{ hebergement.idhebergement }}</span>
-                        {{ hebergement.libellehebergement }}
-                    </div>
-                    <button class="text-white mt-3 mr-3 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Supprimer</button>
-                    <button class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Ajouter</button>
-                </div>
-                <Tooltip :text="hebergement.descriptionhebergement"></Tooltip>
+        <Popup title="Ajouter/Supprimer un hébergement" :show="showHebergementPopup" @update:show="showHebergementPopup = $event" @submit="submitHandler" v-auto-animate>
+            <div v-if="hebergementStep == 1">
+                <h1>Choisissez l'étape à modifier</h1>
+                <ul class="flex gap-3 justify-center items-center h-fit">
+                    <li v-for="etape in sejour.etapes" :key="etape.idetape" class="max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <img class="rounded-t-lg w-full h-auto" :src="etape.photoetape" alt="" />
+                        <div class="p-5">
+                            <a href="#">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">{{ etape.titreetape }} <Tooltip :text="etape.descriptionetape"/></h5>
+                            </a>
+                            <a @click="idEtapeHebergement = [etape.idetape, etape.idhebergement], hebergementStep = 2" class="inline-flex mr-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Choisir {{ idEtapeHebergement }}
+                                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-          </div>
+            <div v-if="hebergementStep == 2" class="flex flex-wrap gap-3 justify-center">
+              <div v-for="single in AllHebergement" :key="single.idhebergement" class="flex w-96 justify-between items-center gap-6 p-2 rounded-lg border border-white">
+                  <div>
+                      <div class="flex justify-between gap-6">                    
+                          <span>{{ single.idhebergement }}</span>
+                          {{ single.libellehebergement }}
+                      </div>
+                      <button v-if="single.idhebergement = idEtapeHebergement[1]" class="text-white mt-3 mr-3 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Supprimer</button>
+                      <button class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Ajouter</button>
+                  </div>
+                  <Tooltip :text="single.descriptionhebergement"></Tooltip>
+              </div>
+              <a @click="hebergementStep = 1" class="inline-flex mr-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  Retour
+              </a>
+            </div>
         </Popup>
 
         <!-- Ajouter un domaine, relié au bouton en haut -->
@@ -161,12 +184,14 @@ import { slugify } from '../../../utils/functions';
 
 const libelletemps = ref(false);
 
-const hebergements: any = ref(null);
+const AllHebergement: any = ref(null);
 const showHebergementPopup = ref(false);
+const idEtapeHebergement = ref([null, null]);
+const hebergementStep = ref(1);
 const openHebergementHandler = () => {
-    if(hebergements.value == null) {
+    if(AllHebergement.value == null) {
         apis.getHebergements().then((response) => {
-            hebergements.value = response.data.data;
+            AllHebergement.value = response.data.data;
         });
     }
     showHebergementPopup.value = true;
@@ -242,7 +267,7 @@ const ready = ref(false);
 
 const getSejour = async () => {
     const id = route.params.id;
-    const response = await apis.getSejourById(id);
+    const response = await apis.getSejourWithHebergement(id);
     sejour.value = response.data.data;
 
     form.value.titre = sejour.value.titresejour;

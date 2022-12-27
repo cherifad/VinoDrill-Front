@@ -24,11 +24,14 @@
                             <button @click="fakeDelete()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                 Supprimer
                             </button>
-                            <!-- <router-link :to="{ name: 'AdminSejourAvis', params: { id: sejour.idsejour } }"> -->
+                            <router-link :to="{ name: 'AdminSejourAvis', params: { id: sejour.idsejour } }">
                                 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                     Voir les avis
                                 </button>
-                            <!-- </router-link> -->
+                            </router-link>
+                            <button @click="selectedPromo = sejour.idsejour, showPromoPopup = true, newPrice = getSejourById(selectedPromo).prixsejour" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                Mettre les promotions
+                            </button>
                         </div>
                     </td>
                 </tr>
@@ -43,9 +46,15 @@
                         </router-link>
                     </td>
                 </tr>
-            </tfoot>
-            
+            </tfoot>  
+            <Popup :show="showPromoPopup" @update:show="showPromoPopup = $event" @submit="submitHandler" :title="'Mettre en promotion le n°' + selectedPromo" >
+                <div class="flex flex-col gap-3">
+                    <label for="promo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prix actuel : {{ getSejourById(selectedPromo).prixsejour }}€</label>
+                    <input type="number" id="promo" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-model="newPrice" />
+                </div>
+            </Popup>          
         </table>
+
         <div v-else>
             <LoadComponent />
         </div>       
@@ -57,8 +66,17 @@ import apis from '../../../api';
 import { onMounted, ref } from 'vue';
 import { slugify } from '../../../utils/functions';
 import LoadComponent from '../../../components/LoadComponent.vue';
+import Popup from '../../../components/Popup.vue';
 
 const sejours: any = ref([]);
+const selectedPromo: any = ref(9999);
+const showPromoPopup: any = ref(false);
+const newPrice: any = ref(0);
+
+const submitHandler = () => {
+    alert('Mise en promotion en cours...');
+    alert('Mise en promotion terminée !');
+}
 
 const getSejours = async () => {
     const response = await apis.getSejours();
@@ -69,6 +87,11 @@ const getSejours = async () => {
 const fakeDelete = () => {
     alert('Suppression en cours...');
     alert('Suppression terminée !');
+}
+
+// get sejour from sejours array by id
+const getSejourById = (id: number) => {
+    return sejours.value.find((sejour: any) => sejour.idsejour === id);
 }
 
 onMounted(getSejours);

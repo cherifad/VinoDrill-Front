@@ -7,6 +7,7 @@ const api = axios.create({
 
 const getSejours = () => api.get(`/sejour`);
 const getSejourById = id => api.get(`/sejour/${id}`);
+const getSejourWithHebergement = id => api.get(`/sejour/${id}?hebergement=true`);
 const updateSejourById = (id, payload) => api.put(`/sejour/${id}`, payload);
 const deleteSejourById = id => api.delete(`/sejour/${id}`);
 
@@ -26,10 +27,17 @@ const getDomaineById = id => api.get(`/cave/${id}`);
 
 const getActivites = () => api.get(`/activite`);
 const getActiviteById = id => api.get(`/activite/${id}`);
+const newActivite = payload => api.post(`/activite`, payload);
+
+const getSociete = () => api.get(`/societe`);
+const getSocieteById = id => api.get(`/societe/${id}`);
+
+const getReviews = (idsejour) => api.get(`/avis?sejour=${idsejour}`);
 
 const apis = {
     getSejours,
     getSejourById,
+    getSejourWithHebergement,
     updateSejourById,
     deleteSejourById,
     getThemes,
@@ -44,6 +52,10 @@ const apis = {
     getDomaineById,
     getActivites,
     getActiviteById,
+    getSociete,
+    getSocieteById,
+    newActivite,
+    getReviews,
 };
 
 export default apis;

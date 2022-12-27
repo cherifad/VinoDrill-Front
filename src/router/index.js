@@ -1,9 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "../stores/auth";
+import config from "../utils/config";
 
 const isAuthenticated = () => {
   const authStore = useAuthStore();
   return authStore.isAuthenticated;
+};
+
+const isAdmin = (email) => {
+  return config.admins.includes(email);
 };
 
 const router = createRouter({
@@ -111,6 +116,7 @@ const router = createRouter({
       path: '/admin',
       name: 'Admin',
       component: () => import('../views/admin/DashboardView.vue'),
+      meta: { Restricted: true },
     },
     {
       path: '/admin/sejours',
@@ -123,9 +129,19 @@ const router = createRouter({
       component: () => import('../views/admin/Sejour/SejourModifView.vue'),
     },
     {
+      path: '/admin/sejours/:id-avis',
+      name: 'AdminSejourAvis',
+      component: () => import('../views/admin/Avis/ReviewsView.vue'),
+    },
+    {
       path: '/admin/domaines/modif-:id',
       name: 'AdminDomaine',
       component: () => import('../views/admin/Domaine/DomaineModifView.vue'),
+    },
+    {
+      path: '/admin/activites/new',
+      name: 'AdminActiviteNew',
+      component: () => import('../views/admin/Activite/NewActiviteView.vue'),
     },
     {
       path: '/paiement',
@@ -141,14 +157,24 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !isAuthenticated()) {
-    // redirect to login page if the route requires authentication and the user is not authenticated
-    next({ path: '/connexion' });
-  } else if ((to.name == "Connexion") && isAuthenticated()) {
-    next({ path: '/mon-compte' });
-  } else {
-    next();
-  }
+
+  // if(to.path.includes('admin') && isAuthenticated) {
+  //   isAdmin(useAuthStore().user.emailclient) ? next() : next({ path: '/' });
+  //   return;
+  // } else if(to.path.includes('admin')) {
+  //   next({ path: '/' });
+  //   return;
+  // }
+
+  // if (to.meta.requiresAuth && !isAuthenticated()) {
+  //   // redirect to login page if the route requires authentication and the user is not authenticated
+  //   next({ path: '/connexion' });
+  // } else if ((to.name == "Connexion") && isAuthenticated()) {
+  //   next({ path: '/mon-compte' });
+  // } else {
+  //   next();
+  // }
+  next();
 });
 
 

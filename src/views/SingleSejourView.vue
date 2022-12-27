@@ -22,6 +22,7 @@
                                     <span v-else class="text-sm">Dans le panier !</span>
                                 </div>
                             </a>
+                            <p class="info">*&nbsp;&nbsp;</p>
                             <ButtonLikeSejour class="mt-5" :idsejour="sejour.idsejour"/>                                
                         </div>
                     </div>
@@ -360,6 +361,9 @@ function ratingFormat(x) {
 .swiper {
   width: 100%;
   height: 100%;
+}
+.info:hover{
+    cursor: pointer;
 }
 
 </style>
