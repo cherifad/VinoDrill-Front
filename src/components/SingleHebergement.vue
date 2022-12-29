@@ -9,11 +9,15 @@
                 <img class="h-full w-auto rounded-lg shadow-lg" :src="img" :alt="titre + ' image'">
             </div>
         </div>
-        <a href="https://google.fr" target="_blank" class="bg-slate-700 text-white p-2 block mt-2 w-fit rounded-md shadow-md hover:bg-slate-600">En savoir plus</a>
+        <div class=" flex ">
+            <a href="https://google.fr" target="_blank" class="bg-slate-700 text-white p-2 block mt-2 w-fit rounded-md shadow-md hover:bg-slate-600">En savoir plus</a>
+            <Tooltip text="En cliquant sur le bouton, vous allez être redirigé vers le site internet de l'hébergement"/>
+        </div>
     </div> 
 </template>
 
 <script setup lang="ts">
+import Tooltip from './Tooltip.vue';
 
 defineProps<{
     titre: string;

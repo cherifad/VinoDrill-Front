@@ -60,7 +60,7 @@ const ToggleLike = () => {
 }
 .heart{
   position: absolute;
-  background: url('../assets/images/like.png') no-repeat;
+  background: url('../assets/img/like.png') no-repeat;
   background-position: left;
   background-size: 2900%;
   height: 90px;

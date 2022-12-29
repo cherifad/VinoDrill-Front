@@ -1,11 +1,12 @@
 <template>
     <div>
-
+        <LoadComponentVue />
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import LoadComponentVue from '../components/LoadComponent.vue';
 
 
 

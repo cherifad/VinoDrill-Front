@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView, useRoute } from "vue-router";
+import { RouterLink, RouterView, useRoute, onBeforeRouteUpdate } from "vue-router";
 import { onMounted, ref, watch } from 'vue';
 import { useAuthStore } from './stores/auth';
 import Cookies from './components/Cookie.vue';
@@ -10,14 +10,14 @@ import config from "./utils/config";
 const authStore = useAuthStore();
 const panierStore = usePanierStore();
 const likesStore = useLikesStore();
+const adminMenu = ref();
 const admin = ref(false);
+const route = useRoute();
 
 const height = ref(0);
 
 onMounted(async () => {
-  useRoute().path.includes('admin') ? admin.value = true : admin.value = false;
-  console.log(useRoute().path);
-  const menuItems = document.querySelectorAll("#menu li");
+  useRoute().path.includes("admin") ? admin.value = true : admin.value = false;
   const header = document.querySelector("header");
 
   // prevent bug when calculating header height
@@ -28,20 +28,36 @@ onMounted(async () => {
   const headerHeight = header?.clientHeight;
 
   height.value = headerHeight + 20;
+  admin.value ? height.value += adminMenu.value.clientHeight : height.value += 0;
   
   // get header height on resize
   window.addEventListener("resize", () => {
+    console.log(admin.value);
     const headerHeight = header?.clientHeight;
     height.value = headerHeight + 35;
+    admin.value ? height.value += adminMenu.value?.clientHeight : '';
   });
 
   try {
     await authStore.getUser();
   }
-  catch(err) {
-    
+  catch(err) { 
   }
+
 });
+
+watch(route, (newRoute, oldRoute) => {
+  if (newRoute.path.includes("admin")) {
+    admin.value = true;
+  } else {
+    admin.value = false;
+  }  
+  window.addEventListener('domcontentloaded', () => {
+    const event = new Event('resize');
+    window.dispatchEvent(event);
+  });
+});
+
 </script>
 
 <template>
@@ -95,9 +111,11 @@ onMounted(async () => {
             <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
           </svg>
         </RouterLink>
-      </div>
+      </div>     
     </div>
-    <div class="mt-6" v-if="admin">
+
+    <!-- Admin Menu -->
+    <div class="mt-6" ref="adminMenu" v-if="useRoute().path.includes('admin')">
       <div class="flex items-center gap-4">
         <div class="flex items-center gap-2">
           <ion-icon class="text-2xl" name="location-outline"></ion-icon>
@@ -133,8 +151,11 @@ onMounted(async () => {
                       <li class="mb-4">
                         <RouterLink to="/contact">Contact</RouterLink>
                       </li>
-                      <li>
+                      <li class="mb-4">
                         <RouterLink to="/admin">Admin</RouterLink>
+                      </li>
+                      <li>
+                        <RouterLink to="/aide">Besoin d'aide</RouterLink>
                       </li>
                   </ul>
               </div>

@@ -5,7 +5,7 @@
                 Retour à la liste des séjours
             </RouterLink>
             <h1 class="text-2xl text-center font-bold text-gray-900 dark:text-white">Modification du séjour n°{{ sejour.idsejour }}</h1>
-            <p @click="popitup(`/sejour/${sejour.idsejour}-view`, sejour.titresejour)" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <p @click="popitup(`/sejour/${sejour.idsejour}-view`, sejour.titresejoursejour)" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Aperçu
             </p>
         </div>
@@ -39,11 +39,11 @@
                 activité
             </button>
         </div>
-        <form>
+        <form @submit="addNewActivite">
             <div class="mb-6 flex gap-6 w-full items-center">
                 <div class="w-1/2">
-                    <label for="titre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titre</label>
-                    <input v-model="form.titre" type="text" id="titre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" :placeholder="sejour.titresejour" required>
+                    <label for="titresejour" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titre</label>
+                    <input v-model="form.titresejour" type="text" id="titresejour" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" :placeholder="sejour.titresejoursejour" required>
                 </div>  
                 <div class="flex w-1/2 gap-6 " v-auto-animate>
                     <label class="inline-flex relative items-center cursor-pointer">
@@ -80,13 +80,13 @@
                         <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG ou JPG (MAX. 800x400px)</p>
                         <p v-if="form.photosejour != sejour.photosejour" class="text-xs text-gray-500 dark:text-gray-400">1 fichier sélectionner</p>
                     </div>
-                    <input @change="handleFileChange" accept=".jpg,.svg,.png" id="dropzone-file" type="file" class="hidden" />
+                    <input ref="fileInput" @change="handleFileChange" accept=".jpg,.svg,.png" id="dropzone-file" type="file" class="hidden" />
                 </label>
-                <img class=" h-64 w-auto border border-gray-300 border-dashed rounded-lg cursor-pointer" :src="form.photosejour" alt="">
+                <img v-if="picture" class=" h-64 w-auto border border-gray-300 border-dashed rounded-lg cursor-pointer" :src="picture" alt="">
             </div>
             <div class="mb-6">
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                <textarea v-model="form.description" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" :placeholder="sejour.descriptionsejour"></textarea>
+                <textarea v-model="form.descriptionsejour" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" :placeholder="sejour.descriptionsejoursejour"></textarea>
             </div> 
             <div class="flex gap-6 mb-6">
                 <div class="w-1/2">
@@ -114,7 +114,7 @@
                         <img class="rounded-t-lg w-full h-auto" :src="etape.photoetape" alt="" />
                         <div class="p-5">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">{{ etape.titreetape }} <Tooltip :text="etape.descriptionetape"/></h5>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">{{ etape.titresejouretape }} <Tooltip :text="etape.descriptionsejouretape"/></h5>
                             </a>
                             <a @click="idEtapeHebergement = [etape.idetape, etape.idhebergement], hebergementStep = 2" class="inline-flex mr-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Choisir {{ idEtapeHebergement }}
@@ -162,7 +162,7 @@
                     <button class="text-white mt-3 mr-3 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Supprimer</button>
                     <button class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Ajouter</button>
                 </div>
-                <Tooltip :text="activite.descriptionactivite"></Tooltip>
+                <Tooltip :text="activite.descriptionsejouractivite"></Tooltip>
             </div>
           </div>
         </Popup>
@@ -176,7 +176,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import apis from '../../../api';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import LoadComponent from '../../../components/LoadComponent.vue';
 import Popup from '../../../components/Popup.vue';
 import Tooltip from '../../../components/Tooltip.vue';
@@ -232,6 +232,9 @@ function popitup(url,windowName) {
   return false;
 }
 
+const picture = ref(null)
+const fileInput: any = ref(null)
+
 function handleFileChange(e) {
   const file = e.target.files[0]
   const reader = new FileReader()
@@ -239,7 +242,7 @@ function handleFileChange(e) {
   reader.onload = () => {
     const image: any = new Image()
     image.src = reader.result
-    form.value.photosejour = image.src
+    picture.value = image.src
   }
 };
 
@@ -248,13 +251,14 @@ function handleCheckboxChange(e) {
 }
 
 const route = useRoute();
+const router = useRouter();
 const sejour: any = ref(null);
 const themes: any = ref(null);
 const destinations: any = ref(null);
 
 const form: any = ref({
-    titre: '',
-    description: '',
+    titresejour: '',
+    descriptionsejour: '',
     iddestination: '',
     idtheme: '',
     photosejour: '',
@@ -264,21 +268,23 @@ const form: any = ref({
     libelletemps: '',
 });
 const ready = ref(false);
+const id = route.params.id;
 
 const getSejour = async () => {
-    const id = route.params.id;
     const response = await apis.getSejourWithHebergement(id);
     sejour.value = response.data.data;
 
-    form.value.titre = sejour.value.titresejour;
-    form.value.description = sejour.value.descriptionsejour;
+    picture.value = sejour.value.photosejour;
+
+    form.value.titresejour = sejour.value.titresejour;
+    form.value.descriptionsejour = sejour.value.descriptionsejour;
     form.value.iddestination = sejour.value.iddestination;
     form.value.idtheme = sejour.value.idtheme;
     form.value.prixsejour = sejour.value.prixsejour;
     form.value.nbjour = sejour.value.nbjour;
     form.value.nbnuit = sejour.value.nbnuit;
     form.value.libelletemps = sejour.value.libelletemps;
-    form.value.photosejour = sejour.value.photosejour;
+    form.value.photosejour = picture.value;
 
     themes.value = (await apis.getThemes()).data.data;
     destinations.value = (await apis.getDestinations()).data.data;
@@ -289,6 +295,29 @@ const getSejour = async () => {
 onMounted(() => {
     getSejour();
 });
+
+const addNewActivite = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('file', fileInput.value.files[0]);
+
+    await apis.uploadImage(formData).then((response) => {
+        form.value.photosejour = response.data.url
+    }).catch((error) => {
+        console.log(error);
+        return;
+    });
+
+    apis.updateSejourById(id, form.value)
+    .then((response) => {
+        router.push({ name: 'SingleSejour', params: { id: id, slug: slugify(sejour.value.titresejour) } })
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+}
 
 </script>
 

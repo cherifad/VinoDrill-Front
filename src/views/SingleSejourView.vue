@@ -3,7 +3,7 @@
         <div class="">
             <div class="grid gap-4 grid-cols-4">
                 <div class="gap-4 flex items-center col-span-3">
-                    <img :src="sejour.photosejour" :alt="sejour.titresejour + ' image'" class="rounded-lg shadow-lg">
+                    <img :src="checkOnlineImage(sejour.photosejour) ? sejour.photosejour : '/src/assets/img/vineyard-ga92acf920_1920.jpg'" :alt="sejour.titresejour + ' image'" class="rounded-lg shadow-lg max-w-lg">
                     <div class="flex-1 text-2xl font-normal">
                         Quelques informations sur le séjour
                         <ul>
@@ -22,12 +22,16 @@
                                     <span v-else class="text-sm">Dans le panier !</span>
                                 </div>
                             </a>
-                            <p class="info">*&nbsp;&nbsp;</p>
-                            <ButtonLikeSejour class="mt-5" :idsejour="sejour.idsejour"/>                                
+                            <Tooltip text="Pour ajouter une date à un séjour il faut le faire depuis le panier" />                            
+                            <ButtonLikeSejour class="mt-5" :idsejour="sejour.idsejour"/>
+                            <Tooltip text="Pour voir les séjours ajoutés aux favoris il faut être connecté"/>                                
                         </div>
                     </div>
                 </div>
-                <ReviewResume v-if="rating" :ratingaverage="rating" :ratingcount="ratingcount" :ratingcountarray="ratingcountarray" />
+                <div class="flex">
+                    <ReviewResume v-if="rating" :ratingaverage="rating" :ratingcount="ratingcount" :ratingcountarray="ratingcountarray"/>
+            
+                </div>
             </div>
             <div class="text-cyan-500">
               <a href="https://www.vinotrip.com/" target="_blank">En savoir plus</a>
@@ -159,6 +163,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import ButtonLikeSejour from '../components/ButtonLikeSejour.vue';
+import Tooltip from '../components/Tooltip.vue';
 
 const route = useRoute();
 const panierStore = usePanierStore();
@@ -174,6 +179,11 @@ const getCurrentCartSejour = () => {
     return sejour;
 }
 
+const checkOnlineImage = (url: string) => {
+    const img = new Image();
+    img.src = url;
+    return img.height !== 0;
+}
 
 const nompartenaire: any = ref(null);
 const visites: any = ref(null);
@@ -357,13 +367,9 @@ function ratingFormat(x) {
   left: 5%;
 }
 
-
 .swiper {
   width: 100%;
   height: 100%;
-}
-.info:hover{
-    cursor: pointer;
 }
 
 </style>

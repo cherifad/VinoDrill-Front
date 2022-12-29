@@ -17,11 +17,7 @@
              
         </div>
         
-    </div>
-
-
-
-    
+    </div>    
 </div>
 
 </template>
@@ -36,5 +32,8 @@ const props = defineProps<{
 let button = document.querySelectorAll('.button');
 
 </script>
-<style>
+<style scoped>
+* {
+    transition: all 250ms ease-in-out;
+}
 </style>

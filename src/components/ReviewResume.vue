@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import Tooltip from './Tooltip.vue';
 // color array for the rating bars from red to green
 const ratingcolorsarray = ['#ff0000', '#ff4d00', '#ff9900', '#ffff00', '#00ff00'];
 const props = defineProps<{

@@ -21,6 +21,7 @@ const getDestinationById = id => api.get(`/destination/${id}`);
 
 const getHebergements = () => api.get(`/hebergement`);
 const getHebergementById = id => api.get(`/hebergement/${id}`);
+const newHebergement = payload => api.post(`/hebergement`, payload);
 
 const getDomaines = () => api.get(`/cave`);
 const getDomaineById = id => api.get(`/cave/${id}`);
@@ -33,6 +34,8 @@ const getSociete = () => api.get(`/societe`);
 const getSocieteById = id => api.get(`/societe/${id}`);
 
 const getReviews = (idsejour) => api.get(`/avis?sejour=${idsejour}`);
+
+const uploadImage = (payload) => api.post(`/upload`, payload);
 
 const apis = {
     getSejours,
@@ -56,6 +59,8 @@ const apis = {
     getSocieteById,
     newActivite,
     getReviews,
+    newHebergement,
+    uploadImage,
 };
 
 export default apis;

@@ -29,7 +29,7 @@
                                     Voir les avis
                                 </button>
                             </router-link>
-                            <button @click="selectedPromo = sejour.idsejour, showPromoPopup = true, newPrice = getSejourById(selectedPromo).prixsejour" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                            <button @click="selectedIdPromo = sejour.idsejour, showPromoPopup = true, oldPrice = getSejourById(selectedIdPromo).prixsejour" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                 Mettre les promotions
                             </button>
                         </div>
@@ -47,10 +47,17 @@
                     </td>
                 </tr>
             </tfoot>  
-            <Popup :show="showPromoPopup" @update:show="showPromoPopup = $event" @submit="submitHandler" :title="'Mettre en promotion le n°' + selectedPromo" >
+            <Popup :show="showPromoPopup" @update:show="showPromoPopup = $event" @submit="submitHandler" :title="'Mettre en promotion le n°' + selectedIdPromo" >
                 <div class="flex flex-col gap-3">
-                    <label for="promo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prix actuel : {{ getSejourById(selectedPromo).prixsejour }}€</label>
-                    <input type="number" id="promo" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-model="newPrice" />
+                    <label for="promo" class="block text-sm font-medium text-gray-900 dark:text-white">Prix actuel : {{ oldPrice }}€</label>
+                    <label for="promo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prix après promotion de {{ promoPercent }}% : {{ oldPrice - (oldPrice * promoPercent / 100) }}€</label>
+                    <input @input="checkPromoPercent" type="number" min="0" max="100" id="promo" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-model="promoPercent" />
+                    <div v-if="promoPercentError" v-auto-animate class="relative px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+                        <span class="absolute inset-y-0 left-0 flex items-center ml-4">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                        </span>
+                        <p class="ml-6">Le pourcentage doit être entre 1 et 100</p>
+                    </div>
                 </div>
             </Popup>          
         </table>
@@ -64,16 +71,39 @@
 <script setup lang="ts">
 import apis from '../../../api';
 import { onMounted, ref } from 'vue';
-import { slugify } from '../../../utils/functions';
 import LoadComponent from '../../../components/LoadComponent.vue';
 import Popup from '../../../components/Popup.vue';
 
 const sejours: any = ref([]);
-const selectedPromo: any = ref(9999);
+
+// promo popup
+const selectedIdPromo: any = ref(9999);
 const showPromoPopup: any = ref(false);
-const newPrice: any = ref(0);
+const oldPrice: any = ref(0);
+const promoPercent: any = ref(1);
+const promoPercentError: any = ref(false);
+const promoPercentRules = {
+    required: true,
+    min: 1,
+    max: 100
+}
+
+const checkPromoPercent = () => {
+    if (promoPercent.value === '' && promoPercentRules.required) {
+        promoPercent.value = 1;
+    }
+    else if (promoPercent.value < promoPercentRules.min || promoPercent.value > promoPercentRules.max) {
+        promoPercentError.value = true;
+    } else {
+        promoPercentError.value = false;
+    }
+}
 
 const submitHandler = () => {
+    if(promoPercentError.value) {
+        alert('Le pourcentage doit être entre 1 et 100');
+        return;
+    }
     alert('Mise en promotion en cours...');
     alert('Mise en promotion terminée !');
 }

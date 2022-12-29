@@ -2,7 +2,10 @@
     <!-- catParticipant -->
     <div>
         <div id="catParticipant" class="flex flex-col gap-2 justify-evenly my-3">
-            Par Participant
+            <div class="flex">
+                Par Participant
+                <Tooltip text="En cliquant sur l'un des pictogrammes, vous aurez les séjours associés"/>
+            </div>
             <div class="flex fisrt-level select-none cursor-pointer items-center gap-3 text-base">
                 <div class="p-3 bg-white text-black rounded-lg hover:-translate-y-1 cursor-pointer">
                     <img src="../assets/img/couple-svgrepo-com.svg" alt="en Couple" class=" w-4 ">
@@ -32,7 +35,10 @@
 
     <!-- theme -->
     <div id="theme" class="flex flex-col gap-2 justify-evenly my-3">
-        Par Thème
+        <div class="flex">
+                Par Thème
+                <Tooltip text="En cliquant sur l'un des pictogrammes, vous aurez les séjours associés"/>
+            </div>
         <div class="flex select-none cursor-pointer items-center gap-3 text-base">
             <ion-icon class="p-3 bg-white text-black rounded-lg hover:-translate-y-1 cursor-pointer" name="restaurant" alt="Vin & Gastronomie"></ion-icon>
             Vin & Gastronomie
@@ -56,6 +62,7 @@
 
 import { onMounted, ref, watch } from 'vue';
 import axios from 'axios';
+import Tooltip from './Tooltip.vue';
 
 const destination: any = ref(null);
 const catParticipant: any = ref(null);

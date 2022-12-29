@@ -11,7 +11,10 @@
                 <p v-if="typevisite" class=" text-lg">Visite : {{ typevisite.libelletypevisite }}</p>
             </div>
         </div>
-        <a href="https://google.fr" target="_blank" class="bg-slate-400 text-white p-2 block mt-2 w-fit rounded-md shadow-md hover:bg-slate-600">En savoir plus</a>
+        <div class="flex">
+            <a href="https://google.fr" target="_blank" class="bg-slate-400 text-white p-2 block mt-2 w-fit rounded-md shadow-md hover:bg-slate-600">En savoir plus</a>
+            <Tooltip text="En cliquant sur le bouton, vous allez être redirigé vers le site internet du domaine"/>
+        </div>
     </div> 
 
 </template>
@@ -20,6 +23,7 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import { onMounted } from 'vue';
+import Tooltip from './Tooltip.vue';
 
 const edit = ref(false);
 

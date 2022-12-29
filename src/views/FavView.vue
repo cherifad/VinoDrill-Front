@@ -2,7 +2,7 @@
     <div class="min-h-fit mb-10">
         <div v-if="mesFavoris && lenghtFavoris > 0" class="px-14 py-5">
             <div class="flex flex-wrap justify-center">
-                <div v-for="sejour in mesFavoris" :key="sejour.idsejour" class="px-2 py-2 w-1/3" >
+                <div v-for="sejour in mesFavoris" :key="sejour.idsejour" class="px-2 py-2 w-1/3 mb-20" >
                     <RouterLink :to="{ name: 'SingleSejour', params: { id: sejour.idsejour, slug: slugify(sejour.titresejour) }}">
                         <SingleCardSejour :title="sejour.titresejour"
                                     :description="sejour.descriptionsejour" :nights="sejour.nbnuit" :days="sejour.nbjour"

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex fixed h-screen w-screen items-center justify-center">
+    <div class="flex flex-col w-full h-[60vh] items-center justify-center">
         <div class="p-5 bg-rouge rounded-3xl shadow-xl">
             <lord-icon
                 src="https://cdn.lordicon.com/xlrvqbwc.json"
@@ -9,5 +9,6 @@
                 style="width:250px;height:250px">
             </lord-icon>
         </div>
+        <p class="text-3xl" id="passenger">Chargement...</p>
     </div>
 </template>

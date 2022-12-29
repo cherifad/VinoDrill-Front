@@ -16,13 +16,7 @@
                />             
       </div>
      
-   </div>
-   
-   
-
-   
-   
-   
+   </div>   
 </template>
 <script setup lang="ts"> import { onMounted, ref } from 'vue';
 import SingleCardVignoble from '../components/SingleCardVignoble.vue';
@@ -50,5 +44,7 @@ onMounted(async () => {
 
 </script>
 <style scoped>
-
+* {
+   transition: all 250ms ease-in-out;
+}
 </style>

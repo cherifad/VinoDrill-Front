@@ -1,7 +1,7 @@
 <template>
     <div v-if="sejours" class="">
         <div class="grid gap-10 grid-cols-4">
-            <div class="bg-#350a06 border-rose border-2 sticky top-5 text-2xl font-bold rounded-md shadow-sm p-7 h-fit">
+            <div class="bg-#350a06 z-50 border-rose border-2 sticky top-5 text-2xl font-bold rounded-md shadow-sm p-7 h-fit">
                 Filtres
                 <div>
                     <!-- <Input @filter="(i) => getFilteredData(i)" columnName="rien" :data="libelleDestination" name="Destinations" placeholder="Recherchez ici"/> -->
