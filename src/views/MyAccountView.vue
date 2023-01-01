@@ -71,7 +71,7 @@
             </div>
             <div class="w-full flex" v-if="authStore.user.adresses && authStore.user.adresses.length > 0">
                 <div class="min-w-1/3 flex-1 px-3 py-3" v-for="adresse in authStore.user.adresses" :key="adresse.idadresse">
-                    <AddresseVue :id="adresse.idadresse" :libelleAdress="adresse.libelleadresse" :rueAdresse="adresse.rueadresse" :villeAdresse="adresse.villeadresse" :codePostalAdresse="adresse.cpadresse" :paysAdresse="adresse.pays" />
+                    <AddresseVue :canEdit="true" :id="adresse.idadresse" :libelleAdress="adresse.libelleadresse" :rueAdresse="adresse.rueadresse" :villeAdresse="adresse.villeadresse" :codePostalAdresse="adresse.cpadresse" :paysAdresse="adresse.pays" />
                 </div>
             </div>
             <div v-else class="text-2xl w-full font-bold text-center mt-10">
@@ -130,6 +130,7 @@
             <div v-else class="text-2xl w-full font-bold text-center mt-10">
                 Vous n'avez aucun avis.
             </div>
+            <!-- <AddAvis idavis="3" /> -->
         </div>        
     </div>    
 </div>
@@ -156,6 +157,7 @@ import SingleComment from '../components/SingleComment.vue';
 import SingleCardSejour from '../components/SingleCardSejour.vue';
 import axios from 'axios';
 import config from '../utils/config';
+import AddAvis from '../components/AddAvis.vue';
 
 import { useLikesStore } from '../stores/likes';
 const likesStore = useLikesStore();

@@ -1,29 +1,32 @@
 <template>
     <div>
-        <table v-if="hebergements" class="w-full">
+        <table v-if="commandes" class="w-full">
             <thead>
                 <tr>
-                    <th>N°</th>
-                    <th>Nom</th>
-                    <th>Description</th>
+                    <th @click="sortById" class="select-none cursor-pointer">N°</th>
+                    <th @click="sortByDate" class="select-none cursor-pointer">Date</th>
+                    <th @click="sortByPrice" class="select-none cursor-pointer">Prix</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="hebergement in hebergements" :key="hebergement.idhebergement">
-                    <td>{{ hebergement.idhebergement }}</td>
-                    <td>{{ hebergement.libellehebergement }}</td>
-                    <td>{{ hebergement.descriptionhebergement }}</td>
+                <tr v-for="commande in commandes" :key="commande.refcommande">
+                    <td>{{ commande.refcommande }}</td>
+                    <td>{{ commande.datecommande }}</td>
+                    <td>{{ commande.prixcommande }}€</td>
                     <td>
                         <div class="flex gap-3 justify-center">
-                            <router-link :to="{ name: 'AdminSejourModif', params: { id: hebergement.idhebergement } }">
+                            <router-link :to="{ name: 'AdminCommandeSingle', params: { id: commande.refcommande } }">
                                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                     Modifier
                                 </button>
                             </router-link>
                             <button @click="fakeDelete()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                 Supprimer
-                            </button>                           
+                            </button>  
+                            <button @click="generatePDF" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                PDF
+                            </button>           
                         </div>
                     </td>
                 </tr>
@@ -31,7 +34,7 @@
             <tfoot>
                 <tr>
                     <td colspan="4">
-                        <router-link to="/admin/hebergement/ajout">
+                        <router-link to="/admin/commande/ajout">
                             <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                 Ajouter un séjour
                             </button>
@@ -52,18 +55,19 @@ import apis from '../../../api';
 import { onMounted, ref } from 'vue';
 import LoadComponent from '../../../components/LoadComponent.vue';
 import Popup from '../../../components/Popup.vue';
+import generatePDF from '../../../utils/jsPDF';
 
-const hebergements: any = ref([]);
+const commandes: any = ref([]);
 
 const submitHandler = () => {
     alert('Mise en promotion en cours...');
     alert('Mise en promotion terminée !');
 }
 
-const getHebergements = async () => {
-    const response = await apis.getHebergements();
-    hebergements.value = response.data.data;
-    hebergements.value.sort((a: any, b: any) => a.idhebergement - b.idhebergement);
+const getCommandes = async () => {
+    const response = await apis.getCommandes();
+    commandes.value = response.data.data;
+    commandes.value.sort((a: any, b: any) => a.refcommande - b.refcommande);
 }
 
 const fakeDelete = () => {
@@ -71,12 +75,36 @@ const fakeDelete = () => {
     alert('Suppression terminée !');
 }
 
-// get hebergement from hebergements array by id
+// get commande from commandes array by id
 const getSejourById = (id: number) => {
-    return hebergements.value.find((hebergement: any) => hebergement.idhebergement === id);
+    return commandes.value.find((commande: any) => commande.refcommande === id);
 }
 
-onMounted(getHebergements);
+onMounted(getCommandes);
+
+const sortByPrice = () => {
+    if (commandes.value[0].prixcommande > commandes.value[commandes.value.length - 1].prixcommande) {
+        commandes.value.reverse();
+        return;
+    } 
+    commandes.value.sort((a: any, b: any) => a.prixcommande - b.prixcommande);
+}
+
+const sortById = () => {
+    if (commandes.value[0].refcommande < commandes.value[commandes.value.length - 1].refcommande) {
+        commandes.value.reverse();
+        return;
+    } 
+    commandes.value.sort((a: any, b: any) => a.refcommande - b.refcommande);
+}
+
+const sortByDate = () => {
+    if (commandes.value[0].datecommande > commandes.value[commandes.value.length - 1].datecommande) {
+        commandes.value.reverse();
+        return;
+    } 
+    commandes.value.sort((a: any, b: any) => a.datecommande - b.datecommande);
+}
 </script>
 
 <style scoped>

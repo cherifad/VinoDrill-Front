@@ -48,7 +48,7 @@
             <div @click="updateAdress()" v-if="edit" class="flex cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold">
                 Valider les changements
             </div>
-            <div class="flex cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold" @click="edit = !edit">{{ edit ? "Annuler les changements" :
+            <div v-if="canEdit" class="flex cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold" @click="edit = !edit">{{ edit ? "Annuler les changements" :
                     "Modifier l'adresse"
             }}</div>
         </div>
@@ -68,6 +68,7 @@ const props = defineProps<{
     villeAdresse: any;
     codePostalAdresse: any;
     paysAdresse: any;
+    canEdit: boolean;
 }>();
 
 const form = ref({

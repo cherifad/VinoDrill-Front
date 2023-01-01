@@ -15,7 +15,7 @@
                         </ul>
                         <div class="flex gap-1 flex-wrap items-center" v-auto-animate>                            
                             <a href="#etape" class="p-2 bg-white text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">Voir les étapes</a>
-                            <a @click="!getCurrentCartSejour() ? panierStore.addSejour(sejour.idsejour) : addedToCart = true" class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
+                            <a @click="!getCurrentCartSejour() ? panierStore.addSejour(sejour.idsejour, sejour.prixsejour) : addedToCart = true" class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
                                 Ajouter au panier <br>
                                 <div v-if="getCurrentCartSejour()" class="flex justify-evenly">
                                     <span v-if="!addedToCart" class="text-sm">Déjà dans le panier</span>

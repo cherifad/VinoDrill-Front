@@ -5,7 +5,7 @@
             <div class=" w-20 border"></div>
         </div>
         <div class="m-10">
-            <h3 class="text-center text-lg">Notre politique de protection des données personnelles vise à protéger les données personnelles qui sont collectées sur notre plateforme. <br> Cette page vous décrit quelles données sont collectées, leurs traitements, comment elles sont protégées. <br> Vous y trouverez également avec qui et dans quelles conditions elles sont partagées.</h3>
+            <h3 class="text-center text-lg">Notre politique de protection des données personnelles vise à protéger les données personnelles qui sont collectées sur notre plateforme. <br> <br> Cette page vous décrit quelles données sont collectées, leurs traitements, comment elles sont protégées. <br> Vous y trouverez également avec qui et dans quelles conditions elles sont partagées.<br> Veuillez lire attentivement cette politique avant de nous fournir toute information personnelle.</h3>
 
             <div>
                 <h2>Qui est le responsable du traitement de mes données personnelles ?</h2>

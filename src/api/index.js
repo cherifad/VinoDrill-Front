@@ -37,6 +37,14 @@ const getReviews = (idsejour) => api.get(`/avis?sejour=${idsejour}`);
 
 const uploadImage = (payload) => api.post(`/upload`, payload);
 
+const getCommandes = () => api.get(`/commande`);
+const getCommandeById = (id, details) => details ? api.get(`/commande/${id}?full=true`) : api.get(`/commande/${id}`);
+
+const getHotelById = id => api.get(`/hotel/${id}`);
+
+const addAvis = payload => api.post(`/avis`, payload);
+const editAvis = (id, payload) => api.put(`/avis/${id}`, payload);
+
 const apis = {
     getSejours,
     getSejourById,
@@ -61,6 +69,11 @@ const apis = {
     getReviews,
     newHebergement,
     uploadImage,
+    getCommandes,
+    getCommandeById,
+    getHotelById,
+    addAvis,
+    editAvis,
 };
 
 export default apis;

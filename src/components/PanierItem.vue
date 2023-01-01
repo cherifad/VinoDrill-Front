@@ -42,8 +42,9 @@
         <h1 class="font-bold text-xl w-fit mb-1">Supprimer</h1>
         <div class="w-20 border mb-2 "></div>
         <ion-icon
-          @click="remove"
-          class="text-4xl pt-8 cursor-pointer"
+          @click="disabled ? null : remove()"
+          class="text-4xl pt-8"
+          :class="disabled ? 'cursor-not-allowed' : 'cursor-pointer'"
           name="trash-bin-outline"
         ></ion-icon>
       </div>
@@ -57,7 +58,7 @@
         <div class="flex flex-col items-center">
           <h1 class="mb-1">Début</h1>
           <div class="w-12 border mb-2"></div>
-          <input v-model="form.date" id="dateDebut" type="date" class="rounded border-2 p-1 text-rouge border-rose focus:border-rouge outline-none" max="12-02-1992" placeholder="Date">
+          <input :disabled="disabled" v-model="form.date" id="dateDebut" type="date" class="rounded border-2 p-1 text-rouge border-rose focus:border-rouge outline-none" max="12-02-1992" placeholder="Date">
         </div>
       </div>
       <div class="flex flex-1 shadow-sm shadow-rose rounded-xl p-5 flex-col items-center">
@@ -69,7 +70,12 @@
             <div class="flex flex-col items-center">
               <h1 class="mb-1">Adultes</h1>
               <div class="w-12 border mb-2"></div>
-              <p>
+              <p v-if="disabled">
+                <button id="button" class="font-bold cursor-not-allowed py-1 px-2 rounded">-</button>
+                {{ form.adults }}
+                <button id="button" class="font-bold cursor-not-allowed py-1 px-2 rounded">+</button>
+              </p>
+              <p v-else>
                 <button @click="form.adults != 1 ? form.adults-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
                 {{ form.adults }}
                 <button @click="form.adults++" id="button" class="font-bold py-1 px-2 rounded">+</button>
@@ -78,7 +84,12 @@
             <div class="flex flex-col items-center">
               <h1 class=" mb-1">Enfants</h1>
               <div class="w-12 border mb-2"></div>
-              <p>
+              <p v-if="disabled">
+                <button id="button" class="font-bold cursor-not-allowed py-1 px-2 rounded">-</button>
+                {{ form.children }}
+                <button id="button" class="font-bold cursor-not-allowed py-1 px-2 rounded">+</button>
+              </p>
+              <p v-else>
                 <button @click="form.children != 0 ? form.children-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
                 {{ form.children }}
                 <button @click="form.children++" id="button" class="font-bold py-1 px-2 rounded">+</button>
@@ -87,14 +98,19 @@
             <div class="flex flex-col items-center">
               <h1 class=" mb-1">Chambres</h1>
               <div class="w-12 border mb-2"></div>
-              <p>
+              <p v-if="disabled">
+                <button id="button" class="font-bold cursor-not-allowed py-1 px-2 rounded">-</button>
+                {{ form.rooms }}
+                <button id="button" class="font-bold cursor-not-allowed py-1 px-2 rounded">+</button>
+              </p>
+              <p v-else>
                 <button @click="form.rooms != 1 ? form.rooms-- : null" id="button" class="font-bold py-1 px-2 rounded">-</button>
                 {{ form.rooms }}
                 <button @click="form.rooms++" id="button" class="font-bold py-1 px-2 rounded">+</button>
               </p>
             </div>
             <div class="flex flex-col items-center">
-              <h1 class="mb-1 cursor-pointer" @click="reset()">Mettre à zéro</h1>
+              <h1 class="mb-1 cursor-pointer" :class="disabled ? 'opacity-70 cursor-not-allowed' : ''" @click="disabled ? null : reset()">Mettre à zéro</h1>
             </div>
           </div>
       </div>
@@ -105,7 +121,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch, onBeforeUnmount } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
 import { usePanierStore } from "../stores/panier";
 import config from "../utils/config";
@@ -115,9 +131,9 @@ const exampleDate = new Date();
 const prixTotal = ref(0);
 
 // majoration (en %)
-const majEnfant = 12;
-const majChambre = 15;
-const majAdulte = 20;
+const majEnfant = config.majEnfant;
+const majChambre = config.majChambre;
+const majAdulte = config.majAdulte;
 
 //total
 const emit = defineEmits(['total']);
@@ -125,6 +141,7 @@ const emit = defineEmits(['total']);
 onMounted(() => {
   const datePickerId = document.getElementById("dateDebut") as HTMLInputElement;
   datePickerId.min = new Date().toISOString().split("T")[0];
+  // calculTotal();
 });
 
 const props =
@@ -135,6 +152,7 @@ const props =
     image: string;
     price: number;
     id: number;
+    disabled: boolean;
   }>();
 
 const getCurrentCartSejour = () => {
@@ -159,11 +177,19 @@ const remove = () => {
   }
 };
 
-onBeforeRouteLeave(async (to, from) => {
+const updateStore = () => {
   panierStore.addRemAdultes(props.id, form.value.adults);    
   panierStore.addRemEnfants(props.id, form.value.children);
   panierStore.addRemChambres(props.id, form.value.rooms);
   panierStore.addRemDate(props.id, form.value.date);
+};
+
+onBeforeRouteLeave(async (to, from) => {
+  updateStore();
+});
+
+onBeforeUnmount(() => {
+  updateStore();
 });
 
 // watch works directly on a ref
@@ -201,6 +227,9 @@ const calculTotal = () => {
   
   emit('total', totalFinal - prixTotal.value);
   prixTotal.value = totalFinal;
+
+  updateStore();
+
   return totalFinal;
 };
 </script>

@@ -84,7 +84,7 @@ const autoComplete = async(load) => {
 };
 
 const fillData = (data) => {
-    form.value.rue = `${data.housenumber == 'undefined' ? '' : data.housenumber} ${data.street}`;
+    form.value.rue = `${!data.housenumber ? '' : data.housenumber} ${data.street}`;
     form.value.ville = data.city;
     form.value.codepostal = data.postcode;
     form.value.pays = data.country;

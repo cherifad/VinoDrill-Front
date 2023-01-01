@@ -1,6 +1,6 @@
 <template>
     <div class="w-full">
-        <div class="w-full flex gap-3 mb-3 items-center">
+        <div class="w-full flex gap-3 mb-3 items-center" v-auto-animate>
             <div class="relative border-2 border-rose p-5 rounded-lg flex flex-col gap-3"> 
                 <div v-if="estcadeau">
 
@@ -32,17 +32,23 @@
                     <p id="passenger" class="text-2xl font-semibold">Chambre(s) : {{ nbchambre }}</p>
                 </div>
                 
-
                 <p v-if="sejour" class="text-2xl font-bold">Sejour : {{ sejour.titresejour }}</p>
             </div>
         </div>
+        <div @click="addAvis = !addAvis" class="flex mb-6 w-fit cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold">
+            <ion-icon name="log-out-outline"></ion-icon>
+            Rédiger un avis
+        </div>
+        <AddAvis v-if="addAvis" :idavis="null" :idsejour="sejour.idsejour" />
     </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
+import AddAvis from '../AddAvis.vue';
 
+const addAvis = ref(false);
 
 function toReadableDate(date: string) {
     const dateObj = new Date(date);

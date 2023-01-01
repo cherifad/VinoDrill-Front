@@ -188,7 +188,7 @@ watch(route, (newRoute, oldRoute) => {
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">2022 <a href="https://flowbite.com/" class="hover:underline">Vinodrill</a>. Aucun droit réservé.
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">2023 <a href="https://flowbite.com/" class="hover:underline">Vinodrill</a>. Aucun droit réservé.
           </span>
           <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
               <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">

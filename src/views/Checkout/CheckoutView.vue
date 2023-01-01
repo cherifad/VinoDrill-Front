@@ -1,125 +1,152 @@
 <template>
-    <div>
-        <!-- <div id="example1-card" class="w-1/2 bg-white p-4 rounded-xl">
-        </div>
-
-        <form id="payment-form" class="w-1/2 bg-white p-4 rounded-xl">
-            <div id="card-element">
-            A Stripe Element will be inserted here.
-            </div>
-        
-             Used to display form errors.
-            <div id="card-errors" class="text-red-900" role="alert"></div>
-        
-            <button class=" text-black">Submit Payment</button>
-        </form> -->
-
-        <form class="form-horizontal" id="payment-form" >
-            <div class="mb-3">
-                <label class='control-label'>Card Number</label>
-                <input v-model="form.card_no" autocomplete='off' class='form-control card-number text-black' size='20' type='text' name="card_no">
-            </div>
-            <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                    <label class='control-label'>CVV</label>
-                    <input v-model="form.cvvNumber" autocomplete='off' class='form-control card-cvc text-black' placeholder='ex. 311' size='4' type='text' name="cvvNumber">
-                </div>
-                <div class="col-auto">
-                    <label class='control-label'>Expiration</label>
-                    <input v-model="form.ccExpiryMonth" class='form-control card-expiry-month text-black' placeholder='MM' size='4' type='text' name="ccExpiryMonth">
-                </div>
-                <div class="col-auto">
-                    <label class='control-label'>Year</label>
-                    <input v-model="form.ccExpiryYear" class='form-control card-expiry-year text-black' placeholder='YYYY' size='4' type='text' name="ccExpiryYear">
-                    <input v-model="form.amount" class='form-control card-expiry-year' placeholder='YYYY' size='4' type='hidden' name="amount">
-                </div>
-            </div>
-            <div class="mb-3" style="padding-top:20px;">
-                <h5 class='total' >Total:<span class='amount'>$10</span></h5>
-            </div>
-            <div @click="pay()" class="mb-3">
-                Pay »
-            </div>
-            <div class="mb-3">
-                <div class='alert-danger alert' style="display:none;">
-                    Please correct the errors and try again.
-                </div>
-            </div>
-        </form>
-
+  <div>    
+    <Progress :step="2" />
+    <div class="flex gap-6 mb-6">
+        <RouterLink to="/mon-panier"
+          @click=""
+          class="flex w-2/5 justify-center cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clip-rule="evenodd" />
+            </svg>
+            Modifier le panier
+        </RouterLink>
+        <RouterLink to="/paiement/facturation"
+          class="flex w-full justify-center cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold"
+        >
+            Valider et passer à l'étape suivante
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+        </RouterLink>
     </div>
+    <div class="mb-6 w-full gap-6 flex flex-wrap justify-center">
+      <div
+        v-for="item in articles"
+        v-auto-animate
+        :key="item.sejour.idsejour"
+        class="w-full"
+      >
+        <div class="w-full">
+          <PanierItem
+            :id="item.sejour.idsejour"
+            :title="item.sejour.titresejour"
+            :image="item.sejour.photosejour"
+            :nights="item.sejour.nbnuit"
+            :days="item.sejour.nbjour"
+            :price="item.sejour.prixsejour"
+            :disabled="true"
+            v-on:total="(i) => getTotal(i, item.sejour.titresejour)"
+          >
+          </PanierItem>
+        </div>
+      </div>
+    </div>
+    <div class="flex w-full gap-3 items-center">
+        <RouterLink to="/mon-panier"
+          @click=""
+          class="flex w-2/5 justify-center cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clip-rule="evenodd" />
+            </svg>
+            Modifier le panier
+        </RouterLink>
+        <RouterLink to="/paiement/facturation"
+          class="flex w-full justify-center cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold"
+        >
+            Valider et passer à l'étape suivante
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+        </RouterLink>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import {loadStripe} from '@stripe/stripe-js';
-import config from '../../utils/config';
-import axios from 'axios';
+import { onMounted, ref } from "vue";
+import axios from "axios";
+import { usePanierStore } from "../../stores/panier";
+import PanierItem from "../../components/PanierItem.vue";
+import { RouterLink } from "vue-router";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "../../stores/auth";
+import Progress from "../../components/Progress.vue";
 
-const form = ref({
-    card_no: '',
-    ccExpiryMonth: '',
-    ccExpiryYear: '',
-    cvvNumber: '',
-    amount: 300,
-    description: '',
-});
+const route = useRouter();
+const authStore: any = useAuthStore();
 
-const stripe: any = await loadStripe(config.stripe.pk);
-    var elements = stripe?.elements();
-  
-    // Create the payment element
-    var paymentElement = elements.create('card');
+const panierStore = usePanierStore();
+const articles: any = ref([]);
+const loading = ref(false);
+
+const savePaiment = ref(false);
+
+const items: any = []
 
 onMounted(async () => {
-   
-
-    // Mount the element to the DOM
-    paymentElement.mount('#card-element');
-
-    
-});
-
-function pay() {
-
-    console.log("clicked");
-
-    stripe.createToken(paymentElement).then(function(result) {
-        if (result.error) {
-            // Inform the user if there was an error
-            var errorElement: any = document.getElementById('card-errors');
-            errorElement.textContent = result.error.message;
-        } else {
-            // Send the token to your server
-            console.log(result.token);
-            stripeTokenHandler(result.token);
+    if (panierStore.total === 0) {
+        route.push("/mon-panier");
+    }
+    panierStore.sejours.forEach((element) => {
+        if (element.idsejour) {
+            axios.get("/api/sejour/" + element.idsejour)
+                .then((response) => {
+                    articles.value.push({
+                        sejour: response.data["data"],
+                    });
+                    items.push({
+                        name: response.data["data"].titresejour,
+                        description: response.data["data"].descriptionsejour,
+                        unit_amount: response.data["data"].prixsejour,
+                        currency: 'EUR',
+                        quantity: 1,
+                        metadata: {
+                            nbenfants: element.nbEnfants,
+                            nbadultes: element.nbAdultes,
+                            nbchambre: element.nbChambres,
+                        }
+                    })
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     });
-    };
+});
 
-    function stripeTokenHandler(token) {
-    // Insert the token ID into the form so it gets submitted to the server
-    var form = document.getElementById('payment-form');
-    console.log(form);
-    var hiddenInput = document.createElement('input');
-    hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'stripeToken');
-    hiddenInput.setAttribute('value', token.id);
-    form?.appendChild(hiddenInput);
+const confirmPay = () => {
+    if (confirm("Voulez-vous vraiment payer ?")) {
+        loading.value = true;
+        pay();
+    }
+}
 
-
-    // Submit the form
-    axios.post('/api/add-money-stripe', form).then((res) => {
-        console.log(res);
-    }).catch((err) => {
-        console.log(err);
+async function pay() {
+  try {
+    const response = await axios.post("/payment/checkout", {
+        articles: items,
+        save_crendentials: savePaiment.value,
+        email: authStore.user?.emailclient,
+        name: authStore.user?.nomclient + " " + authStore.user?.prenomclient,
     });
+    const checkoutURL = response.data.checkoutURL;
+    // Redirect the user to the Stripe Checkout page
+    window.location.href = checkoutURL;
+  } catch (error) {
+    console.error(error);
+    loading.value = false;
+  }
+}
 
-    console.log("passed");
-    // (form as HTMLInputElement).submit();
-    };
+function getTotal(total: number, name: string) {
+    if(total == 0) return;
+    items.forEach((element: any) => {
+        if (element.name === name) {
+            element.unit_amount = total * 100;
+        }
+    });
+}
 
 </script>
-
-
-   

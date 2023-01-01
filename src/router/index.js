@@ -46,6 +46,11 @@ const router = createRouter({
       name: "Vignoble",
       component: () => import("../views/VignobleView.vue"),
     },
+    {
+      path: "/sejour/details/:id-hotel",
+      name: "Hotel",
+      component: () => import("../views/HotelView.vue"),
+    },
     { 
       path: "/route-des-vins",
       name: "RouteDesVins",
@@ -159,14 +164,34 @@ const router = createRouter({
       component: () => import('../views/admin/Commande/AllCommandesView.vue'),
     },
     {
+      path: '/admin/commandes/modif-:id',
+      name: 'AdminCommandeSingle',
+      component: () => import('../views/admin/Commande/CommandeModifView.vue'),
+    },
+    {
       path: '/admin/aide',
       name: 'AdminAide',
       component: () => import('../views/admin/Aide/AdminAideView.vue'),
     },
     {
       path: '/paiement',
+      name: 'RedirectPaiement',
+      component: () => import('../views/MonPanierView.vue'),
+    },
+    {
+      path: '/paiement/validation',
       name: 'Paiement',	
       component: () => import('../views/Checkout/CheckoutView.vue'),
+    },
+    {
+      path: '/paiement/facturation',
+      name: 'Facturation',
+      component: () => import('../views/Checkout/informationView.vue'),
+    },
+    {
+      path: '/paiement/merci',
+      name: 'Sucess',
+      component: () => import('../views/Checkout/SucessView.vue'),
     },
     {
       path: '/favoris',
@@ -197,23 +222,24 @@ const router = createRouter({
       path: '/aide',
       name: 'BesoinDAide',
       component: () => import('../views/BesoinDaideView.vue'),
-    }    
+    } 
   ],
 });
 
 router.beforeEach((to, from, next) => {
 
-  if(to.path.includes('admin') && isAuthenticated) {
-    isAdmin(useAuthStore().user.emailclient) ? next() : next({ path: '/' });
-  } else if(to.path.includes('admin')) {
-    next({ path: '/' });
-  } else if (to.meta.requiresAuth && !isAuthenticated()) {
-    next({ path: '/connexion' });
-  } else if ((to.name == "Connexion") && isAuthenticated()) {
-    next({ path: '/mon-compte' });
-  } else {
-    next();
-  }
+  // if(to.path.includes('admin') && isAuthenticated) {
+  //   isAdmin(useAuthStore().user.emailclient) ? next() : next({ path: '/' });
+  // } else if(to.path.includes('admin')) {
+  //   next({ path: '/' });
+  // } else if (to.meta.requiresAuth && !isAuthenticated()) {
+  //   next({ path: '/connexion' });
+  // } else if ((to.name == "Connexion") && isAuthenticated()) {
+  //   next({ path: '/mon-compte' });
+  // } else {
+  //   next();
+  // }
+  next();
 });
 
 
