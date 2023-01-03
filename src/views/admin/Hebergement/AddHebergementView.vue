@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import apis from '../../../api';
+import Tooltip from '../../../components/Tooltip.vue';
 
 const hebergementForm = ref({
     libellehebergement: '',
@@ -64,23 +65,32 @@ const addNewActivite = async (event) => {
 
 <template>
     <div v-if="true">
-        <form ref="uploadForm" @submit="addNewActivite">
+        <form ref="uploadForm" @submit="addNewActivite" class="pt-20">
             <label for="first_name" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Détails sur l'hébergement</label>
             <div class="mb-6">
-                <label for="libelleact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom de l'hébergement</label>
+                <label for="libelleact" class="block mb-2 text-sm font-medium text-gray-900     dark:text-white">Nom de l'hébergement</label>         
                 <input v-model="hebergementForm.libellehebergement" type="text" id="libelleact" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Maison d'hôtes chez Michel et Michelle" required>
             </div>            
             <div class="mb-6">
-                <label for="descriptionact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                <div class="flex">
+                    <label for="descriptionact" class="block mb-2 text-sm font-medium text-gray-900                 dark:text-white">Description</label>
+                    <Tooltip text="Décrivez votre hébergement avec des informations nécessaires et informatives comme votre type d'hébergement et un descriptif de l’activité"/>   
+                </div>
                 <textarea v-model="hebergementForm.descriptionhebergement" id="descriptionact" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Situé dans les hauteurs de..."></textarea>
             </div> 
             <div class="flex gap-6 mb-6">
                 <div class="flex-1">
+                <div class="flex ">
                     <label for="horaireactivite" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Horaire</label>
+                    <Tooltip text="Dans le format HH:MM soit Heure:Minute, définir l'horaire du RDV où les clients s'installeront"/>   
+                </div>
                     <input v-model="hebergementForm.horairehebergement" type="time" id="horaireactivite" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="12:12" required>
                 </div>
                 <div class="flex-1">
-                    <label for="horaireactivite" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nb de chambre</label>
+                    <div class="pt-1">
+                        <label for="horaireactivite" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nb de chambre</label>
+                    </div>
+                    
                     <input v-model="hebergementForm.nbchambre" type="number" id="horaireactivite" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" min="1" required>
                 </div>
             </div>
@@ -117,7 +127,10 @@ const addNewActivite = async (event) => {
                     <input v-model="hotelForm.cppartenaire" type="text" id="cphotel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="74100" required>
                 </div>
             </div>
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Photo de l'hotel</label>
+                <div class="flex">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Photo de l'hotel</label>
+                    <Tooltip text="Placez une ou plusieurs images de l'hébergement et de ce qu'il propose comme une piscine  ou une vue sur la mer"/>   
+                </div>
             <div class="flex gap-6 items-center justify-center w-full mb-6" v-auto-animate>
                 <label for="dropzone-file" class="flex flex-1 flex-col items-center justify-center h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                     <div class="flex flex-col items-center justify-center pt-5 pb-6">

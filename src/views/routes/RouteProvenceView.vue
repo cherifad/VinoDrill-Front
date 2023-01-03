@@ -14,7 +14,7 @@
                 <li><a href="#paca">A voir sur la route des vins en PACA</a></li>
                 <li><a href="#visiter">Visiter la Provence, différement</a></li>
                 <li><a href="#">Informations complémentaires</a></li>
-                <li><a href="#">Visiter les vignobles de France</a></li>
+                <li><a href="#vignobles">Visiter les vignobles de France</a></li>
             </ul>
         </div>
 
@@ -107,6 +107,25 @@
             <p>
                 Site officiel du tourisme du département du Var : <a href="www.visitvar.fr">www.visitvar.fr</a> / Site de l'oenotourisme en Provence : <a href="www.routedesvinsdeprovence.com">www.routedesvinsdeprovence.com</a>
             </p>
+        </div>
+
+        <div id="vignobles" class="text-justify">
+            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Visiter les vignobles de France</h2>
+            <div class="grid grid-cols-3 mt-2">
+                <RouterLink to="/route-alsace">Alsace</RouterLink>
+                <RouterLink to="/route-bourgogne">Bourgogne</RouterLink>
+                <RouterLink to="/route-bordeaux">Bordeaux</RouterLink>
+                <RouterLink to="/route-champagne">Champagne</RouterLink>
+                <RouterLink to="/route-val">Val de Loire</RouterLink>
+                <RouterLink to="/route-languedoc">Languedoc-Roussillon</RouterLink>
+                <RouterLink to="/route-rhone">Vallée du Rhône</RouterLink>
+                <RouterLink to="/route-beaujolais">Beaujolais</RouterLink>
+                <RouterLink to="/route-corse">Corse</RouterLink>
+                <RouterLink to="/route-sud">Sud-Ouest</RouterLink>
+                <RouterLink to="/route-jura">Jura</RouterLink>
+                <RouterLink to="/route-savoie">Savoie</RouterLink>
+                <RouterLink to="/route-ile">Ile-de-France</RouterLink>
+            </div>
         </div>
 
     </div>

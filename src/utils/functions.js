@@ -9,4 +9,9 @@ function slugify(string) {
         .replace(/[\s\W-]+/g, '-'); // replace spaces, non-word characters and dashes with a single dash (-)
 }
 
-export { slugify };
+function toReadableDate(date) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(date).toLocaleDateString('en-GB', options);
+}
+
+export { slugify, toReadableDate };

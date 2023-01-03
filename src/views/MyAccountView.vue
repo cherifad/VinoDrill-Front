@@ -89,7 +89,7 @@
         <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'commandes'">
             <div v-if="authStore.user.commandes.length > 0" class="flex mt-3 mb-3 flex-wrap">
                 <div class="w-1/3 px-3 py-3" v-for="commande in authStore.user.commandes" :key="commande.refcommande">
-                    <Commande :cheminFacture="commande.cheminfacture" :refcommande="commande.refcommande" :datecommande="commande.datecommande" :message="commande.message" :prixcommande="commande.prixcommande" :quantite="commande.quantite" :idclient="commande.idclient" :libellepaiement ="commande.paiement.libellepaiement"/>
+                    <Commande :cheminFacture="commande.cheminfacture" :estCheque="commande.estcheque" :refcommande="commande.refcommande" :datecommande="commande.datecommande" :message="commande.message" :prixcommande="commande.prixcommande" :quantite="commande.quantite" :idclient="commande.idclient" :libellepaiement ="commande.paiement.libellepaiement"/>
                 </div>
             </div>
              <div v-else class="text-2xl w-full font-bold text-center mt-10">

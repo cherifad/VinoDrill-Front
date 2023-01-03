@@ -39,7 +39,7 @@
             <ion-icon name="pencil"></ion-icon>
             Rédiger un avis
         </div>
-        <AddAvis v-if="addAvis" :idsejour="sejour.idsejour" :idclient="idclient" />
+        <AddAvis v-if="addAvis" :idsejour="sejour.idsejour" :idclient="idclient"/>
     </div>
 </template>
 

@@ -5,7 +5,8 @@
         </svg>
         <div class="tooltip w-96" v-auto-animate v-bind:class="{ 'tooltip--visible': showTooltip }">
             <div class="tooltip__content ">
-            {{ text }}
+                <slot></slot>
+                {{ text }}
             </div>
         </div>
     </button>

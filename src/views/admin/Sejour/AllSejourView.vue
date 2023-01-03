@@ -1,7 +1,7 @@
 <template>
     <div>
         <table v-if="sejours" class="w-full">
-            <thead>
+            <thead >
                 <tr>
                     <th>N°</th>
                     <th>Titre</th>
@@ -17,21 +17,31 @@
                     <td>
                         <div class="flex gap-3 justify-center">
                             <router-link :to="{ name: 'AdminSejourModif', params: { id: sejour.idsejour } }">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <div class="flex">
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                     Modifier
-                                </button>
+                                    </button>
+                                    <Tooltip>Cliquez pour modifier le séjour existant pour plus d'info : <span class="text-sky-500 underline "><RouterLink class="underline underline-offset-2" to="/admin/aide">Aide</RouterLink></span></Tooltip>
+                                </div>
                             </router-link>
-                            <button @click="fakeDelete()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                            <div class="flex">
+                                <button @click="fakeDelete()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                 Supprimer
-                            </button>
-                            <router-link :to="{ name: 'AdminSejourAvis', params: { id: sejour.idsejour } }">
-                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                    Voir les avis
                                 </button>
+                                <Tooltip>Cliquez pour supprimer le séjour existant pour plus d'info : <span class="text-sky-500 underline "><RouterLink class="underline underline-offset-2" to="/admin/aide">Aide</RouterLink></span></Tooltip>
+                            </div>
+                            <router-link :to="{ name: 'AdminSejourAvis', params: { id: sejour.idsejour } }">
+                                <div class="flex">
+                                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                    Voir les avis
+                                    </button>
+                                    <Tooltip>Cliquez pour tous les avis du existant pour plus d'info : <span class="text-sky-500 underline "><RouterLink class="underline underline-offset-2" to="/admin/aide">Aide</RouterLink></span></Tooltip>
+                                </div>
                             </router-link>
                             <button @click="selectedIdPromo = sejour.idsejour, showPromoPopup = true, oldPrice = getSejourById(selectedIdPromo).prixsejour" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                 Mettre les promotions
                             </button>
+                            <Tooltip class="text-left">Cliquez pour mettre en promotion ce séjour.</Tooltip>
                         </div>
                     </td>
                 </tr>
@@ -73,6 +83,7 @@ import apis from '../../../api';
 import { onMounted, ref } from 'vue';
 import LoadComponent from '../../../components/LoadComponent.vue';
 import Popup from '../../../components/Popup.vue';
+import Tooltip from '../../../components/Tooltip.vue';
 import axios from 'axios';
 
 const sejours: any = ref([]);

@@ -239,6 +239,41 @@ const router = createRouter({
       component: () => import('../views/routes/RouteLanguedocView.vue'),
     },
     {
+      path: '/route-rhone',
+      name: 'RouteRhone',
+      component: () => import('../views/routes/RouteRhoneView.vue'),
+    },
+    {
+      path: '/route-beaujolais',
+      name: 'RouteBeaujolais',
+      component: () => import('../views/routes/RouteBeaujolaisView.vue'),
+    },
+    {
+      path: '/route-corse',
+      name: 'RouteCorse',
+      component: () => import('../views/routes/RouteCorseView.vue'),
+    },
+    {
+      path: '/route-sud',
+      name: 'RouteSud',
+      component: () => import('../views/routes/RouteSudView.vue'),
+    },
+    {
+      path: '/route-jura',
+      name: 'RouteJura',
+      component: () => import('../views/routes/RouteJuraView.vue'),
+    },
+    {
+      path: '/route-savoie',
+      name: 'RouteSavoie',
+      component: () => import('../views/routes/RouteSavoieView.vue'),
+    },
+    {
+      path: '/route-ile',
+      name: 'RouteIle',
+      component: () => import('../views/routes/RouteIleView.vue'),
+    },
+    {
       path: '/aide',
       name: 'BesoinDAide',
       component: () => import('../views/BesoinDaideView.vue'),

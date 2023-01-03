@@ -21,7 +21,7 @@
                 <li><a href="#itineraires">Les itinéraires sur la route des vins de Bourgogne</a></li>
                 <li><a href="#silloner">Sillonner la Bourgogne autrement</a></li>
                 <li><a href="#partenaires">Nos partenaires en Bourgogne</a></li>
-                <li><a href="#">Découvrir les autres routes des vins de France</a></li>
+                <li><a href="#autres">Découvrir les autres routes des vins de France</a></li>
             </ul>
         </div>
 
@@ -136,7 +136,24 @@
             </p>
         </div>
 
-        
+        <div id="autres" class="text-justify">
+            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Découvrir les autres routes des vins de France</h2>
+            <div class="grid grid-cols-3 mt-2">
+                <RouterLink to="/route-alsace">Alsace</RouterLink>
+                <RouterLink to="/route-bordeaux">Bordeaux</RouterLink>
+                <RouterLink to="/route-provence">Provence</RouterLink>
+                <RouterLink to="/route-champagne">Champagne</RouterLink>
+                <RouterLink to="/route-val">Val de Loire</RouterLink>
+                <RouterLink to="/route-languedoc">Languedoc-Roussillon</RouterLink>
+                <RouterLink to="/route-rhone">Vallée du Rhône</RouterLink>
+                <RouterLink to="/route-beaujolais">Beaujolais</RouterLink>
+                <RouterLink to="/route-corse">Corse</RouterLink>
+                <RouterLink to="/route-sud">Sud-Ouest</RouterLink>
+                <RouterLink to="/route-jura">Jura</RouterLink>
+                <RouterLink to="/route-savoie">Savoie</RouterLink>
+                <RouterLink to="/route-ile">Ile-de-France</RouterLink>
+            </div>
+        </div>
 
     </div>
 </template>

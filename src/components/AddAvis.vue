@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted, defineEmits } from 'vue';
 import axios from 'axios';
 import Popup from './Popup.vue';
+import { formatDate } from '@vueuse/shared';
 
 const props = defineProps<{
     idsejour: any;
@@ -14,13 +15,13 @@ const form = ref({
     titreavis: ''
 })
 
-const photos = ref([])
-
+const photos: any = ref([])
+const idavis: any = ref(null);
 const pictures: any = ref([])
-const fileInput: any = ref(null)
+const filesInput: any = ref([])
 
 function handleFileChange(e: any) {
-  photos.value = e.target.files;
+  photos.value.push(e.target.files);
   for (let i = 0; i < e.target.files.length; i++) {
     const file = e.target.files[i]
     const reader = new FileReader()
@@ -47,14 +48,36 @@ const removePictureWuthObject = (picture: any) => {
 
 const addNewAvis = async (event) => {
     event.preventDefault();
+    console.log('addNewAvis')
 
     const formData = new FormData();
-    photos.value.forEach((image) => formData.append('images[]', image));
+    // filesInput.value.forEach((image) => formData.append('images[]', image));
 
-    try {
-      // Send the form data to the Laravel endpoint using an HTTP POST request
-      const response = await axios.post('/api/multiple-upload', formData);
+    console.log(filesInput.value)
+
+    for (let i = 0; i < filesInput.value.length; i++) {
+        console.log(filesInput.value[i]);
+        formData.append('images[]', filesInput.value[i])
+    }
+
+    // formData.append('images[]', filesInput.value)
+
+
+    console.log(formData)
+
+    try {  
+      const response = await axios.post('/api/multiple-upload', {
+        images: filesInput.value
+      });
       console.log(response);
+      await axios.post('/api/avis', {
+        idsejour: props.idsejour,
+        idclient: props.idclient,
+        note: form.value.note,
+        commentaire: form.value.commentaire,
+        titreavis: form.value.titreavis,
+        images: response.data
+      });
     } catch (error) {
       console.error(error);
     }
@@ -65,7 +88,7 @@ const addNewAvis = async (event) => {
 
 <template>
     
-     <form @submit="" class="w-full">
+     <form @submit="addNewAvis" class="w-full">
         <div class="mb-6 flex gap-6 w-full items-center">
             <div class="w-1/2">
                 <label for="titresejour" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titre</label>
@@ -97,7 +120,7 @@ const addNewAvis = async (event) => {
                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG ou JPG (MAX. 800x400px)</p>
                     <p class="text-xs text-gray-500 dark:text-gray-400">{{ pictures.length }} fichier(s) sélectionné(s)</p>
                 </div>
-                <input multiple ref="fileInput" @change="handleFileChange" accept=".jpg,.svg,.png" id="dropzone-file" type="file" class="hidden" />
+                <input multiple ref="" @input="(event: any) => filesInput = event.target.files" @change="handleFileChange" accept=".jpg,.svg,.png" id="dropzone-file" type="file" class="hidden" />
             </label>
             <div v-if="pictures.length > 0" class="h-fit mb-6 relative flex justify-evenly flex-wrap w-auto border gap-2 border-gray-300 border-dashed" v-auto-animate> 
                 <div v-for="img in pictures">
@@ -108,5 +131,6 @@ const addNewAvis = async (event) => {
                 </div>
             </div>
         </div>
+        <button type="submit" class="w-full py-2.5 px-5 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50 dark:focus:ring-offset-gray-800">Envoyer</button>
     </form>
 </template>

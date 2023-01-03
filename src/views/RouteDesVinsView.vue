@@ -149,7 +149,7 @@
               </p>
               <div class=" flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <a href="https://www.vinotrip.com/fr/route-des-vins-vallee-du-rhone">Découvrir la route des vins du Rhône</a>
+                  <RouterLink to="/route-rhone">Découvrir la route des vins du Rhône</RouterLink>
                 </button>
               </div>
             </div>
@@ -164,7 +164,7 @@
               </p>
               <div class=" flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <a href="https://www.vinotrip.com/fr/route-des-vins-beaujolais">Découvrir la route des vins du Beaujolais</a>
+                  <RouterLink to="/route-beaujolais">Découvrir la route des vins du Beaujolais</RouterLink>
                 </button>
               </div>
             </div>
@@ -179,7 +179,7 @@
               </p>
               <div class=" flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <a href="https://www.vinotrip.com/fr/route-des-vins-corse">Découvrir la route des vins de Corse</a>
+                  <RouterLink to="/route-corse">Découvrir la route des vins de Corse</RouterLink>
                 </button>
               </div>
             </div>
@@ -194,7 +194,7 @@
               </p>
               <div class="flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <a href="https://www.vinotrip.com/fr/route-des-vins-sud-ouest">Découvrir la route des vins du Sud-Ouest</a>
+                  <RouterLink to="/route-sud">Découvrir la route des vins du Sud-Ouest</RouterLink>
                 </button>
               </div>
             </div>
@@ -209,7 +209,7 @@
               </p>
               <div class=" flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <a href="https://www.vinotrip.com/fr/route-des-vins-jura">Découvrir la route des vins du Jura</a>
+                  <RouterLink to="/route-jura">Découvrir la route des vins du Jura</RouterLink>
                 </button>
               </div>
             </div>
@@ -224,7 +224,7 @@
               </p>
               <div class=" flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <a href="https://www.vinotrip.com/fr/route-des-vins-savoie">Découvrir la route des vins de la Savoie</a>
+                  <RouterLink to="/route-savoie">Découvrir la route des vins de la Savoie</RouterLink>
                 </button>
               </div>
             </div>
@@ -239,7 +239,7 @@
               </p>
               <div class=" flex justify-end mr-2">
                 <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
-                  <a href="https://www.vinotrip.com/fr/route-des-vins-ile-de-france">Découvrir la route des vins d'Ile-de-France</a>
+                  <RouterLink to="/route-ile">Découvrir la route des vins d'Ile-de-France</RouterLink>
                 </button>
               </div>
             </div>

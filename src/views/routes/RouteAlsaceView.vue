@@ -17,7 +17,7 @@
                 <li><a href="#sejours">Les séjours découvertes de la Routes des vins d'Alsace</a></li>
                 <li><a href="">Les avis de nos clients</a></li>
                 <li><a href="">Hébergements et domaines en Alsace</a></li>
-                <li><a href="">Partir sur les routes des vins en France</a></li>
+                <li><a href="#partir">Partir sur les routes des vins en France</a></li>
             </ul>
         </div>
 
@@ -153,6 +153,25 @@
 
         <div id="sejours">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Les séjours découvertes de la Routes des vins d'Alsace</h2>
+        </div>
+
+        <div id="partir" class="text-justify">
+            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Partir sur les routes des vins en France</h2>
+            <div class="grid grid-cols-3 mt-2">
+                <RouterLink to="/route-bourgogne">Bourgogne</RouterLink>
+                <RouterLink to="/route-bordeaux">Bordeaux</RouterLink>
+                <RouterLink to="/route-provence">Provence</RouterLink>
+                <RouterLink to="/route-champagne">Champagne</RouterLink>
+                <RouterLink to="/route-val">Val de Loire</RouterLink>
+                <RouterLink to="/route-languedoc">Languedoc-Roussillon</RouterLink>
+                <RouterLink to="/route-rhone">Vallée du Rhône</RouterLink>
+                <RouterLink to="/route-beaujolais">Beaujolais</RouterLink>
+                <RouterLink to="/route-corse">Corse</RouterLink>
+                <RouterLink to="/route-sud">Sud-Ouest</RouterLink>
+                <RouterLink to="/route-jura">Jura</RouterLink>
+                <RouterLink to="/route-savoie">Savoie</RouterLink>
+                <RouterLink to="/route-ile">Ile-de-France</RouterLink>
+            </div>
         </div>
 
     </div>
