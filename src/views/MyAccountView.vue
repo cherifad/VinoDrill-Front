@@ -87,9 +87,9 @@
 
         <!-- Mes commandes -->
         <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'commandes'">
-            <div v-if="authStore.user.commandes.length > 0">
-                <div class="min-w-1/3 flex-1 px-3 py-3" v-for="commande in authStore.user.commandes" :key="commande.refcommande">
-                    <Commande :refcommande="commande.refcommande" :datecommande="commande.datecommande" :message="commande.message" :prixcommande="commande.prixcommande" :quantite="commande.quantite" :idclient="commande.idclient" :libellepaiement ="commande.paiement.libellepaiement"/>
+            <div v-if="authStore.user.commandes.length > 0" class="flex mt-3 mb-3 flex-wrap">
+                <div class="w-1/3 px-3 py-3" v-for="commande in authStore.user.commandes" :key="commande.refcommande">
+                    <Commande :cheminFacture="commande.cheminfacture" :refcommande="commande.refcommande" :datecommande="commande.datecommande" :message="commande.message" :prixcommande="commande.prixcommande" :quantite="commande.quantite" :idclient="commande.idclient" :libellepaiement ="commande.paiement.libellepaiement"/>
                 </div>
             </div>
              <div v-else class="text-2xl w-full font-bold text-center mt-10">
@@ -99,12 +99,8 @@
 
         <!-- Mes réservations -->
         <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'reservations'">
-            <div class="flex-1" v-if="authStore.user.commandes.length > 0">
-                <div class="px-3 w-full py-3" v-for="commande in authStore.user.commandes" :key="commande.refcommande">
-                    <div v-for="reservation in commande.reservations" :key="reservation.refcommande">
-                        <Reservation :refcommande="reservation.refcommande" :datedebutreservation="reservation.datedebutreservation" :estcadeau="reservation.estcadeau" :idsejour="reservation.idsejour" :nbadulte="reservation.nbadulte" :nbchambre="reservation.nbchambre" :nbenfant="reservation.nbenfant"/>
-                    </div>
-                </div>
+            <div class="flex mt-3 mb-3 flex-wrap" v-if="authStore.user.commandes.length > 0">
+                <Reservation class="px-3 w-1/3 py-3" v-for="reservation in reservations" :idclient="authStore.user.idclient" :key="reservation.refcommande + reservation.idsejour" :refcommande="reservation.refcommande" :datedebutreservation="reservation.datedebutreservation" :estcadeau="reservation.estcadeau" :idsejour="reservation.idsejour" :nbadulte="reservation.nbadulte" :nbchambre="reservation.nbchambre" :nbenfant="reservation.nbenfant"/>
             </div>
             <div v-else class="text-2xl w-full font-bold text-center mt-10">
                 Vous n'avez aucune réservation.
@@ -168,6 +164,7 @@ const addAdressForm: any = ref(false);
 const closeAddAdress: any = ref(true);
 const mesFavories: any = ref([]);
 const avis: any = ref(null);
+const reservations: any = ref([]);
 
 onMounted(async () => {
     await authStore.getUser();
@@ -175,12 +172,14 @@ onMounted(async () => {
         avis.value = response.data['data'];
     });
 
-    console.log("mes av", mesFavories.value)
-    console.log("mes fav", typeof mesFavories.value)
+    authStore.user.commandes.forEach((commande: any) => {
+        commande.reservations.forEach((single: any) => {
+            reservations.value.push(single);
+        });
+    });
 });
 
 const setCloseAddAdress = (i) => {
-    console.log("rien");
     closeAddAdress.value = i
 }
 

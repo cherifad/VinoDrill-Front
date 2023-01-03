@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col w-full h-[60vh] items-center justify-center">
-        <div class="p-5 bg-rouge rounded-3xl shadow-xl">
+        <div class="p-5 bg-rouge mb-6 rounded-3xl shadow-xl">
             <lord-icon
                 src="https://cdn.lordicon.com/xlrvqbwc.json"
                 trigger="loop"

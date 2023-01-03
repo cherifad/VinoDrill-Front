@@ -1,48 +1,40 @@
 <template>
     <div class="">
-        <h1 class="text-2xl font-bold mb-3">Mes commandes</h1>
-        <div class="w-full flex gap-3 mb-3 items-center">
-            <div class="relative border-2 border-rose p-5 rounded-lg flex flex-col gap-3"> 
-                <div>
-                    <p id="passenger" class="text-3xl font-bold">{{ message }}</p>
-                    <div class="flex mb-2">
-                        <div class=" w-10 border mt-2"></div>
-                    </div>
-                </div>
-                
+        <div class="w-full flex flex-col gap-3 mb-3 items-center">
+            <div id="box" class="relative w-full border-b-8 border-r-8 border-t-2 border-l-2 border-rose p-5 rounded-lg flex flex-col gap-3">                 
                 <div class="flex gap-5 justify-between">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col items-center">
                         <p id="passenger" class="text-2xl font-bold">Référence commande</p>
                         <div class="flex mb-2">
                             <div class=" w-10 border mt-2"></div>
                         </div>
                         <p class="text-2xl">{{ refcommande }}</p>
                     </div>
-                    <div class="flex flex-col">
+                    <div class="flex flex-col items-center">
                         <p id="passenger" class="text-2xl font-bold">Date commande</p>
                         <div class="flex mb-2">
                             <div class=" w-10 border mt-2"></div>
                         </div>
-                        <p class="text-2xl">{{ datecommande }}</p>
+                        <p class="text-2xl">{{ toReadableDate(datecommande) }}</p>
                     </div>
                 </div>       
                 
                 <div class="flex gap-5 justify-between">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col items-center">
                         <p id="passenger" class="text-2xl font-bold">Prix</p>
                         <div class="flex mb-2">
                             <div class=" w-10 border mt-2"></div>
                         </div>
                         <p class="text-2xl">{{ prixcommande }} €</p>
                     </div>
-                    <div class="flex flex-col">
-                        <p id="passenger" class="text-2xl font-bold">Quantite</p>
+                    <div class="flex flex-col items-center">
+                        <p id="passenger" class="text-2xl font-bold">Quantité</p>
                         <div class="flex mb-2">
                             <div class=" w-10 border mt-2"></div>
                         </div>
                         <p class="text-2xl">{{ quantite }}</p>
                     </div>
-                    <div class="flex flex-col">
+                    <div class="flex flex-col items-center">
                         <p id="passenger" class="text-2xl font-bold">Méthode de paiement</p>
                         <div class="flex mb-2">
                             <div class=" w-10 border mt-2"></div>
@@ -50,16 +42,47 @@
                         <p class="capitalize text-2xl">{{ libellepaiement }}</p>
                     </div>
                 </div>
+
+                <div v-if="message" class="rounded-lg">
+                    <div class="flex mb-2">
+                        <div class=" w-10 border mt-2"></div>
+                    </div>
+                    Note :
+                    <p id="" class="text-sm font-normal">{{ message }}</p>                    
+                </div>
             </div>
+            <a v-if="invoice" :href="invoice" class="border-b-8 w-full hover:bg-rose hover:border-b-2 hover:border-r-2 flex gap-3 items-center border-r-8 border-t-2 border-l-2 border-rose h-16 justify-center rounded-lg" target="_blank">
+                <ion-icon name="document" class="text-xl"></ion-icon>
+                Télécharger la facture
+            </a>
+            <p v-else class="border-b-8 w-full cursor-not-allowed opacity-75 flex gap-3 items-center border-r-8 border-t-2 border-l-2 border-rose h-16 justify-center rounded-lg" target="_blank">
+                <ion-icon name="close-circle" class="text-xl"></ion-icon>
+                Facture non disponible
+            </p>
         </div>
     </div> 
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import config from '../../utils/config';
 
 const edit = ref(false);
+const invoice = ref('');
+
+async function getInvoiceData(invoiceId) {
+  axios
+    .get(`https://api.stripe.com/v1/invoices/${invoiceId}`, {
+      headers: {
+        Authorization: `Bearer ${config.stripe.sk}`,
+      },
+    })
+    .then((response) => {
+      invoice.value = response.data.hosted_invoice_url;
+  // The invoice_pdf field will contain the URL of the invoice PDF
+    });
+}
 
 function toReadableDate(date: string) {
     const dateObj = new Date(date);
@@ -78,6 +101,7 @@ const props = defineProps<{
     prixcommande: number;
     quantite: number;
     libellepaiement: any;
+    cheminFacture: any;
 }>();
 
 const form = ref({
@@ -90,10 +114,22 @@ const form = ref({
     libellepaiement: props.libellepaiement,
 });
 
+onMounted(() => {
+    // check if cheminFacture is null or contains a http link
+    if (props.cheminFacture != null && !props.cheminFacture.includes('http')) {
+        getInvoiceData(props.cheminFacture);
+    } else {
+        invoice.value = props.cheminFacture;
+    }
+});
+
 </script>
 
 <style>
 input {
     color: white;
+}
+* {
+    transition : all 150ms ease-in-out;
 }
 </style>

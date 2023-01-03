@@ -2,8 +2,7 @@
 import Progress from "../../components/Progress.vue";
 import config from "../../utils/config";
 import axios from "axios";
-
-import Stripe from "stripe";
+import { usePanierStore } from "../../stores/panier";
 import { ref } from "vue";
 
 // Retrieve the Checkout session ID from the URL
@@ -11,6 +10,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const sessionId = urlParams.get("session_id");
 const data = ref({});
 const invoice = ref('');
+
+// clear panier
+const panierStore = usePanierStore();
+panierStore.clearPanier();
 
 async function getPaymentData(sessionId) {
   axios

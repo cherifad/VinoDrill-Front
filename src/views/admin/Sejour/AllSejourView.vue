@@ -47,7 +47,7 @@
                     </td>
                 </tr>
             </tfoot>  
-            <Popup :show="showPromoPopup" @update:show="showPromoPopup = $event" @submit="submitHandler" :title="'Mettre en promotion le n°' + selectedIdPromo" >
+            <Popup :show="showPromoPopup" @update:show="showPromoPopup = $event" @submit="setPromotion(selectedIdPromo)" :title="'Mettre en promotion le n°' + selectedIdPromo" >
                 <div class="flex flex-col gap-3">
                     <label for="promo" class="block text-sm font-medium text-gray-900 dark:text-white">Prix actuel : {{ oldPrice }}€</label>
                     <label for="promo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prix après promotion de {{ promoPercent }}% : {{ oldPrice - (oldPrice * promoPercent / 100) }}€</label>
@@ -73,6 +73,7 @@ import apis from '../../../api';
 import { onMounted, ref } from 'vue';
 import LoadComponent from '../../../components/LoadComponent.vue';
 import Popup from '../../../components/Popup.vue';
+import axios from 'axios';
 
 const sejours: any = ref([]);
 
@@ -97,6 +98,14 @@ const checkPromoPercent = () => {
     } else {
         promoPercentError.value = false;
     }
+}
+
+const setPromotion = async (idsejour: number) => {
+    const temp_sejour = getSejourById(idsejour);
+    temp_sejour.prixsejour = oldPrice.value - (oldPrice.value * promoPercent.value / 100);
+    axios.put(`/api/sejour/${idsejour}`, {
+        ...temp_sejour
+    })
 }
 
 const submitHandler = () => {

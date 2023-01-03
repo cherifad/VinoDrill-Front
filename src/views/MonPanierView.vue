@@ -112,6 +112,13 @@ const router = useRouter();
 const error = ref(false);
 const errorMessages = ref([]);
 
+// get url params with js
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams.get('error')){
+  error.value = true;
+  errorMessages.value.push('Vous avez annulé le paiement');
+}
+
 const checkBeforeCheckout = () => {
   panierStore.sejours.forEach(element => {
     error.value = false;
@@ -119,7 +126,8 @@ const checkBeforeCheckout = () => {
         if(!element.date) 
         {
           error.value = true;
-          errorMessages.value.push('Veuillez choisir une date pour chaque séjour');
+          if (!errorMessages.value.includes('Veuillez choisir une date pour chaque séjour'))
+            errorMessages.value.push('Veuillez choisir une date pour chaque séjour');
         }
     };
   });

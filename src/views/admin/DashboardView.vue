@@ -33,12 +33,20 @@
                 src="https://app.powerbi.com/view?r=eyJrIjoiN2Q2MzZlZDUtMjViZi00ZjM0LWJlNzgtYTBiY2Y2OGVkY2Q3IiwidCI6ImUyMWU5NzgzLWQwYTAtNDhmOC04NTBlLTBiMDgxYjQ2ZDc4OCIsImMiOjh9&pageName=ReportSectiona9b305a68fe41461b2c7"
             />
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-5">
+            <PowerBi
+                title="Rapport_Bi_Par_Vignoble"
+                src="https://app.powerbi.com/view?r=eyJrIjoiNGIxMWMzYjItZDBkNy00ZWU4LWI4MzQtM2U1NjQ1ZGE1NmZiIiwidCI6ImUyMWU5NzgzLWQwYTAtNDhmOC04NTBlLTBiMDgxYjQ2ZDc4OCIsImMiOjh9&pageName=ReportSection"
+            />
+        </div>
+        <div class="flex justify-center mt-5">
             <PowerBi
                 title="Rapport_Bi_Clients"
                 src="https://app.powerbi.com/view?r=eyJrIjoiZGVkZTNmOTktOWFiYy00ZTBlLWI4MmEtYmRkZmRhMzQ0ZjY2IiwidCI6ImUyMWU5NzgzLWQwYTAtNDhmOC04NTBlLTBiMDgxYjQ2ZDc4OCIsImMiOjh9"
             />
         </div>
+
+        
         
     </div>
 </template>

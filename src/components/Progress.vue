@@ -6,13 +6,13 @@
 
         <!-- Step 1 -->
 		<div class="flex-1">
-			<div v-if="step > 1" class="w-10 h-10 bg-rose mx-auto rounded-full text-lg text-white flex items-center">
+			<RouterLink to="/mon-panier" v-if="step > 1" class="w-10 h-10 bg-rose mx-auto rounded-full text-lg text-white flex items-center">
 				<span class="text-white items-center justify-center flex w-full">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                 </span>
-			</div>
+			</RouterLink>
             <div v-else class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
 				<span class="text-black text-center w-full">1</span>
 			</div>
@@ -27,13 +27,13 @@
 	
 		<!-- Step 2 -->
 		<div class="flex-1">
-			<div v-if="step > 2" class="w-10 h-10 bg-rose mx-auto rounded-full text-lg text-white flex items-center">
+			<RouterLink to="/paiement/validation" v-if="step > 2" class="w-10 h-10 bg-rose mx-auto rounded-full text-lg text-white flex items-center">
 				<span class="text-white items-center justify-center flex w-full">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                 </span>
-			</div>
+			</RouterLink>
             <div v-else class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
 				<span class="text-black text-center w-full">2</span>
 			</div>
@@ -107,6 +107,7 @@
 </template>
 
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 const props = defineProps<{
     step: number
 }>()

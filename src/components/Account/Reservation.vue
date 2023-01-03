@@ -27,19 +27,19 @@
                 </div>       
                 
                 <div class="flex gap-20 ">
-                    <p id="passenger" class="text-2xl font-semibold">Adulte(s) : {{ nbadulte }}</p>
-                    <p id="passenger" class="text-2xl font-semibold">Enfant(s) : {{ nbenfant }}</p>
-                    <p id="passenger" class="text-2xl font-semibold">Chambre(s) : {{ nbchambre }}</p>
+                    <p id="passenger" class="text-2xl font-semibold text-center">Adulte(s)<br>{{ nbadulte }}</p>
+                    <p id="passenger" class="text-2xl font-semibold text-center">Enfant(s)<br>{{ nbenfant }}</p>
+                    <p id="passenger" class="text-2xl font-semibold text-center">Chambre(s)<br>{{ nbchambre }}</p>
                 </div>
                 
                 <p v-if="sejour" class="text-2xl font-bold">Sejour : {{ sejour.titresejour }}</p>
             </div>
         </div>
         <div @click="addAvis = !addAvis" class="flex mb-6 w-fit cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold">
-            <ion-icon name="log-out-outline"></ion-icon>
+            <ion-icon name="pencil"></ion-icon>
             Rédiger un avis
         </div>
-        <AddAvis v-if="addAvis" :idavis="null" :idsejour="sejour.idsejour" />
+        <AddAvis v-if="addAvis" :idsejour="sejour.idsejour" :idclient="idclient" />
     </div>
 </template>
 
@@ -67,6 +67,7 @@ const props = defineProps<{
     nbadulte: number;
     nbchambre: number;
     nbenfant: number;
+    idclient: number;
 }>();
 
 const sejour = ref();

@@ -189,6 +189,11 @@ const router = createRouter({
       component: () => import('../views/Checkout/informationView.vue'),
     },
     {
+      path: '/paiement/cheque-ref=:ref',
+      name: 'Cheque',
+      component: () => import('../views/Checkout/ChequeCheckoutView.vue'),
+    },
+    {
       path: '/paiement/merci',
       name: 'Sucess',
       component: () => import('../views/Checkout/SucessView.vue'),
@@ -219,6 +224,21 @@ const router = createRouter({
       component: () => import('../views/routes/RouteProvenceView.vue'),
     },
     {
+      path: '/route-champagne',
+      name: 'RouteChampagne',
+      component: () => import('../views/routes/RouteChampagneView.vue'),
+    },
+    {
+      path: '/route-val',
+      name: 'RouteVal',
+      component: () => import('../views/routes/RouteValView.vue'),
+    },
+    {
+      path: '/route-languedoc',
+      name: 'RouteLanguedoc',
+      component: () => import('../views/routes/RouteLanguedocView.vue'),
+    },
+    {
       path: '/aide',
       name: 'BesoinDAide',
       component: () => import('../views/BesoinDaideView.vue'),
@@ -228,18 +248,18 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 
-  // if(to.path.includes('admin') && isAuthenticated) {
-  //   isAdmin(useAuthStore().user.emailclient) ? next() : next({ path: '/' });
-  // } else if(to.path.includes('admin')) {
-  //   next({ path: '/' });
-  // } else if (to.meta.requiresAuth && !isAuthenticated()) {
-  //   next({ path: '/connexion' });
-  // } else if ((to.name == "Connexion") && isAuthenticated()) {
-  //   next({ path: '/mon-compte' });
-  // } else {
-  //   next();
-  // }
-  next();
+  if(to.path.includes('admin') && isAuthenticated) {
+    isAdmin(useAuthStore().user.emailclient) ? next() : next({ path: '/' });
+  } else if(to.path.includes('admin')) {
+    next({ path: '/' });
+  } else if (to.meta.requiresAuth && !isAuthenticated()) {
+    next({ path: '/connexion' });
+  } else if ((to.name == "Connexion") && isAuthenticated()) {
+    next({ path: '/mon-compte' });
+  } else {
+    next();
+  }
+  // next();
 });
 
 

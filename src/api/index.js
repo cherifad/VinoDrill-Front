@@ -45,6 +45,8 @@ const getHotelById = id => api.get(`/hotel/${id}`);
 const addAvis = payload => api.post(`/avis`, payload);
 const editAvis = (id, payload) => api.put(`/avis/${id}`, payload);
 
+const checkCoupon = payload => api.post(`/coupon/check`, payload);
+
 const apis = {
     getSejours,
     getSejourById,
@@ -74,6 +76,7 @@ const apis = {
     getHotelById,
     addAvis,
     editAvis,
+    checkCoupon,
 };
 
 export default apis;

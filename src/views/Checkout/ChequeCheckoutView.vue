@@ -7,22 +7,30 @@ import { RouterLink } from "vue-router";
 import LoadComponent from "../../components/LoadComponent.vue";
 import { usePanierStore } from "../../stores/panier";
 import axios from "axios";
+import { useRoute } from "vue-router";
+import config from "../../utils/config";
 import AddAdressForm from "../../components/Account/AddAdressForm.vue";
-import apis from "../../api";
+
+
+const route = useRoute();
+const refchq: any = route.params.ref;
+const items: any = [{
+    name: "Cheque cadeau de " + config.cheques[refchq] + "€",
+    description: "Chèque cadeau valable 2 ans sur tous les séjours du site",
+    unit_amount: config.cheques[refchq] * 100,
+    currency: "EUR",
+    quantity: 1,
+    image: "http://www.iutannecy-deptinfo.fr:5006/src/assets/img/favicon.ico",
+}];
 
 const authStore: any = useAuthStore();
 const savePaiment: any = ref(false);
 const loading: any = ref(false);
-const panierStore = usePanierStore();
-const items: any = [];
 const selectedAddress: any = ref(999999999);
 const note = ref("");
 const noteError = ref(false);
-const articleDetails: any = [];
-const prixTotal = ref(0);
-const coupon: any = ref(null);
+const coupon = ref("");
 const closeAddAdress: any = ref(true);
-const promotion = ref(0);
 
 watch(note, (val) => {
   if (val.length < 50 && val.length > 0) {
@@ -35,36 +43,6 @@ watch(note, (val) => {
 });
 
 onMounted(() => {
-  loading.value = true;
-  panierStore.sejours.forEach((element) => {
-    if (element.idsejour) {
-      prixTotal.value += element.prixtotal;
-      axios
-        .get("/api/sejour/" + element.idsejour)
-        .then((response) => {
-          articleDetails.push({
-            idsejour: element.idsejour,
-            nbAdultes: element.nbAdultes,
-            nbEnfants: element.nbEnfants,
-            nbChambres: element.nbChambres,
-            datedebutreservation: element.date,
-            estcadeau: false,
-          });
-          items.push({
-            name: response.data["data"].titresejour,
-            description: response.data["data"].descriptionsejour,
-            unit_amount: element.prixtotal * 100,
-            currency: "EUR",
-            image: response.data["data"].photosejour,
-            quantity: 1,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  });
-  loading.value = false;
 });
 
 const confirmPay = () => {
@@ -84,6 +62,7 @@ const confirmPay = () => {
     alert("La note doit faire entre 50 et 500 caractères, ou être vide !");
     return;
   }
+  console.log(items);
   loading.value = true;
   setTimeout(() => {
     pay();
@@ -91,6 +70,7 @@ const confirmPay = () => {
 };
 
 async function pay() {
+    
   try {
     const response = await axios.post("/payment/checkout", {
       articles: items,
@@ -99,10 +79,10 @@ async function pay() {
       name: authStore.user?.nomclient + " " + authStore.user?.prenomclient,
       idadresse: selectedAddress.value,
       idclient: authStore.user?.idclient,
-      details: articleDetails,
+      details: [],
       notecommande: note.value,
-      cheque_cadeau: false,
-      coupon: coupon.value,
+      cheque_cadeau: true,
+      estcadeau: true,
     });
     const checkoutURL = response.data.checkoutURL;
     // Redirect the user to the Stripe Checkout page
@@ -113,37 +93,58 @@ async function pay() {
   }
 }
 
-const couponCheck = async () => {
-  await axios.post("/api/coupon/check", { coupon: coupon.value }).then((response) => {
-    if (response.data.amount) {
-      promotion.value = response.data.amount;
-    } else if(response.data.reservations) {
-      console.log(response.data.reservations);
-    } else {
-      alert("Le coupon n'est pas valide");
-    }
-  });
-};
-
-const checkGiftSejour = (reservation) => {
-  if (reservation.estcadeau) {
-    return "Cadeau";
-  } else {
-    return "Non cadeau";
-  }
-};
-
 </script>
 
 <template>
-  <div v-if="authStore.user">
-    <Progress :step="3"></Progress>
+  <div v-if="authStore.user" class="">
     <AddAdressForm v-if="!closeAddAdress" v-on:toClose="(i) => closeAddAdress = i" :idclient="authStore.user.idclient" />
-    <div class="flex">
+    <div class="flex mt-6">
       <div class="w-1/2 px-3">
         <h1 class="text-3xl mb-6">Adresse de facturation</h1>
         <div class="flex flex-wrap">
+          <div class="w-full" v-if="!authStore.user.adresses || authStore.user.adresses.length == 0">
+            <button
+              @click="closeAddAdress = false"
+              :disabled="loading"
+              :class="
+                loading ? 'opacity-70 cursor-wait' : 'hover:bg-transparent'
+              "
+              class="flex w-full h-12 justify-center cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 bg-rose border-rose border-2 font-semibold"
+            >
+              {{ loading ? "" : "Ajouter une adresse" }}
+              <svg
+                v-if="loading"
+                class="h-6 w-6 animate-spin"
+                viewBox="3 3 18 18"
+              >
+                <path
+                  class="fill-rose"
+                  d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"
+                ></path>
+                <path
+                  class="fill-white"
+                  d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"
+                ></path>
+              </svg>
+              <svg
+                v-else
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
+                />
+              </svg>
+            </button>
+          </div>          
           <div
+            v-else
             class="w-1/2 h-full justify-between flex-1 px-3 flex flex-col gap-6"
             v-for="adresse in authStore.user.adresses"
             :key="adresse.idadresse"
@@ -243,63 +244,9 @@ const checkGiftSejour = (reservation) => {
             }}</span>
           </label>
         </div>
-        <div>
-          <label for="coupon" class="mb-3">Ajouter un coupon</label>
-          <div class="flex gap-3">
-            <input
-              v-model="coupon"
-              type="text"
-              id="coupon"
-              class="w-4/5 h-12 p-3 mb-6 text-black outline-none rounded-md border-rose border-4"
-              placeholder="Ajouter un coupon"
-            />
-            <button
-              @click="couponCheck"
-              :disabled="loading"
-              :class="
-                loading ? 'opacity-70 cursor-wait' : 'hover:bg-transparent'
-              "
-              class="flex w-1/5 h-12 justify-center cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 bg-rose border-rose border-2 font-semibold"
-            >
-              {{ loading ? "" : "Ajouter" }}
-              <svg
-                v-if="loading"
-                class="h-6 w-6 animate-spin"
-                viewBox="3 3 18 18"
-              >
-                <path
-                  class="fill-rose"
-                  d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"
-                ></path>
-                <path
-                  class="fill-white"
-                  d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"
-                ></path>
-              </svg>
-              <svg
-                v-else
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
-                />
-              </svg>
-            </button>
-          </div>
+        <div>          
           <h1 class="text-3xl mb-6">
-            {{ panierStore.total }} article<span v-if="panierStore.total > 1"
-              >s</span
-            >
-            pour un total de {{ prixTotal - promotion }} € {{ promotion > 0
-              ? "(-" + promotion + "€)"
-              : "" }}
+            1 article pour un total de {{ config.cheques[refchq] }} €
           </h1>
         </div>
         <button
@@ -308,7 +255,7 @@ const checkGiftSejour = (reservation) => {
           :class="loading ? 'opacity-70 cursor-wait' : 'hover:bg-transparent'"
           class="flex w-full py-9 justify-center cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 font-semibold"
         >
-          {{ loading ? "" : "Valider et procéder au paiement" }}
+          {{ loading ? "" : `Valider et procéder au paiement de ${config.cheques[refchq]}€` }}
           <svg v-if="loading" class="h-6 w-6 animate-spin" viewBox="3 3 18 18">
             <path
               class="fill-rose"

@@ -108,5 +108,16 @@ export const usePanierStore = defineStore("panier", {
                 }
             }
         },
+        clearPanier() {
+            this.sejours = [{
+                idsejour: null,
+                prixsejour: 0,
+                nbEnfants: 0,
+                nbAdultes: 0,
+                nbChambres: 0,
+                date: null,
+                prixtotal: 0,
+            }];
+        },
     },
 });
