@@ -1,5 +1,5 @@
 <template>
-    <div v-if="ready">
+    <div v-if="ready" >
         <div class="flex mb-6 justify-between">
             <RouterLink to="/admin/sejours" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Retour à la liste des séjours
@@ -49,6 +49,7 @@
                     <label class="inline-flex relative items-center cursor-pointer">
                         <input @change="handleCheckboxChange" v-model="libelletemps" type="checkbox" value="" class="sr-only peer">
                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                        <Tooltip text="Choisissez entre un intervalle en nombre de nuits et de jours ou en moment de la journée"/>         
                         <span class="ml-3 text-center text-sm font-medium text-gray-900 dark:text-gray-300">{{ libelletemps ? 'Avec ' : 'Sans ' }}libellé temps</span>
                     </label>
                     <div v-if="!libelletemps" class=" w-2/5">
@@ -62,11 +63,12 @@
                     <div v-if="libelletemps" class="w-4/5">
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selectionner une option</label>
                         <select v-model="form.libelletemps" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Matinée</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
+                            <option value="Matinée">Matinée</option>
+                            <option value="Midi">Midi</option>
+                            <option value="Après-midi">Après-midi</option>
+                            <option value="Soiree">Soirée</option>
+                            <option value="Nuit">Nuit</option>                            
+                            <option value="Journée">Journée</option>
                         </select>
                     </div>
                 </div>
@@ -102,7 +104,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Mettre à jour</button>
         </form>
 
         <!-- Ajouter un hébergement, relié au bouton en haut -->
@@ -289,6 +291,8 @@ const getSejour = async () => {
     themes.value = (await apis.getThemes()).data.data;
     destinations.value = (await apis.getDestinations()).data.data;
 
+    form.value.libelletemps ? libelletemps.value = true : libelletemps.value = false;
+
     ready.value = true;
 }
 
@@ -308,6 +312,8 @@ const addNewActivite = async (event) => {
         console.log(error);
         return;
     });
+
+    !libelletemps.value ? form.value.libelletemps = null : form.value.nbnuit = null, form.value.nbjour = null;
 
     apis.updateSejourById(id, form.value)
     .then((response) => {

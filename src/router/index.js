@@ -177,26 +177,37 @@ const router = createRouter({
       path: '/paiement',
       name: 'RedirectPaiement',
       component: () => import('../views/MonPanierView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/paiement/validation',
       name: 'Paiement',	
       component: () => import('../views/Checkout/CheckoutView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/paiement/facturation',
       name: 'Facturation',
       component: () => import('../views/Checkout/informationView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/paiement/cheque-ref=:ref',
       name: 'Cheque',
       component: () => import('../views/Checkout/ChequeCheckoutView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/paiement/merci',
       name: 'Sucess',
       component: () => import('../views/Checkout/SucessView.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/paiement/offir',
+      name: 'Offrir',
+      component: () => import('../views/Checkout/OffrirCheckoutView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/favoris',

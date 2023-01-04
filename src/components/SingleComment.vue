@@ -1,5 +1,5 @@
 <template v-auto-animate>
-    <div v-auto-animate>
+    <div v-auto-animate v-if="!estreponse">
         <div class="relative bg-slate-700 p-7 shadow-xl rounded-md">
             <div @click="toggleVisible" name="alert-circle"
                 class="absolute text-red-600 bottom-1 right-2 text-xs cursor-pointer">Signaler le commentaire</div>
@@ -11,6 +11,11 @@
             </div>
             <h1 class=" text-xl font-bold text-white">{{ title }}</h1>
             <p class="text-lg text-slate-300">{{ comment }}</p>
+        </div>
+
+        <div v-if="reponse" id="reponse" class="flex flex-col w-full items-end before:">
+            <h1 class="mt-5 mb-2 w-11/12 text-2xl font-bold">Réponse de VinoDrill</h1>
+            <p class="text-lg w-11/12 text-slate-300">{{ reponse.commentaire }}</p>
         </div>
         
         <!-- pop up element -->
@@ -65,6 +70,8 @@ const props = defineProps<{
     comment: string;
     date: string;
     title: string;
+    reponse: any;
+    estreponse: boolean;
 }>();
 
 const visible = ref(false);
@@ -136,6 +143,17 @@ function toReadableDate(date: string) {
     background-color: #000;
     color: #fff;
     transform: scale(1.2);
+}
+
+#reponse::before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 80%;
+  border-radius: 100px;
+  border-right: 5px solid hsl(228, 33%, 97%);
+  top: 10px;
+  left: 5%;
 }
 </style>
 

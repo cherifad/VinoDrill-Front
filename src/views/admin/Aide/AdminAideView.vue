@@ -39,8 +39,9 @@
         </div>
         <ImageAide image="/src/views/admin/Aide/img/Dashboard.PNG " />
         <div class="flex justify-center">
-            <p>Cliquez sur le bouton "Séjours" qui se trouve en début de bandeau.</p>
+            <p>Cliquez sur le bouton "Séjours" qui se trouve en début de bandeau.<br>Vous pouvez ensuite choisir le séjour que vous voulez modifier.</p>
         </div>
+         <ImageAide image="/src/views/admin/Aide/img/modifier.PNG " />
       </div>
 
 

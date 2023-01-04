@@ -40,6 +40,53 @@
 
         <div id="weekend" class="text-justify">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Week-ends sur la route des vins de la Vallée du Rhône</h2>
+
+            <div class="grid grid-cols-3 mt-2">
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/218-ProductThird/week-end-degustation-drome.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end viticole dans la Drôme</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">365€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/36-week-end-viticole-dans-la-drome">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        4
+                    </div>
+                    <img src="https://medias1.vinotrip.com/219-ProductThird/week-end-romantique-cote-rotie.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Séjour en amoureux en Côte-Rôtie</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">340€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/44-sejour-en-amoureux-en-cote-rotie">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/281-ProductThird/week-end-nature-vallee-rhone.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end oenologique Suze-la Rousse</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">340€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/19-week-end-oenologique-suze-la-rousse">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="route" class="text-justify">
@@ -139,5 +186,8 @@ a {
 }
 #title {
     color: #CB7169;
+}
+button a {
+    color: black;
 }
 </style>

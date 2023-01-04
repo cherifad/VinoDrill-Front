@@ -30,7 +30,6 @@
                 </div>
                 <div class="flex">
                     <ReviewResume v-if="rating" :ratingaverage="rating" :ratingcount="ratingcount" :ratingcountarray="ratingcountarray"/>
-            
                 </div>
             </div>
             <div class="text-cyan-500">
@@ -72,7 +71,7 @@
             </div>
         <div v-if="reviews.length > 0" id="avis" class="flex flex-col gap-3 mb-8">
             <h1 class="mt-5 text-3xl font-bold">Voir les {{ reviews.length }} avis</h1>
-            <SingleComment v-for="review in reviews" :key="review.idavis" :id="review.idavis" :note="review.note" :comment="review.commentaire" :date="review.dateavis" :title="review.titreavis"/>
+            <SingleComment v-for="review in reviews" :estreponse="review.estreponse" :reponse="review.reponse_admin" :key="review.idavis" :id="review.idavis" :note="review.note" :comment="review.commentaire" :date="review.dateavis" :title="review.titreavis"/>
         </div>
 
         <div id="related" v-if="relatedSejours">
@@ -258,7 +257,10 @@ const getData = async (id) => {
         sejour.value = response.data['data'];
         reviewAnalytics(response.data['data']['avis']);
         reviews.value = response.data['data']['avis'].reverse();
-        // reverse array to have the most recent first
+        // sort reviews by date
+        reviews.value.sort((a: any, b: any) => {
+            return new Date(b.dateavis).getTime() - new Date(a.dateavis).getTime();
+        });
         etapes.value = response.data['data']['etapes'].reverse();
 
         // get the realted sejour if the current is loaded

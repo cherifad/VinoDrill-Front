@@ -52,6 +52,35 @@
 
         <div id="sejours" class="text-justify">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Séjours sur la route des vins du Jura</h2>
+
+            <div class="grid grid-cols-3 mt-2">
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <img src="https://medias1.vinotrip.com/284-ProductThird/week-end-gastronomie-jura.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Escapade gastronomique Jura</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">304€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/69-escapade-gastronomique-jura">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        4
+                    </div>
+                    <img src="https://medias1.vinotrip.com/276-ProductThird/sejour-gourmand-jura.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Comté et Vins dans le Jura</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">306€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/64-comte-et-vins-dans-le-jura">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>     
 
         <div id="plus" class="text-justify">
@@ -97,5 +126,8 @@ a {
 }
 #title {
     color: #CB7169;
+}
+button a {
+    color: black;
 }
 </style>

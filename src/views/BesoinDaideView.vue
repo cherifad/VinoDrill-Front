@@ -14,7 +14,6 @@
                <li><a href="#ModifyInfo">Modifier mes informations personnelles</a></li>
                <li><a href="#ContactPage">Envoyer un mail depuis la page Contact</a></li>
                <li><a href="#Panier">Ajouter/Modifier un séjour dans mon panier</a></li>
-               <li><a href="#Offrir">Etapes pour offrir un séjour</a></li>
                <li><a href="#Payer">Payer pour finaliser ma commande</a></li>
             </ul>
          </div>
@@ -52,9 +51,6 @@
                <img class="w-1/2 p-7 border-solid border-yellow-500 border-2" src="../assets/img/screen/sejour.png" alt="img">
             </ul>
             <p class="mt-3">Une fois cela fait vous pouvez constater le séjour choisi dans votre <span class="text-sky-500 underline "><RouterLink to="/mon-panier">panier</RouterLink></span>, si ce n'est pas le cas attendez un moment avant de réessayer. <br> Si le problème est non résolu et persiste contactez-nous depuis la page <span class="text-sky-500 underline "><RouterLink to="/contact">Contact</RouterLink></span>.</p>
-         </div>
-         <div>
-            <h2 class=" flex text-3xl mt-10 mb-10 title" id="Payer">Etapes pour offrir un séjour</h2>
          </div>
          <div>
             <h2 class=" flex text-3xl mt-10 mb-10 title" id="Offrir">Payer pour finaliser ma commande</h2>

@@ -86,10 +86,33 @@
         </div>
 
         <!-- Mes commandes -->
-        <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'commandes'">
-            <div v-if="authStore.user.commandes.length > 0" class="flex mt-3 mb-3 flex-wrap">
-                <div class="w-1/3 px-3 py-3" v-for="commande in authStore.user.commandes" :key="commande.refcommande">
-                    <Commande :cheminFacture="commande.cheminfacture" :estCheque="commande.estcheque" :refcommande="commande.refcommande" :datecommande="commande.datecommande" :message="commande.message" :prixcommande="commande.prixcommande" :quantite="commande.quantite" :idclient="commande.idclient" :libellepaiement ="commande.paiement.libellepaiement"/>
+        <div class="mt-3 mb-3"  v-if="choice == 'commandes'">
+            <div v-if="authStore.user.commandes.length > 0 && commande_en_cours.length > 0 && commande_terminee.length > 0" class="">
+                <div class="flex gap-6">
+                    <a href="#commande-terminee" class="flex flex-1 justify-center hover:bg-transparent cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 px-5 py-3 bg-rose border-rose border-2 font-semibold">
+                        Commandes terminées
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </a>
+                    <a href="#commande-encours" class="flex flex-1 justify-center hover:bg-transparent cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 px-5 py-3 bg-rose border-rose border-2 font-semibold">
+                        Commandes en cours
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </a>
+                </div>
+                <div id="commande-encours" class="flex pt-6 mt-3 mb-3 flex-wrap">                    
+                    <h1 class="w-1/3 text-2xl flex items-center justify-center px-3 py-3 border-b-8 border-r-8 border-t-2 border-l-2 border-rose">Commandes en cours</h1>
+                    <div class="w-1/3 px-3 py-3" v-for="commande in commande_en_cours" :key="commande.refcommande">
+                        <Commande :estPassee="estPassee(commande.reservations)" :cheminFacture="commande.cheminfacture" :estCheque="commande.estcheque" :refcommande="commande.refcommande" :datecommande="commande.datecommande" :message="commande.message" :prixcommande="commande.prixcommande" :quantite="commande.quantite" :idclient="commande.idclient" :libellepaiement ="commande.paiement.libellepaiement"/>
+                    </div>
+                </div>
+                <div id="commande-terminee" class="flex pt-6 mt-3 mb-3 flex-wrap">                    
+                    <h1 class="w-1/3 text-2xl flex items-center justify-center px-3 py-3 border-b-8 border-r-8 border-t-2 border-l-2 border-rose">Commandes Terminée</h1>
+                    <div class="w-1/3 px-3 py-3" v-for="commande in commande_terminee" :key="commande.refcommande">
+                        <Commande :estPassee="estPassee(commande.reservations)" :cheminFacture="commande.cheminfacture" :estCheque="commande.estcheque" :refcommande="commande.refcommande" :datecommande="commande.datecommande" :message="commande.message" :prixcommande="commande.prixcommande" :quantite="commande.quantite" :idclient="commande.idclient" :libellepaiement ="commande.paiement.libellepaiement"/>
+                    </div>
                 </div>
             </div>
              <div v-else class="text-2xl w-full font-bold text-center mt-10">
@@ -100,7 +123,7 @@
         <!-- Mes réservations -->
         <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'reservations'">
             <div class="flex mt-3 mb-3 flex-wrap" v-if="authStore.user.commandes.length > 0">
-                <Reservation class="px-3 w-1/3 py-3" v-for="reservation in reservations" :idclient="authStore.user.idclient" :key="reservation.refcommande + reservation.idsejour" :refcommande="reservation.refcommande" :datedebutreservation="reservation.datedebutreservation" :estcadeau="reservation.estcadeau" :idsejour="reservation.idsejour" :nbadulte="reservation.nbadulte" :nbchambre="reservation.nbchambre" :nbenfant="reservation.nbenfant"/>
+                <Reservation class="px-3 w-1/3 py-3" v-for="reservation in reservations" :coupon="reservation.cadeau ? reservation.cadeau : null" :idclient="authStore.user.idclient" :key="reservation.refcommande + reservation.idsejour" :refcommande="reservation.refcommande" :datedebutreservation="reservation.datedebutreservation" :estcadeau="reservation.estcadeau" :idsejour="reservation.idsejour" :nbadulte="reservation.nbadulte" :nbchambre="reservation.nbchambre" :nbenfant="reservation.nbenfant"/>
             </div>
             <div v-else class="text-2xl w-full font-bold text-center mt-10">
                 Vous n'avez aucune réservation.
@@ -121,7 +144,7 @@
         <!-- Mes avis -->
         <div class="flex mt-3 mb-3 flex-wrap"  v-if="choice == 'avis'">
             <div v-if="avis.length > 0 && avis" class="px-14 py-5">
-                <SingleComment v-for="avi in avis" :key="avi.idavis" :id="avi.idavis" :note="avi.note" :date="avi.dateavis" :title="avi.titreavis" :comment="avi.commentaire" />
+                <SingleComment v-for="avi in avis" :estreponse="false" :reponse="null" :key="avi.idavis" :id="avi.idavis" :note="avi.note" :date="avi.dateavis" :title="avi.titreavis" :comment="avi.commentaire" />
             </div>
             <div v-else class="text-2xl w-full font-bold text-center mt-10">
                 Vous n'avez aucun avis.
@@ -165,6 +188,8 @@ const closeAddAdress: any = ref(true);
 const mesFavories: any = ref([]);
 const avis: any = ref(null);
 const reservations: any = ref([]);
+const commande_terminee: any = ref([]);
+const commande_en_cours: any = ref([]);
 
 onMounted(async () => {
     await authStore.getUser();
@@ -177,12 +202,31 @@ onMounted(async () => {
             reservations.value.push(single);
         });
     });
+    const commandes = authStore.user.commandes;
+    commandes.forEach((commande: any) => {
+        if(estPassee(commande.reservations)) {
+            commande_terminee.value.push(commande);
+        } else {
+            commande_en_cours.value.push(commande);
+        }
+    });
 });
 
 const setCloseAddAdress = (i) => {
     closeAddAdress.value = i
 }
 
+const estPassee = (reservations) => {
+    var response = true;
+    const dateActuelle = new Date();
+    reservations.forEach((single: any) => {
+        const dateDebut = new Date(single.datedebutreservation);
+        if(dateDebut > dateActuelle) {
+            response = false;
+        }
+    });
+    return response;
+}
 </script>
 
 <style scoped>

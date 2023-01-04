@@ -23,6 +23,7 @@ const prixTotal = ref(0);
 const coupon: any = ref(null);
 const closeAddAdress: any = ref(true);
 const promotion = ref(0);
+const couponError = ref([false, ""]);
 
 watch(note, (val) => {
   if (val.length < 50 && val.length > 0) {
@@ -116,21 +117,13 @@ async function pay() {
 const couponCheck = async () => {
   await axios.post("/api/coupon/check", { coupon: coupon.value }).then((response) => {
     if (response.data.amount) {
-      promotion.value = response.data.amount;
+      prixTotal.value - response.data.amount < 0 ? (couponError.value = [true, "Le coupon ne peut pas être utilisé partiellement !"]) : (couponError.value = [false, ""], promotion.value = response.data.amount);
     } else if(response.data.reservations) {
       console.log(response.data.reservations);
     } else {
-      alert("Le coupon n'est pas valide");
+      couponError.value = [true, "Le coupon n'est pas valide !"];
     }
   });
-};
-
-const checkGiftSejour = (reservation) => {
-  if (reservation.estcadeau) {
-    return "Cadeau";
-  } else {
-    return "Non cadeau";
-  }
 };
 
 </script>
@@ -244,6 +237,9 @@ const checkGiftSejour = (reservation) => {
           </label>
         </div>
         <div>
+          <div v-if="couponError[0]" class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700" role="alert">
+            {{ couponError[1] }}
+          </div>
           <label for="coupon" class="mb-3">Ajouter un coupon</label>
           <div class="flex gap-3">
             <input

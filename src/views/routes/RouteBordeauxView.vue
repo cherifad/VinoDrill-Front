@@ -66,6 +66,53 @@
 
         <div id="idees" class="text-justify">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Idées séjours sur la route des vins de Bordeaux</h2>
+
+            <div class="grid grid-cols-3 mt-2">
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/192-ProductThird/degustation-vins-biologiques-bordeaux.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Séjour dégustation Saint-Emilion</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">225€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/6-sejour-degustation-saint-emilion">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/190-ProductThird/atelier-oenologique-bordeaux.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Bordelais - Séjour œnologique</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">161€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/3-bordelais-sejour-nologique">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/194-ProductThird/week-end-vin-golf-bordeaux.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Séjour vin et golf en Médoc</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">570€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/10-sejour-vin-et-golf-en-medoc">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="itineraires" class="text-justify">
@@ -176,5 +223,8 @@ a {
 }
 #title {
     color: #CB7169;
+}
+button a {
+    color: black;
 }
 </style>

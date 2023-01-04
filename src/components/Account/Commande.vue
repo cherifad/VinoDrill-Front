@@ -1,7 +1,7 @@
 <template>
-    <div class="">
-        <div class="w-full flex flex-col gap-3 mb-3 items-center">
-            <div id="box" class="relative w-full border-b-8 border-r-8 border-t-2 border-l-2 border-rose p-5 rounded-lg flex flex-col gap-3">                 
+    <div class="h-full">
+        <div class="w-full h-full justify-between flex flex-col gap-3 mb-3 items-center">
+            <div id="box" class="relative w-full flex-1 border-b-8 border-r-8 border-t-2 border-l-2 border-rose p-5 rounded-lg justify-around flex flex-col gap-3">                 
                 <div class="flex gap-5 justify-between">
                     <div class="flex flex-col items-center">
                         <p id="passenger" class="text-2xl font-bold">Référence commande</p>
@@ -131,6 +131,7 @@ const props = defineProps<{
     libellepaiement: any;
     cheminFacture: any;
     estCheque?: boolean;
+    estPassee?: boolean;
 }>();
 
 const form = ref({

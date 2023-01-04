@@ -114,7 +114,7 @@ watch(route, (newRoute, oldRoute) => {
       </div>     
     </div>
 
-    <!-- Admin Menu -->
+    <!-- Admin Menu
     <div class="mt-6" ref="adminMenu" v-if="useRoute().path.includes('admin')">
       <div class="flex items-center gap-4">
         <div class="flex items-center gap-2">
@@ -123,7 +123,8 @@ watch(route, (newRoute, oldRoute) => {
          </div>
       </div>
 
-    </div>
+    </div> -->
+    
   </header>
   <a href="#top" class="fixed text-black text-3xl bottom-4 right-4 p-3 cursor-pointer bg-white rounded-xl shadow-xl z-50">
     <ion-icon class="hover:-translate-y-1" name="arrow-up"></ion-icon>

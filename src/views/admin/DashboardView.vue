@@ -36,7 +36,7 @@
         <div class="flex justify-center mt-5">
             <PowerBi
                 title="Rapport_Bi_Par_Vignoble"
-                src="https://app.powerbi.com/view?r=eyJrIjoiNGIxMWMzYjItZDBkNy00ZWU4LWI4MzQtM2U1NjQ1ZGE1NmZiIiwidCI6ImUyMWU5NzgzLWQwYTAtNDhmOC04NTBlLTBiMDgxYjQ2ZDc4OCIsImMiOjh9&pageName=ReportSection"
+                src="https://app.powerbi.com/view?r=eyJrIjoiNjc0ODQyZWItZDI1YS00MTFiLTg0YzAtM2U5MWNjMjIwZDM1IiwidCI6ImUyMWU5NzgzLWQwYTAtNDhmOC04NTBlLTBiMDgxYjQ2ZDc4OCIsImMiOjh9"
             />
         </div>
         <div class="flex justify-center mt-5">
@@ -45,6 +45,25 @@
                 src="https://app.powerbi.com/view?r=eyJrIjoiZGVkZTNmOTktOWFiYy00ZTBlLWI4MmEtYmRkZmRhMzQ0ZjY2IiwidCI6ImUyMWU5NzgzLWQwYTAtNDhmOC04NTBlLTBiMDgxYjQ2ZDc4OCIsImMiOjh9"
             />
         </div>
+
+        <div>
+            <div class="text-center text-5xl font-bold m-6">
+                <h1>DPO</h1>
+            </div>
+            
+            <div>
+                <h2 class="text-2xl font-bold">Suppresion données clients</h2>
+                <input type="text" id="email" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="E-mail client à supprimer" required>
+            </div>
+
+            <div class="mt-4">
+                <h2 class="text-2xl font-bold">Anonymiser données clients</h2>
+                 <input type="text" id="email" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="E-mail client à anonymiser" required>
+            </div>
+
+            <button @click="envoyer()" type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Entrer</button>
+        </div>
+        
 
         
         
@@ -57,6 +76,10 @@ import { useAuthStore } from '../../stores/auth';
 import PowerBi from '../../components/PowerBi.vue';
 
 const authStore: any = useAuthStore();
+
+const envoyer = () => {
+    
+}
 
 </script>
 

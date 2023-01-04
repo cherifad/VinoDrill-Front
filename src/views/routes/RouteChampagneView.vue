@@ -37,6 +37,50 @@
 
         <div id="weekend" class="text-justify">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Week-ends sur la route touristiques du Champagne</h2>
+
+            <div class="grid grid-cols-3 mt-2">
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/204-ProductThird/week-end-romantique-champagne.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end en amoureux Epernay</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">395€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/29-week-end-en-amoureux-epernay">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/221-ProductThird/coffret-week-end-champagne.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end à offrir - Champagne</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">200€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/38-week-end-a-offrir-champagne">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <img src="https://medias1.vinotrip.com/229-ProductThird/degustations-champagnes-reputes.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end d'exception en Champagne</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">520€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/45-week-end-d-exception-en-champagne">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="itineraires" class="text-justify">
@@ -160,5 +204,8 @@ a {
 }
 #title {
     color: #CB7169;
+}
+button a {
+    color: black;
 }
 </style>

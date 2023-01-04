@@ -196,12 +196,14 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, onMounted } from 'vue';
+import { ref, watchEffect, onMounted, watch } from 'vue';
 import { useAuthStore } from '../stores/auth';
 import config from '../utils/config';
+import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
 const dateMinus18 = new Date();
+const router = useRouter();
 
 const login = ref(true)
 const registerText = ref(null);
@@ -227,6 +229,12 @@ const registerForm = ref({
     gender: 'M',
     birthdate: '',
     phone: ''
+})
+
+watch(authStore.isAuthenticated , (isAuthenticated) => {
+    if (isAuthenticated) {
+        router.push({ name: 'MonCompte' })
+    }
 })
 
 onMounted(async () => {

@@ -13,7 +13,7 @@
                 <li><a href="#circuits">Les circuits découverte des vins de Provence</a></li>
                 <li><a href="#paca">A voir sur la route des vins en PACA</a></li>
                 <li><a href="#visiter">Visiter la Provence, différement</a></li>
-                <li><a href="#">Informations complémentaires</a></li>
+                <li><a href="#infos">Informations complémentaires</a></li>
                 <li><a href="#vignobles">Visiter les vignobles de France</a></li>
             </ul>
         </div>
@@ -43,6 +43,50 @@
 
         <div id="sejours" class="text-justify">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Séjours et week-ends sur la route des vins</h2>
+
+            <div class="grid grid-cols-3 mt-2">
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/304-ProductThird/week-end-biologique-provence.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Autour du bio en Provence</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">370€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/56-autour-du-bio-en-provence">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        4
+                    </div>
+                    <img src="https://medias1.vinotrip.com/255-ProductThird/week-end-oenologie-bandol.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Bandol - Séjour viticole</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">235€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/58-bandol-sejour-viticole">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <img src="https://medias1.vinotrip.com/254-ProductThird/week-end-gastronomie-vin-provence.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Gastronomie et vin en Provence</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">305€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/57-gastronomie-et-vin-en-provence">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="circuits" class="text-justify">
@@ -89,6 +133,7 @@
         </div>
 
         <div id="visiter" class="text-justify">
+            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Visiter la Provence, différement</h2>
             <div class="mt-5">
                 <p class="mb-2 font-bold" id="stitre">Le tour des vignes à vélo ou à pied</p>
                 <p>
@@ -103,7 +148,8 @@
             </div>
         </div>
 
-        <div id="visiter" class="text-justify">
+        <div id="infos" class="text-justify">
+            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Informations complémentaires</h2>
             <p>
                 Site officiel du tourisme du département du Var : <a href="www.visitvar.fr">www.visitvar.fr</a> / Site de l'oenotourisme en Provence : <a href="www.routedesvinsdeprovence.com">www.routedesvinsdeprovence.com</a>
             </p>
@@ -144,5 +190,8 @@ a {
 }
 #title {
     color: #CB7169;
+}
+button a {
+    color: black;
 }
 </style>

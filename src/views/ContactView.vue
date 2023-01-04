@@ -74,7 +74,7 @@
 
                
                 <div>
-                    <input @click="envoyer()" id="send" type="submit" class="mr-12 mt-8 bg-white py-2 px-4 rounded shadow" value="Envoyez"/>
+                    <input @click="envoyer()" id="send" type="submit" class="mr-12 mt-8 bg-white py-2 px-4 rounded shadow" value="Envoyer"/>
                 </div>
             </form>
         </div>

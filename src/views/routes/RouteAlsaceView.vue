@@ -15,8 +15,7 @@
                 <li><a href="#dormir">Où dormir sur la route des vins d'Alsace ?</a></li>
                 <li><a href="#conseils">Conseils de dégustation dans le vignoble Alsacien</a></li>
                 <li><a href="#sejours">Les séjours découvertes de la Routes des vins d'Alsace</a></li>
-                <li><a href="">Les avis de nos clients</a></li>
-                <li><a href="">Hébergements et domaines en Alsace</a></li>
+                <li><a href="#hebergements">Hébergements et domaines en Alsace</a></li>
                 <li><a href="#partir">Partir sur les routes des vins en France</a></li>
             </ul>
         </div>
@@ -153,6 +152,86 @@
 
         <div id="sejours">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Les séjours découvertes de la Routes des vins d'Alsace</h2>
+            
+            <div class="grid grid-cols-3 mt-2">
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/222-ProductThird/coffret-cadeau-route-vins-alsace.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Cadeau dégustation - Route d'Alsace</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">134.5€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/40-cadeau-degustation-route-d-alsace">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <img src="https://medias1.vinotrip.com/259-ProductThird/week-end-romantique-vignoble-alsace.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end en amoureux Colmar</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">330€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/24-week-end-en-amoureux-colmar">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/203-product_big/atelier-vignerons-alsace.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Séjour vigneron à Beblenheim</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">290€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/9-sejour-vigneron-a-beblenheim">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+            </div>   
+        </div>
+
+        <div id="hebergements" class="text-justify">
+            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Hébergements et domaines en Alsace</h2>
+            <p>
+                Rencontrez nos hébergements partenaires lors de votre week-end sur la route des vins d'Alsace, autour de Colmar ainsi que des villages de Kaysersberg et Riquewihr.
+            </p>
+            
+            <h2 class="font-bold mt-5">Hébergements au coeur du vignoble alsacien</h2>
+            <ul class=" list list-disc list-inside mt-2">
+                <li>Le Chambard</li>
+                <li>Domaine Bott-Geyl</li>
+                <li>Schaeferhof</li>
+            </ul>
+
+            <h2 class="font-bold mt-5">Châteaux, domaines et caves viticoles à découvrir</h2>
+            <ul class=" list list-disc list-inside mt-2">
+                <li>Domaine Schoenheitz</li>
+                <li>Domaine François Schwach </li>
+                <li>Domaine Marcel Humbrecht</li>
+                <li>Domaine Stentz-Buecher</li>
+                <li>Domaine Jean-Baptiste Adam</li>
+                <li>Domaine Pierre Adam</li>
+                <li>Domaine Marcel Freyburger</li>
+                <li>Domaine Kuehn</li>
+                <li>Vignoble Klur</li>
+                <li>Domaine Paul Spannagel</li>
+                <li>Domaine Jean Dietrich</li>
+                <li>Domaine Paul Blanck et Fils</li>
+            </ul>
+
+            <h2 class="font-bold mt-5">En savoir plus</h2>
+            <ul class=" list list-disc list-inside mt-2">
+                <li>Page Wikipédia : <a href="https://fr.wikipedia.org/wiki/Route_des_vins_d%27Alsace">Route d'Alsace</a></li>
+                <li>Site officiel du tourisme en Alsace : <a href="www.tourisme-alsace.com">www.tourisme-alsace.com</a></li>
+            </ul>
         </div>
 
         <div id="partir" class="text-justify">
@@ -190,5 +269,9 @@ a {
 }
 #title {
     color: #CB7169;
+}
+
+button a {
+    color: black;
 }
 </style>

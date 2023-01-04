@@ -31,6 +31,9 @@
         Passer à l'étape suivante
       </button>
     </div>
+    <div v-if="error[0]" class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700" role="alert">
+      {{ error[1] }} <RouterLink to="/connexion" v-if="error[1].includes('connecté')" class="text-red-800 ml-3 font-bold">Se connecter</RouterLink>
+    </div>
     <div class="flex justify-center gap-6">
       <div id="bg-image" style="background-image: url('/src/assets/img/pexels-roland-dumke-943700.jpg')" class="h-96 w-1/2 rounded-lg">
         <div id="box" class="w-full h-full p-7 rounded-lg flex flex-col justify-between">
@@ -39,9 +42,9 @@
           <div class="flex mt-6 justify-evenly gap-6">
             <div class="text-center text-lg">
               Déjà fait votre choix ? <br />
-              <RouterLink to="/paiement/validation" class="bg-rose mt-3 hover:bg-transparent w-fit text-white border-2 border-rose font-bold block py-3 px-10 rounded">
+              <button @click="checkCheckout" class="bg-rose mt-3 hover:bg-transparent w-fit text-white border-2 border-rose font-bold block py-3 px-10 rounded">
                 Passer à l'étape suivante
-              </RouterLink>
+              </button>
             </div>
             <div class="text-center text-lg">
               Encore indécis ? <br />
@@ -78,9 +81,12 @@ import config from "../utils/config";
 import { useRouter } from "vue-router";
 import { useCouponStore } from "../stores/bonCommande";
 import axios from "axios";
+import { useAuthStore } from "../stores/auth";
 
 const coupon = ref("");
 const couponStore = useCouponStore();
+const authStore = useAuthStore();
+const error: any = ref([false, ""]);
 
 const checkCoupon = async () => {
   console.log(coupon.value);
@@ -99,9 +105,20 @@ const selected: any = ref(null);
 const router = useRouter();
 
 const offriCheque = () => {
-  if(!selected.value) alert("Veuillez selectionner un montant");
+  if(!authStore.isAuthenticated) {
+    error.value = [true, "Vous devez être connecté pour offrir un chèque cadeau"];
+  } 
+  else if(!selected.value) alert("Veuillez selectionner un montant");
   else {
     router.push({ name: "Cheque", params: { ref: selected.value } });
+  }
+};
+
+const checkCheckout = () => {
+  if(!authStore.isAuthenticated) {
+    error.value = [true, "Vous devez être connecté pour offrir un ou des séjour(s)"];
+  } else {
+    router.push("/paiement/validation");
   }
 };
 </script>

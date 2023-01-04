@@ -8,7 +8,6 @@
         <div>
             <ul class=" list list-disc list-inside mt-5">
                 <li><a href="#histoire">Histoire du vignoble d'Ile-de-France</a></li>
-                <li><a href="#evenements">Evènements oenologiques à Paris</a></li>
                 <li><a href="#visites">Les visites de vignes à Paris</a></li>
                 <li><a href="#itineraires">Itinéraire viticole en périphérie de la capitale</a></li>
                 <li><a href="#plus">En savoir plus</a></li>
@@ -25,10 +24,6 @@
             <p class="mt-2">
                 Aujourd’hui, la plupart de ces petits vignobles n’ont pas vocation économique et sont en fait liés à des activités touristiques, pédagogiques et culturelles.
             </p>
-        </div>
-
-        <div id="evenements" class="text-justify">
-            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Evènements oenologiques à Paris</h2>
         </div>
 
         <div id="visites" class="text-justify">
@@ -107,5 +102,8 @@ a {
 }
 #title {
     color: #CB7169;
+}
+button a {
+    color: black;
 }
 </style>

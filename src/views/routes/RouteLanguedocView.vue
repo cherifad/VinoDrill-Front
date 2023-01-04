@@ -9,7 +9,7 @@
             <ul class=" list list-disc list-inside mt-5">
                 <li><a href="#visiter">Partir sur les routes des vins du Languedoc-Roussillon</a></li>
                 <li><a href="#itineraires">Itinéraires en Languedoc-Roussillon</a></li>
-                <li><a href="#sejours">Séjours sur la route des vins du Languedoc-Roussillon</a></li>
+                <li><a href="#sejours">Idées séjours sur la route des vins du Languedoc-Roussillon</a></li>
                 <li><a href="#partenaires">Nos domaines et hébergements partenaires en Languedoc-Roussillon</a></li>
                 <li><a href="#vignobles">Faites le tour des vignobles</a></li>
             </ul>
@@ -68,7 +68,54 @@
         </div>
 
         <div id="sejours" class="text-justify">
-            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Séjours sur la route des vins du Languedoc-Roussillon</h2>
+            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Idées séjours sur la route des vins du Languedoc-Roussillon</h2>
+
+            <div class="grid grid-cols-3 mt-2">
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/215-ProductThird/initiation-degustation-vins-languedoc-roussillon.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end dégustation Corbières</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">250€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/32-week-end-degustation-corbieres">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/294-ProductThird/randonnees-vignoble-languedoc-roussillon.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end vin Collioure</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">290€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/34-week-end-vin-collioure">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/295-ProductThird/week-end-romantique-languedoc.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Séjour œnologique Saint-Chinian</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">340€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/39-sejour-nologique-saint-chinian">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+            </div>  
         </div>
 
         <div id="partenaires" class="text-justify">
@@ -133,5 +180,8 @@ a {
 }
 #title {
     color: #CB7169;
+}
+button a {
+    color: black;
 }
 </style>

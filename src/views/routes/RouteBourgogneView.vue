@@ -16,7 +16,7 @@
         <div>
             <ul class=" list list-disc list-inside mt-5">
                 <li><a href="#carte">La carte des routes des vins en Bourgogne</a></li>
-                <li><a href="#sejours">Séjours autour de la route touristique en Bourgogne</a></li>
+                <li><a href="#sejours">Idées séjours autour de la route touristique de Bourgogne</a></li>
                 <li><a href="#tourisme">Tourisme sur la route des vins Bourgogne</a></li>
                 <li><a href="#itineraires">Les itinéraires sur la route des vins de Bourgogne</a></li>
                 <li><a href="#silloner">Sillonner la Bourgogne autrement</a></li>
@@ -34,7 +34,51 @@
         </div>
 
         <div id="sejours" >
-            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Séjours autour de la route en Bourgogne</h2>
+            <h2 class=" flex text-3xl mt-10 mb-5" id="title">Idées séjours autour de la route de Bourgogne</h2>
+            
+            <div class="grid grid-cols-3 mt-2">
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/258-ProductThird/visite-cave-bourgogne.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Séjour viticole Beaune</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
+                    <p class="text-2xl">485€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/4-sejour-viticole-beaune">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <img src="https://medias1.vinotrip.com/188-ProductThird/golf-et-vin-bourgogne.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end vin et golf - Beaune</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">595€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/8-week-end-vin-et-golf-beaune">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex relative h-full justify-between flex-col gap-4 mb-5 hover:-translate-y-1 transition ease-in-out border-rose border-2 rounded-2xl p-5 ml-2">
+                    <div class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
+                        5
+                    </div>
+                    <img src="https://medias1.vinotrip.com/209-ProductThird/coffret-cadeau-oenologie.jpg"  alt="" class="rounded-xl shadow-md">
+                    <h1 class="text-2xl font-bold">Week-end découverte de l'œnologie</h1>
+                    <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
+                    <p class="text-2xl">134.5€ / <span class=" text-rose">Pers</span></p>
+                    <div class=" flex justify-end mr-2">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                            <RouterLink to="/sejour/27-week-end-decouverte-de-l-nologie">Découvrir l'offre</RouterLink>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="tourisme" class="text-justify">
@@ -171,5 +215,8 @@ a {
 }
 #title {
     color: #CB7169;
+}
+button a {
+    color: black;
 }
 </style>
