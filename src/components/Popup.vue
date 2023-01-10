@@ -10,7 +10,9 @@
           <slot></slot>
         </div>
         <div class="flex items-center justify-end">
-          <button @click="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+          <button @click="submit" alt="Envoyer" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Envoyer</button>
+          <Tooltip text="Cliquer pour mettre à jour vos modification"/>   
+
         </div>
       </div>
     </div>
@@ -18,6 +20,8 @@
 </template>  
 
 <script setup>
+import Tooltip from './Tooltip.vue';
+
 
   defineProps({
     title: {

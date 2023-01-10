@@ -53,7 +53,7 @@
             <p class="mt-3">Une fois cela fait vous pouvez constater le séjour choisi dans votre <span class="text-sky-500 underline "><RouterLink to="/mon-panier">panier</RouterLink></span>, si ce n'est pas le cas attendez un moment avant de réessayer. <br> Si le problème est non résolu et persiste contactez-nous depuis la page <span class="text-sky-500 underline "><RouterLink to="/contact">Contact</RouterLink></span>.</p>
          </div>
          <div>
-            <h2 class=" flex text-3xl mt-10 mb-10 title" id="Offrir">Payer pour finaliser ma commande</h2>
+            <h2 class=" flex text-3xl mt-10 mb-10 title" id="Payer">Payer pour finaliser ma commande</h2>
             <p>Pour payer et finaliser ma commande je dois :</p>
             <ul class="list-decimal list-inside ml-5 mt-3">
                <li>Avoir <a href="#Panier" class="underline">ajouté au moins un séjour</a>  et avoir enregistré une adresse</li>
@@ -64,6 +64,14 @@
                <img class="w-1/2 p-7 border-solid border-yellow-500 border-2" src="../assets/img/screen/Payer2.png" alt="img">
                <li class="pt-5 pb-5">Suivre le site et choisir une adresse précédemment défini dans la seconde partie du paiement.</li>
                <img class="w-1/2 p-7 border-solid border-yellow-500 border-2" src="../assets/img/screen/Payer3.png" alt="img">
+               <li class="pt-5 pb-5">Renseignez vos informations bancaires pour pouvoir effectuer la transaction.</li>
+               <img class="w-1/2 p-7 border-solid border-yellow-500 border-2" src="../assets/img/screen/payerr.png" alt="img">
+               <li class="pt-5 pb-5">Si le payement c'est bien passé vous serez redirigé vers cette page de remerciments.</li>
+               <img class="w-1/2 p-7 border-solid border-yellow-500 border-2" src="../assets/img/screen/mercipayer.png" alt="img">
+               <li class="pt-5 pb-5">En cliquant sur "Télécharger la facture" vous serez redirigé vers cette page et pourrez télécharger sous format PDF votre facture et reçu.".</li>
+               <img class="w-1/2 p-7 border-solid border-yellow-500 border-2" src="../assets/img/screen/telechargerdoc.png" alt="img">
+               <p class="pt-5 pb-5">Voici a quoi ressemble la facture et le reçu.</p>
+               <img class="w-1/2 p-7 border-solid border-yellow-500 border-2" src="../assets/img/screen/recufacture.png" alt="img">
             </ul>
             <p class="mt-3">Une fois cela fait vous pouvez constater votre commande et télécharger sa facture sous format PDF, si ce n'est pas le cas attendez un moment avant de réessayer. <br> Si le problème est non résolu et persiste contactez-nous depuis la page <span class="text-sky-500 underline "><RouterLink to="/contact">Contact</RouterLink></span>.</p>
          </div>

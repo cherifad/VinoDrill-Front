@@ -1,16 +1,16 @@
 <template>
     <div v-if="ready" >
         <div class="flex mb-6 justify-between">
-            <RouterLink to="/admin/sejours" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <RouterLink to="/admin/sejours" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" title="Cliquer ici pour revenir à la liste des séjours">
                 Retour à la liste des séjours
             </RouterLink>
             <h1 class="text-2xl text-center font-bold text-gray-900 dark:text-white">Modification du séjour n°{{ sejour.idsejour }}</h1>
-            <p @click="popitup(`/sejour/${sejour.idsejour}-view`, sejour.titresejoursejour)" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <p @click="popitup(`/sejour/${sejour.idsejour}-view`, sejour.titresejoursejour)" class="cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" title="Cliquer ici pour avoir un aperçu du séjour que vous modifier">
                 Aperçu
             </p>
         </div>
         <div class="flex gap-6 mb-6">
-            <button @click="openHebergementHandler" class="bg-blue-500 flex flex-1 uppercase justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button @click="openHebergementHandler" class="bg-blue-500 flex flex-1 uppercase justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" title="Cliquer ici pour ajouter/supprimer un hébergement lié à un séjour">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg> - 
@@ -20,7 +20,7 @@
                 hébergement
             </button>
             
-            <button @click="openDomaineHandler" class="bg-blue-500 flex-1 uppercase justify-center flex hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button @click="openDomaineHandler" class="bg-blue-500 flex-1 uppercase justify-center flex hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" title="Cliquer ici pour ajouter/supprimer un domaine lié à un séjour">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg> - 
@@ -29,7 +29,7 @@
                 </svg>
                 domaine
             </button>
-            <button @click="openActiviteHandler" class="bg-blue-500 flex-1 uppercase justify-center flex hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button @click="openActiviteHandler" class="bg-blue-500 flex-1 uppercase justify-center flex hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" title="Cliquer ici pour ajouter/supprimer une activité liée à un séjour">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg> - 
@@ -104,7 +104,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Mettre à jour</button>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" title="Cliquer ici pour mettre à jour vos modification">Mettre à jour</button>
         </form>
 
         <!-- Ajouter un hébergement, relié au bouton en haut -->
@@ -145,15 +145,15 @@
         </Popup>
 
         <!-- Ajouter un domaine, relié au bouton en haut -->
-        <Popup title="Ajouter/Supprimer un hébergement" :show="showDomainePopup" @update:show="showDomainePopup = $event" @submit="submitHandler">
+        <Popup title="Ajouter/Supprimer un domaine" :show="showDomainePopup" @update:show="showDomainePopup = $event" @submit="submitHandler">
             <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selectionner une option</label>
             <select v-model="form.libelletemps" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option :style="{backgroundImage: `url(${domaine.photopartenaire})`}" v-for="domaine in domaines" :value="domaine.idpartenaire">{{ domaine.nompartenaire }}</option>
             </select>
         </Popup>
 
-        <!-- Ajouter un domaine, relié au bouton en haut -->
-        <Popup title="Ajouter/Supprimer un domaine" :show="showActivitePopup" @update:show="showActivitePopup = $event" @submit="submitHandler">
+        <!-- Ajouter un Activité, relié au bouton en haut -->
+        <Popup title="Ajouter/Supprimer un activité" :show="showActivitePopup" @update:show="showActivitePopup = $event" @submit="submitHandler">
           <div class="flex flex-wrap gap-3 justify-center">
             <div v-for="activite in activites" class="flex w-96 justify-between items-center gap-6 p-2 rounded-lg border border-white">
                 <div>

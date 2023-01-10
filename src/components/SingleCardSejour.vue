@@ -3,7 +3,7 @@
         <div v-if="notemoyenne" class="absolute p-3 rounded-lg bg-rose text-xl font-bold z-50 top-3 right-3">
             {{ Math.round(notemoyenne * 10) / 10 }}  
         </div>
-        <img :src="image" :alt="title + 'image'" class="rounded-xl shadow-md">
+        <img :src="image" :alt="title + ' image'" :title="title + ' image'" class="rounded-xl shadow-md">
         <h1 class="text-2xl font-bold">{{ title }}</h1>
         <p v-if="days" class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>{{ days }} jour<span v-if="days > 1">s</span><span v-if="nights >= 1"> / {{ nights }} nuit<span v-if="nights > 1">s</span></span></p>
         <p v-else class="text-2xl">{{ libelleTemps }}</p>

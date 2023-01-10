@@ -1,7 +1,7 @@
 <template>
     <div class="flex min-h-screen">
-        <div class=" w-3/5 p-5">
-            <div id="img" class="h-full w-full flex flex-col justify-end p-7 gap-5">
+        <div class="w-3/5 hidden lg:block p-5">
+            <div id="img" class="h-full flex w-full flex-col justify-end p-7 gap-5">
                 <h1 class=" text-4xl font-bold">Domaine de Lagravière</h1>
                 <p class=" font-normal text-2xl">Bordeaux</p>
             </div>
@@ -9,7 +9,7 @@
 
         <div class="flex flex-col items-center flex-1">
 
-            <div class=" p-5 flex flex-grid flex-col items-center gap-10" v-auto-animate>
+            <div class="p-5 flex flex-grid flex-col items-center gap-10" v-auto-animate>
                 <h1 id="passenger" class=" text-5xl text-center">{{ login ? 'Bonjour' : 'Créer un compte' }}</h1>
                 <div id="toggle" class="flex gap-2 relative bg-rose p-2 rounded-full">
                     <div @click="toggleLogin(false)" class="flex-1 cursor-pointer select-none text-center p-2 text-rouge">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div id="form" class="flex flex-col gap-3 w-full px-12" v-auto-animate>
+            <div id="form" class="flex flex-col gap-3 w-full lg:px-12 px-2" v-auto-animate>
 
                 <!-- Login -->
 
@@ -58,12 +58,15 @@
                             </span>
                             <p class="ml-6">{{ authStore.errors.password[0] }}</p>
                         </div>
+                        <input type="text" v-model="abeille" name="email" class="hidden">
                     </div>                    
                 </div>
 
                 <!-- Registration -->
 
                 <div v-else class="flex flex-col gap-4">
+
+                    <input type="text" v-model="abeille" name="email" class="hidden">
 
                     <div v-if="error" class=" bg-red-600 flex items-center text-white text-xl text-center p-3 rounded-xl">
                         <ion-icon class="text-5xl font-bold" name="alert-circle-outline"></ion-icon>
@@ -168,9 +171,9 @@
                 </RouterLink> -->
 
                 <div class="flex justify-end">
-                    <button @click="login ? authStore.login(loginForm.email, loginForm.password)
-                     : authStore.register(registerForm.lastname, registerForm.firstname, registerForm.email, registerForm.birthdate, registerForm.gender, registerForm.password, registerForm.passwordConfirm)"
-                        class="bg-rose w-fit px-12 rounded-full hover:-translate-y-1 text-white p-2">{{ login ? "Se connecter" : "S'inscrire" }}</button>
+                    <button @click="login ? (!block ? authStore.login(loginForm.email, loginForm.password): null)
+                     : (!block ? authStore.register(registerForm.lastname, registerForm.firstname, registerForm.email, registerForm.birthdate, registerForm.gender, registerForm.password, registerForm.passwordConfirm): null)"
+                        class="bg-rose w-fit lg:px-12 px-2 rounded-full hover:-translate-y-1 text-white p-2">{{ login ? "Se connecter" : "S'inscrire" }}</button>
                 </div>
 
                 <div v-if="login" class="flex items-center flex-col gap-2">
@@ -210,6 +213,16 @@ const registerText = ref(null);
 const loginText = ref(null);
 const logRegBack = ref(null);
 const show = ref(false);
+
+const abeille = ref('');
+const block = ref(false);
+
+// watch abeille value to change the background
+watch(abeille, (abeille) => {
+    if(abeille.length > 0) {
+        block.value = true;
+    }
+})
 
 // social login errors
 const error = ref(false);

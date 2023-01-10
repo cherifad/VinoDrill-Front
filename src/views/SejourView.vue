@@ -1,7 +1,8 @@
 <template>
     <div v-if="sejours" class="">
         <div class="grid gap-10 grid-cols-4">
-            <div class="bg-#350a06 z-50 border-rose border-2 sticky top-5 text-2xl font-bold rounded-md shadow-sm p-7 h-fit">
+            <button class="fixed bottom-2 left-2 z-50 bg-white p-5 text-black lg:hidden block" @click="showMenu = !showMenu">Toggle Menu</button>
+            <div :class="{ 'show-menu': showMenu }" class="bg-#350a06  z-50 hidden lg:block border-rose border-2 sticky top-5 text-2xl font-bold rounded-md shadow-sm p-7 h-fit">
                 Filtres
                 <div>
                     <!-- <Input @filter="(i) => getFilteredData(i)" columnName="rien" :data="libelleDestination" name="Destinations" placeholder="Recherchez ici"/> -->
@@ -10,11 +11,11 @@
                     <SejourFilter :onFilterTheme="(i) => getThemeFilter(i)" :onFilterCatParticipant="(i) => getCatParticipantFilter(i)" />
                 </div>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-4 lg:col-span-3">
                 <span class="pl-12 text-2xl fond-bold">{{ sejourcount }} sejour<span v-if="sejourcount > 0">s</span>
                     trouvé<span v-if="sejourcount > 0">s</span></span>
                 <div class="" v-auto-animate>
-                    <div class="pt-12 grid gap-10 grid-cols-2 justify-center" v-if="!filteredData">
+                    <div class="pt-12 grid gap-10 md:grid-cols-2 grid-cols-1 justify-center" v-if="!filteredData">
                         <router-link v-for="sejour in sejours" :key="sejour.idsejour" :id="sejour.idsejour"
                             :to="{ name: 'SingleSejour', params: { id: sejour.idsejour, slug: slugify(sejour.titresejour) } }">
                             <SingleCardSejour :key="sejour.idsejour" :title="sejour.titresejour"
@@ -62,6 +63,8 @@ const filteredData = ref(null);
 const theme = ref('');
 const destination = ref('');
 const catParticipant = ref('');
+
+const showMenu = ref(false);
 
 function slugify(string) {
     return string
@@ -115,5 +118,11 @@ const getCatParticipantFilter = (i) => {
 </script>
   
 <style scoped>
+  .right-0 {
+    transform: translateX(100%);
+  }
 
+  .show-menu {
+    transform: translateX(0%);
+  }
 </style>

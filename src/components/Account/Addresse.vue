@@ -1,10 +1,10 @@
 <template>
     <div class="relative border-2 border-rose p-5 rounded-lg flex flex-col gap-3" v-auto-animate>
-        <ion-icon v-if="edit" @click="deleteAdress" class="text-red-600 z-50 cursor-pointer text-3xl absolute top-2 right-3" name="trash-outline"></ion-icon>
+        <ion-icon v-if="edit" @click="deleteAdress" class="text-red-600 z-50 cursor-pointer text-3xl absolute top-2 right-3" name="trash-outline" title="Cliquer ici pour supprimer l'adresse"></ion-icon>
         <div v-auto-animate class="flex flex-col text-xl">
             <h1 id="passenger" class="text-2xl font-bold" v-if="!edit">{{ libelleAdress }}</h1>
             <input v-model="form.libelleAdress" v-if="edit" type="text" :placeholder="'Tapez ici ex :' + libelleAdress"
-                class=" w-4/5 border font-normal border-rose outline-none bg-transparent p-2 rounded-md">
+                class=" w-4/5 border font-normal border-rose outline-none bg-transparent p-2 rounded-md" title="Nom donné à votre adresse ex : Maison">
         </div>
         <div v-auto-animate class="flex flex-col text-xl">
             <span id="passenger" class="text-2xl font-bold">Adresse</span>

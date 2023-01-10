@@ -24,8 +24,17 @@
                 Besoin d'aide ?
             </RouterLink>
         </div>
+
+        <div>
+            <h2 class="text-2xl font-bold mt-6 mb-4">Liens rapides</h2>
+            <ul class="list list-disc list-inside">
+                <li><a href="#bi">Espace BI</a></li>
+                <li><a href="#dpo">Espace DPO</a></li>
+            </ul>
+        </div>
+
         <div class="text-center text-5xl font-bold m-6">
-            <h1>Rapports Power BI</h1>
+            <h1 id="bi">Espace BI</h1>
         </div>
         <div class="flex justify-center">
             <PowerBi
@@ -46,22 +55,25 @@
             />
         </div>
 
-        <div>
+        <div id="dpo">
             <div class="text-center text-5xl font-bold m-6">
-                <h1>DPO</h1>
+                <h1>Espace DPO</h1>
             </div>
+
             
             <div>
-                <h2 class="text-2xl font-bold">Suppresion données clients</h2>
-                <input type="text" id="email" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="E-mail client à supprimer" required>
+                <h2 class="text-2xl font-bold">Suppresion les données d'un client</h2>
+                <input type="text" id="mailToDelete" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="E-mail client à supprimer" required>
             </div>
+
+            <button @click="sendDelete()" type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Supprimer</button>
 
             <div class="mt-4">
-                <h2 class="text-2xl font-bold">Anonymiser données clients</h2>
-                 <input type="text" id="email" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="E-mail client à anonymiser" required>
+                <h2 class="text-2xl font-bold">Anonymiser les données d'un client</h2>
+                 <input type="text" id="mailToAnonymise" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="E-mail client à anonymiser" required>
             </div>
 
-            <button @click="envoyer()" type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Entrer</button>
+            <button @click="sendAnonymise()" type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Anonymiser</button>
         </div>
         
 
@@ -74,11 +86,49 @@
 import { RouterLink } from 'vue-router';
 import { useAuthStore } from '../../stores/auth';
 import PowerBi from '../../components/PowerBi.vue';
+import axios from 'axios';
+
+
 
 const authStore: any = useAuthStore();
 
-const envoyer = () => {
+async function sendDelete() {
+    const mailToDelete = document.getElementById('mailToDelete');
+    var email = mailToDelete.value;
+
+    mailToDelete.value = "";
+
+     axios.post('/api/delete_client_cascade', {
+            parameter: email
+      })
+      .then(response => {
+        // handle success
+        console.log(response.data);
+      })
+      .catch(error => {
+        // handle error
+        console.log(error);
+      });
+};
+
+
+async function sendAnonymise() {
+    const mailToAnonymise = document.getElementById('mailToAnonymise');
+    var email = mailToAnonymise.value;
     
+    mailToAnonymise.value = "";
+    
+     axios.post('/api/anonymise_client', {
+          parameter: email
+      })
+      .then(response => {
+        // handle success
+        console.log(response.data);
+      })
+      .catch(error => {
+        // handle error
+        console.log(error);
+      });
 }
 
 </script>

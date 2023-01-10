@@ -1,10 +1,17 @@
 <template>
-    <div v-if="!loading" class="min-h-screen px-32">
+    <div v-if="!loading" class="min-h-screen">
         <div class="">
-            <div class="grid gap-4 grid-cols-4">
-                <div class="gap-4 flex items-center col-span-3">
-                    <img :src="checkOnlineImage(sejour.photosejour) ? sejour.photosejour : '/src/assets/img/vineyard-ga92acf920_1920.jpg'" :alt="sejour.titresejour + ' image'" class="rounded-lg shadow-lg max-w-lg">
-                    <div class="flex-1 text-2xl font-normal">
+            <div class="lg:grid lg:px-0 flex px-2 flex-col gap-4 lg:grid-cols-4">
+                <div class="lg:gap-4 flex-1 gap-2 flex items-center lg:flex-row flex-col lg:col-span-4 xl:col-span-3">
+                    <img :src="checkOnlineImage(sejour.photosejour) ? sejour.photosejour : '/src/assets/img/vineyard-ga92acf920_1920.jpg'" :alt="sejour.titresejour + ' image'" class="rounded-lg w-fit shadow-lg max-w-lg">
+                    <div class="flex mt-6 lg:hidden justify-between items-center gap-5">
+                        <h1 class="text-3xl" id="passenger">{{ sejour.titresejour }}</h1>
+                        <div>
+                            <p>A partir de</p>
+                            <span class="text-xl" id="passenger">{{ sejour.prixsejour }}€/pers</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full text-center lg:text-left text-2xl font-normal">
                         Quelques informations sur le séjour
                         <ul>
                             <li v-if="sejour.nbjour" class="text-lg">Nombre de journée(s) : <span></span>{{ sejour.nbjour }}</li>
@@ -13,7 +20,7 @@
                             <li class="text-lg">Lieu : {{ sejour.destination.libelledestination }}</li>
                             <li class="text-lg">Thème : {{ sejour.theme.libelletheme }}</li>
                         </ul>
-                        <div class="flex gap-1 flex-wrap items-center" v-auto-animate>                            
+                        <div class="flex gap-1 flex-wrap items-center justify-center lg:justify-start" v-auto-animate>                            
                             <a href="#etape" class="p-2 bg-white text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">Voir les étapes</a>
                             <a @click="!getCurrentCartSejour() ? panierStore.addSejour(sejour.idsejour, sejour.prixsejour) : addedToCart = true" class="p-2 bg-white select-none cursor-pointer text-black block w-fit rounded-lg hover:-translate-y-2 mt-5">
                                 Ajouter au panier <br>
@@ -28,28 +35,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex">
+                <div class="hidden xl:flex">
                     <ReviewResume v-if="rating" :ratingaverage="rating" :ratingcount="ratingcount" :ratingcountarray="ratingcountarray"/>
                 </div>
             </div>
-            <div class="text-cyan-500">
-              <a href="https://www.vinotrip.com/" target="_blank">En savoir plus</a>
-            </div>
-            <div class="flex justify-between items-center">
+            <div class="justify-between items-center hidden lg:flex">
                 <h1 class="mt-12 text-5xl" id="passenger">{{ sejour.titresejour }}</h1>
                 <div>
                     <p>A partir de</p>
                     <span class="mt-12 text-5xl" id="passenger">{{ sejour.prixsejour }}€/pers</span>
                 </div>
             </div>
-            <p class="w-full text-xl mt-5"> {{ sejour.descriptionsejour }} </p>
+            <p id="passenger" class="mt-6 text-3xl text-center lg:text-left">Description</p>
+            <p class="w-full text-xl mt-6 text-center lg:text-left"> {{ sejour.descriptionsejour }} </p>
         </div>
         <div>
             
         </div>
         
         <div id="etape" class="flex flex-col gap-3 mb-8">
-            <h1 class="mt-5 text-3xl font-bold">Voir les {{ etapes.length }} étapes du séjour</h1>
+            <h1 class="mt-5 lg:text-3xl text-xl md:text-2xl font-bold text-center lg:text-left">Voir les {{ etapes.length }} étapes du séjour</h1>
             <div v-for="etape in etapes" :key="etape.idetape">
                 <SingleEtape class="mt-3" :titre="etape.titreetape" :description="etape.descriptionetape" :img="etape.photoetape"/>
                 <div id="hebergement" class="flex flex-col w-full items-end before:">
@@ -58,7 +63,7 @@
                 </div>
             </div>
         </div>
-            <h1 class="mt-5 text-3xl font-bold">Chateaux et domaines</h1>
+            <h1 class="mt-5 lg:text-3xl text-xl md:text-2xl font-bold">Chateaux et domaines</h1>
             <div v-if="visites" class="mt-11">
                 <SingleVisite v-for="visite in visites"
                     :key="visite.idvisite"
@@ -70,12 +75,12 @@
                     :horairevisite="visite.horairevisite"/>             
             </div>
         <div v-if="reviews.length > 0" id="avis" class="flex flex-col gap-3 mb-8">
-            <h1 class="mt-5 text-3xl font-bold">Voir les {{ reviews.length }} avis</h1>
+            <h1 class="mt-5 lg:text-3xl text-xl md:text-2xl font-bold">Voir les {{ reviews.length }} avis</h1>
             <SingleComment v-for="review in reviews" :estreponse="review.estreponse" :reponse="review.reponse_admin" :key="review.idavis" :id="review.idavis" :note="review.note" :comment="review.commentaire" :date="review.dateavis" :title="review.titreavis"/>
         </div>
 
         <div id="related" v-if="relatedSejours">
-            <h1 class="my-5 text-3xl font-bold">Voir les {{ relatedSejours.length }} séjours similaires</h1>
+            <h1 class="my-5 lg:text-3xl text-xl md:text-2xl font-bold">Voir les {{ relatedSejours.length }} séjours similaires</h1>
             <swiper
                 :slidesPerView="4"
                 :centeredSlides="false"
@@ -106,9 +111,9 @@
         </div>
 
         <div id="viewed" v-if="alreadyViewed">
-            <h1 class="my-5 text-3xl font-bold">Voir les séjours visités</h1>
+            <h1 class="my-5 lg:text-3xl text-xl md:text-2xl font-bold">Voir les séjours visités</h1>
             <swiper
-                :slidesPerView="4"
+                slidesPerView="auto"
                 :centeredSlides="false"
                 :spaceBetween="30"
                 :grabCursor="true"
@@ -118,7 +123,7 @@
                 class="mySwiper"
             >
                 <swiper-slide v-for="sejour in alreadyViewed" :key="sejour.idsejour">
-                    <router-link class=" w-1/3 px-3 mb-3" :id="sejour.idsejour" :to="{name: 'SingleSejour', params: {id: sejour.idsejour, slug: slugify(sejour.titresejour)}}">
+                    <router-link class=" lg:w-1/3 px-3 mb-3" :id="sejour.idsejour" :to="{name: 'SingleSejour', params: {id: sejour.idsejour, slug: slugify(sejour.titresejour)}}">
                         <SingleCardSejour
                             :key="sejour.idsejour"
                             :title="sejour.titresejour"

@@ -41,7 +41,7 @@
                     <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
                     <p class="text-2xl">310€ / <span class=" text-rose">Pers</span></p>
                     <div class=" flex justify-end mr-2">
-                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl" title="Découvrir l'offre">
                             <RouterLink to="/sejour/46-week-end-vin-a-saint-amour">Découvrir l'offre</RouterLink>
                         </button>
                     </div>
@@ -53,7 +53,7 @@
                     <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
                     <p class="text-2xl">170€ / <span class=" text-rose">Pers</span></p>
                     <div class=" flex justify-end mr-2">
-                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl" title="Découvrir l'offre">
                             <RouterLink to="/sejour/48-week-end-viticole-brouilly">Découvrir l'offre</RouterLink>
                         </button>
                     </div>
@@ -68,7 +68,7 @@
                     <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
                     <p class="text-2xl">134.5€ / <span class=" text-rose">Pers</span></p>
                     <div class=" flex justify-end mr-2">
-                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl" title="Découvrir l'offre">
                             <RouterLink to="/sejour/49-week-end-decouverte-du-beaujolais">Découvrir l'offre</RouterLink>
                         </button>
                     </div>
@@ -120,19 +120,19 @@
         <div id="sillonner" class="text-justify">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Sillonner les routes des vins de France</h2>
             <div class="grid grid-cols-3 mt-2">
-                <RouterLink to="/route-alsace">Alsace</RouterLink>
-                <RouterLink to="/route-bourgogne">Bourgogne</RouterLink>
-                <RouterLink to="/route-bordeaux">Bordeaux</RouterLink>
-                <RouterLink to="/route-provence">Provence</RouterLink>
-                <RouterLink to="/route-champagne">Champagne</RouterLink>
-                <RouterLink to="/route-val">Val de Loire</RouterLink>
-                <RouterLink to="/route-languedoc">Languedoc-Roussillon</RouterLink>
-                <RouterLink to="/route-rhone">Vallée du Rhône</RouterLink>
-                <RouterLink to="/route-corse">Corse</RouterLink>
-                <RouterLink to="/route-sud">Sud-Ouest</RouterLink>
-                <RouterLink to="/route-jura">Jura</RouterLink>
-                <RouterLink to="/route-savoie">Savoie</RouterLink>
-                <RouterLink to="/route-ile">Ile-de-France</RouterLink>
+                <RouterLink to="/route-alsace" title="Route Alsace">Alsace</RouterLink>
+                <RouterLink to="/route-bourgogne" title="Route Bourgogne">Bourgogne</RouterLink>
+                <RouterLink to="/route-bordeaux" title="Route Bordeaux">Bordeaux</RouterLink>
+                <RouterLink to="/route-provence" title="Route Provence">Provence</RouterLink>
+                <RouterLink to="/route-champagne" title="Route Champagne">Champagne</RouterLink>
+                <RouterLink to="/route-val" title="Route Val de Loire">Val de Loire</RouterLink>
+                <RouterLink to="/route-languedoc" title="Route Languedoc-Roussillon">Languedoc-Roussillon</RouterLink>
+                <RouterLink to="/route-rhone" title="Route Vallée du Rhône">Vallée du Rhône</RouterLink>
+                <RouterLink to="/route-corse" title="Route Corse">Corse</RouterLink>
+                <RouterLink to="/route-sud" title="Route Sud-Ouest">Sud-Ouest</RouterLink>
+                <RouterLink to="/route-jura" title="Route Jura">Jura</RouterLink>
+                <RouterLink to="/route-savoie" title="Route Savoie">Savoie</RouterLink>
+                <RouterLink to="/route-ile" title="Route Ile-de-France">Ile-de-France</RouterLink>
             </div>
         </div>
 

@@ -12,13 +12,13 @@
         </p>
         <div class="row pt-3">
             <div class="column">  
-              <img src="https://www.vinotrip.com/img/cms/Route%20des%20vins_1.jpg" alt="" width="400">
+              <img src="https://www.vinotrip.com/img/cms/Route%20des%20vins_1.jpg" alt="vignoble" width="400">
             </div>
             <div class="column">
-              <img src="https://www.vinotrip.com/img/cms/Visite%20route%20des%20vins.jpg" alt="" width="350" >
+              <img src="https://www.vinotrip.com/img/cms/Visite%20route%20des%20vins.jpg" alt="panneau route du vin" width="350" >
             </div>
             <div class="column">
-              <img src="https://www.vinotrip.com/img/cms/Tourisme%20route%20des%20vins.jpg" alt="" width="400">
+              <img src="https://www.vinotrip.com/img/cms/Tourisme%20route%20des%20vins.jpg" alt="cave à vin" width="400">
             </div>
         </div>
         
@@ -42,7 +42,7 @@
                 Sans doute la plus connue des routes des vins en France, et assurément la plus ancienne  ! Que cela soit à vélo ou en voiture, la routes des vins d'Alsace est parcourue par des  millions de touristes chaque année, en quête de ses grands crus, ses fabuleux cépages, ses   spécificités viticoles (citons les vendanges tardives), ses paysages vallonnés et villages  pittoresques comme Colmar ou Riquewihr. Les vins d'Alsace, principalement blancs, sont   réputés pour leur élégance, fraicheur et finesse.
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins d'Alsace">
                   <RouterLink to="/route-alsace">Découvrir la route des vins d'Alsace</RouterLink>
                 </button>
               </div>
@@ -58,7 +58,7 @@
                 Une visite des villages les plus renommés (si on vous dit Meursault, Pommard, Chablis, Vougeot, Nuit-Saint-George, Beaune), une route qui parcourt plus de 200 kilomètres entre Chablis et le vignoble Mâconnais… Vous serez parfois surpris d’y entendre parler japonais, chinois, anglais ou portugais, mais le monde entier nous envie les grands crus bourguignons, partageons-les ! Autant de circuit, de dégustations de vins, de domaines viticoles à découvrir le temps d'un week-end. <br><br>
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins de Bourgogne">
                   <RouterLink to="/route-bourgogne">Découvrir la route des vins de Bourgogne</RouterLink>
                 </button>
               </div>
@@ -73,7 +73,7 @@
                 Bordeaux est la terre des vins par excellence. Des châteaux, des grands crus classés (parfois à des tarifs inabordables mais pas uniquement), la Garonne, le Médoc, le Libournais, le Sauternes et les Grave, Saint-Emilion … Voilà ce qui vous attend lors de votre tour du vignoble bordelais, au coeur de la Gironde, découvres les 6 itinéraires des routes des vins de Bordeaux
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins de Bordeaux">
                   <RouterLink to="/route-bordeaux">Découvrir la route des vins de Bordeaux</RouterLink>
                 </button>
               </div>
@@ -88,7 +88,7 @@
                 A n’en pas douter l’un des vignobles les plus ensoleillés, attention au coup de chaud ! Heureusement, la douceur des vins rosés et la souplesse des vins blancs vous seront de précieux alliés à découvrir à travers les coteaux de Aix-en-provence, des vignes du Lubéron ou des Caves du Mont-Ventoux. Un vignoble intimiste dont les appellations méritent d'être découvertes !
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins de Provence">
                   <RouterLink to="/route-provence">Découvrir la route des vins de Provence</RouterLink>
                 </button>
               </div>
@@ -103,7 +103,7 @@
                 Elle se compose de 6 itinéraires pour découvrir le plus célèbre des vins effervescents: les côteaux de Vitry, la vallée de la Marne ou la côtes des Blancs...Autant des parcours touristiques entre Reims, Epernay, pour mieux connaître le Champagne mais aussi la Champagne, ces deux-là étant bien entendu indissociables !
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins Champagne">
                   <RouterLink to="/route-champagne">Découvrir la route des vins Champagne</RouterLink>
                 </button>
               </div>
@@ -118,7 +118,7 @@
                 Parcourir l’un des plus grands vignobles de France prend du temps, mais rien ne vous empêche d’y aller par étape. Initiez-vous aux joies du Sancerre, poursuivez avec la Touraine (et ses châteaux), l’Anjou et terminez par le pays nantais et ses muscadets. La vallée de la Loire conjugue ainsi patrimoine culturel avec ses châteaux renaissance et patrimoine viticole d'exception. 
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins du Val de Loire">
                   <RouterLink to="/route-val">Découvrir la route des vins du Val de Loire</RouterLink>
                 </button>
               </div>
@@ -133,7 +133,7 @@
                 Des itinéraires (souvent) ensoleillés entre vin, montagne, garrigue, méditerranée ! Un véritable spectacle à ciel ouvert pour découvrir l'Hérault, cette route des vins vous mènera de caves en caves de Montpellier, à Pic-Saint-Loup, en passant par le Saint-Chinian ou dégustez les fameux Cabardès. <br><br>
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins du Languedoc-Roussillon">
                   <RouterLink to="/route-languedoc">Découvrir la route des vins du Languedoc-Roussillon</RouterLink>
                 </button>
               </div>
@@ -148,7 +148,7 @@
                 Une entente cordiale entre Nord et sud qui réjouira tous les amateurs de vins, de Condrieu à Châteauneuf-du-Pape. Au nord du vignoble, aux coteaux exposés au climat continental, fait face la partie méridionale et ses terres plus arides. La route des vins du Rhône est une escapade qui s'apprécie en nuances à l'exemple de la force du célèbre Côte-Rôtie, ou des vins de Gigondas....
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins du Rhône">
                   <RouterLink to="/route-rhone">Découvrir la route des vins du Rhône</RouterLink>
                 </button>
               </div>
@@ -163,7 +163,7 @@
                 Le Beaujolais Nouveau, bien sûr, mais pas que ! Vignoble souvent associé à sa production la plus médiatisée, le Beaujolais offre une incroyable diversité aromatique. Sans oublier de mentionner les paysages viticoles parmi les plus beaux de France en plein coeur du Vaux-en-Beaujolais, ...
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins du Beaujolais">
                   <RouterLink to="/route-beaujolais">Découvrir la route des vins du Beaujolais</RouterLink>
                 </button>
               </div>
@@ -178,7 +178,7 @@
                 Sillonner la route des vins de Corse revient à longer la côte, du nord au sud et d’est en ouest. Qu’attendez-vous pour partir ? Que cela soit le vignoble de porto vecchio ou une visite sur la route des vins corse patrimonio, la perle méditérranéénne sera un paradis pour tous les sens. <br><br>
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins de Corse">
                   <RouterLink to="/route-corse">Découvrir la route des vins de Corse</RouterLink>
                 </button>
               </div>
@@ -193,7 +193,7 @@
                 On ne parle plus du bordelais, mais bien des magnifiques vignobles peuplant le vaste territoire qui s’étend des Pyrénées à l’Aveyron, en passant par Toulouse. Vous découvrirez les appellations de Cahors, de Gaillac, de Bergerac, du Madiran, d’Irouléguy, et bien d’autres.
               </p>
               <div class="flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins du Sud-Ouest">
                   <RouterLink to="/route-sud">Découvrir la route des vins du Sud-Ouest</RouterLink>
                 </button>
               </div>
@@ -208,7 +208,7 @@
                 Très réputée pour son « Vins Jaune » qui a fait la renommée du vignoble jurassien, les itinéraires que nous vous proposons vous entraîneront à Arbois, Poligny et Lons-le-Saunier. <br><br>
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins du Jura">
                   <RouterLink to="/route-jura">Découvrir la route des vins du Jura</RouterLink>
                 </button>
               </div>
@@ -223,7 +223,7 @@
                 Un périple œnologique et touristique autour de 4 départements alpins vous attend. Privilégiez la période hivernale, pour pouvoir déguster la fondue savoyarde avec les vins d’Apremont… ! <br><br><br>
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins de la Savoie">
                   <RouterLink to="/route-savoie">Découvrir la route des vins de la Savoie</RouterLink>
                 </button>
               </div>
@@ -238,7 +238,7 @@
                 L’Ile-de-France, notamment Paris, possède un vignoble fruit d’un héritage historique qui a favorisé l’implantation de vignes à proximité de la capitale, pour désaltérer la cour royale ! Aujourd’hui ne subsistent que quelques parcelles, dont la plupart ont une vocation touristique et pédagogique, comme les dernières vignes de Montmartre. 
               </p>
               <div class=" flex justify-end mr-2">
-                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl">
+                <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1   p-2 rounded-xl" title="Découvrir la route des vins d'Ile-de-France">
                   <RouterLink to="/route-ile">Découvrir la route des vins d'Ile-de-France</RouterLink>
                 </button>
               </div>

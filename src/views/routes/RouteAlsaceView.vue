@@ -237,19 +237,19 @@
         <div id="partir" class="text-justify">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Partir sur les routes des vins en France</h2>
             <div class="grid grid-cols-3 mt-2">
-                <RouterLink to="/route-bourgogne">Bourgogne</RouterLink>
-                <RouterLink to="/route-bordeaux">Bordeaux</RouterLink>
-                <RouterLink to="/route-provence">Provence</RouterLink>
-                <RouterLink to="/route-champagne">Champagne</RouterLink>
-                <RouterLink to="/route-val">Val de Loire</RouterLink>
-                <RouterLink to="/route-languedoc">Languedoc-Roussillon</RouterLink>
-                <RouterLink to="/route-rhone">Vallée du Rhône</RouterLink>
-                <RouterLink to="/route-beaujolais">Beaujolais</RouterLink>
-                <RouterLink to="/route-corse">Corse</RouterLink>
-                <RouterLink to="/route-sud">Sud-Ouest</RouterLink>
-                <RouterLink to="/route-jura">Jura</RouterLink>
-                <RouterLink to="/route-savoie">Savoie</RouterLink>
-                <RouterLink to="/route-ile">Ile-de-France</RouterLink>
+                <RouterLink to="/route-bourgogne" title="Route Bourgogne">Bourgogne</RouterLink>
+                <RouterLink to="/route-bordeaux" title="Route Bordeaux">Bordeaux</RouterLink>
+                <RouterLink to="/route-provence" title="Route Provence">Provence</RouterLink>
+                <RouterLink to="/route-champagne" title="Route Champagne">Champagne</RouterLink>
+                <RouterLink to="/route-val" title="Route Val de Loir">Val de Loire</RouterLink>
+                <RouterLink to="/route-languedoc" title="Route Languedoc-Roussillon">Languedoc-Roussillon</RouterLink>
+                <RouterLink to="/route-rhone" title="Route Vallée du Rhône">Vallée du Rhône</RouterLink>
+                <RouterLink to="/route-beaujolais" title="Route Beaujolais">Beaujolais</RouterLink>
+                <RouterLink to="/route-corse" title="Route Corse">Corse</RouterLink>
+                <RouterLink to="/route-sud" title="Route Sud-Ouest">Sud-Ouest</RouterLink>
+                <RouterLink to="/route-jura" title="Route Jura">Jura</RouterLink>
+                <RouterLink to="/route-savoie" title="Route Savoie">Savoie</RouterLink>
+                <RouterLink to="/route-ile" title="Route Ile-de-France">Ile-de-France</RouterLink>
             </div>
         </div>
 

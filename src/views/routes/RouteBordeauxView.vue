@@ -12,7 +12,7 @@
                 <li><a href="#idees">Idées séjours sur la route des vins de Bordeaux</a></li>
                 <li><a href="#itineraires">Nos itinéraires favoris dans le bordelais</a></li>
                 <li><a href="#partenaires">Nos partenaires autour de Bordeaux</a></li>
-                <li><a href="#silloner">Sillonner les routes des vins de France</a></li>
+                <li><a href="#sillonner">Sillonner les routes des vins de France</a></li>
             </ul>
         </div>
 
@@ -77,7 +77,7 @@
                     <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>2 jours / 1 nuit</p>
                     <p class="text-2xl">225€ / <span class=" text-rose">Pers</span></p>
                     <div class=" flex justify-end mr-2">
-                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl" title="Découvrir l'offre">
                             <RouterLink to="/sejour/6-sejour-degustation-saint-emilion">Découvrir l'offre</RouterLink>
                         </button>
                     </div>
@@ -93,7 +93,7 @@
                     <p class="text-2xl">161€ / <span class=" text-rose">Pers</span></p>
                     <div class=" flex justify-end mr-2">
                         <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
-                            <RouterLink to="/sejour/3-bordelais-sejour-nologique">Découvrir l'offre</RouterLink>
+                            <RouterLink to="/sejour/3-bordelais-sejour-nologique" title="Découvrir l'offre">Découvrir l'offre</RouterLink>
                         </button>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                     <p class="text-2xl flex items-center"><ion-icon name="time-outline" class="mr-2"></ion-icon>3 jours / 2 nuits</p>
                     <p class="text-2xl">570€ / <span class=" text-rose">Pers</span></p>
                     <div class=" flex justify-end mr-2">
-                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl">
+                        <button type="button" class="button text-black bg-white select-none hover:bg-rose mr-1 p-2 rounded-xl" title="Découvrir l'offre">
                             <RouterLink to="/sejour/10-sejour-vin-et-golf-en-medoc">Découvrir l'offre</RouterLink>
                         </button>
                     </div>
@@ -191,19 +191,19 @@
         <div id="sillonner" class="text-justify">
             <h2 class=" flex text-3xl mt-10 mb-5" id="title">Sillonner les routes des vins de France</h2>
             <div class="grid grid-cols-3 mt-2">
-                <RouterLink to="/route-alsace">Alsace</RouterLink>
-                <RouterLink to="/route-bourgogne">Bourgogne</RouterLink>
-                <RouterLink to="/route-provence">Provence</RouterLink>
-                <RouterLink to="/route-champagne">Champagne</RouterLink>
-                <RouterLink to="/route-val">Val de Loire</RouterLink>
-                <RouterLink to="/route-languedoc">Languedoc-Roussillon</RouterLink>
-                <RouterLink to="/route-rhone">Vallée du Rhône</RouterLink>
-                <RouterLink to="/route-beaujolais">Beaujolais</RouterLink>
-                <RouterLink to="/route-corse">Corse</RouterLink>
-                <RouterLink to="/route-sud">Sud-Ouest</RouterLink>
-                <RouterLink to="/route-jura">Jura</RouterLink>
-                <RouterLink to="/route-savoie">Savoie</RouterLink>
-                <RouterLink to="/route-ile">Ile-de-France</RouterLink>
+                <RouterLink to="/route-alsace" title="Route Alsace">Alsace</RouterLink>
+                <RouterLink to="/route-bourgogne" title="Route Bourgogne">Bourgogne</RouterLink>
+                <RouterLink to="/route-provence" title="Route Provence">Provence</RouterLink>
+                <RouterLink to="/route-champagne" title="Route Champagne">Champagne</RouterLink>
+                <RouterLink to="/route-val" title="Route Val de Loire">Val de Loire</RouterLink>
+                <RouterLink to="/route-languedoc" title="Route Languedoc-Roussillon">Languedoc-Roussillon</RouterLink>
+                <RouterLink to="/route-rhone" title="Route Vallée du Rhône">Vallée du Rhône</RouterLink>
+                <RouterLink to="/route-beaujolais" title="Route Beaujolais">Beaujolais</RouterLink>
+                <RouterLink to="/route-corse" title="Route Corse">Corse</RouterLink>
+                <RouterLink to="/route-sud" title="Route Sud-Ouest">Sud-Ouest</RouterLink>
+                <RouterLink to="/route-jura" title="Route Jura">Jura</RouterLink>
+                <RouterLink to="/route-savoie" title="Route Savoie">Savoie</RouterLink>
+                <RouterLink to="/route-ile" title="Route Ile-de-France">Ile-de-France</RouterLink>
             </div>
         </div>
 

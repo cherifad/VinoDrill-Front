@@ -10,7 +10,7 @@
                 <div class="flex flex-col gap-3 items-center w-full">
                     <div class="flex flex-col w-full gap-3">
                         <label for="placeInput">Votre adresse</label>
-                        <input v-model="search" @input="autoComplete(false)" type="text" id="placeInput" placeholder="1 rue des cèdres, Grenoble" class="flex-1 text-xl border-2 font-normal border-rose outline-none bg-transparent p-3 rounded-md">
+                        <input v-model="search" @input="autoComplete(false)" type="text" id="placeInput" placeholder="1 rue des cèdres, Grenoble" class="flex-1 text-xl border-2 font-normal border-rose outline-none bg-transparent p-3 rounded-md" title="Taper le début de votre adresse et séléctionner la parmis la liste en dessous">
                         <!-- <button @click="autoComplete(true)" class="flex w-fit cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold">Charger automatiquement</button> -->
                     </div>  
                     <div class="relative w-full">

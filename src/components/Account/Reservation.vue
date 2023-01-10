@@ -1,24 +1,23 @@
 <template>
     <div class="w-full flex flex-col" v-if="!loading">
         <div class="w-full flex-1 flex gap-3 mb-3 items-center" v-auto-animate>
-            <div class="relative h-full justify-around border-2 border-rose p-5 rounded-lg flex flex-col gap-3"> 
+            <div class="relative w-full h-full justify-around border-2 border-rose p-5 rounded-lg flex flex-col md:gap-3 gap-1"> 
                 <div v-if="estcadeau">
-
                     <p id="passenger" class="text-2xl font-bold">Offert</p>
                     <div class="flex mb-2">
                         <div class=" w-10 border mt-2"></div>
                     </div>
                 </div>
                 
-                <div class="flex gap-5 justify-between">
+                <div class="flex md:gap-5 gap-2 justify-between">
                     <div class="flex flex-col">
-                        <p id="passenger" class="text-2xl font-bold">Référence : {{ refcommande }}</p>
+                        <p id="passenger" class="md:text-2xl font-bold">Référence : {{ refcommande }}</p>
                         <div class="flex mb-2">
                             <div class=" w-10 border mt-2"></div>
                         </div>
                     </div>
                     <div class="flex flex-col">
-                        <p id="passenger" class="text-2xl font-bold">Date début</p>
+                        <p id="passenger" class="md:text-2xl font-bold">Date début</p>
                         <div class="flex mb-2">
                             <div class=" w-10 border mt-2"></div>
                         </div>
@@ -26,13 +25,13 @@
                     </div>
                 </div>       
                 
-                <div class="flex gap-20 ">
-                    <p id="passenger" class="text-2xl font-semibold text-center">Adulte(s)<br>{{ nbadulte }}</p>
-                    <p id="passenger" class="text-2xl font-semibold text-center">Enfant(s)<br>{{ nbenfant }}</p>
-                    <p id="passenger" class="text-2xl font-semibold text-center">Chambre(s)<br>{{ nbchambre }}</p>
+                <div class="flex justify-between gap-2">
+                    <p id="passenger" class="md:text-2xl font-semibold text-center">Adulte(s)<br>{{ nbadulte }}</p>
+                    <p id="passenger" class="md:text-2xl font-semibold text-center">Enfant(s)<br>{{ nbenfant }}</p>
+                    <p id="passenger" class="md:text-2xl font-semibold text-center">Chambre(s)<br>{{ nbchambre }}</p>
                 </div>
                 
-                <p v-if="sejour" class="text-2xl font-bold mb-3">Sejour : {{ sejour.titresejour }}</p>
+                <p v-if="sejour" class="lg:text-2xl font-bold mb-3">Sejour : {{ sejour.titresejour }}</p>
                 <div v-if="coupon" class="mb-3 flex items-center gap-3 justify-between" :class="coupon.estvalide ? '' : 'opacity-60'">
                     <div class="flex gap-3">
                         <ion-icon name="ticket-outline" class="text-3xl"></ion-icon>

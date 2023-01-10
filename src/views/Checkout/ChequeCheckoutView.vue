@@ -254,6 +254,7 @@ async function pay() {
           :disabled="loading"
           :class="loading ? 'opacity-70 cursor-wait' : 'hover:bg-transparent'"
           class="flex w-full py-9 justify-center cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 font-semibold"
+          title="Valider et procéder au paiement"
         >
           {{ loading ? "" : `Valider et procéder au paiement de ${config.cheques[refchq]}€` }}
           <svg v-if="loading" class="h-6 w-6 animate-spin" viewBox="3 3 18 18">

@@ -9,7 +9,7 @@
                                     :image="sejour.photosejour" :price="sejour.prixsejour" :id="sejour.idsejour"
                                     :libelleTemps="sejour.libelletemps" :notemoyenne="sejour.notemoyenne" />
                     </RouterLink>
-                    <div class="flex justify-center h-fit">
+                    <div class="flex justify-center h-fit" title="Supprimer">
                         <span @click="removeSejour(sejour.idsejour)" class="cursor-pointer select-none rounded-md ease-linear duration-300 items-center gap-3 p-3 bg-rose border-rose border-2 hover:bg-transparent font-semibold">Supprimer</span>
                     </div>
                 </div>
